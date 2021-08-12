@@ -1,75 +1,77 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter } from 'react-router-dom';
-import { Switch, Route } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Switch, Route } from 'react-router-dom';
+import Explore from './pages/Explore';
+import Home from './pages/Home';
 import Login from './pages/Login';
-import MealDetails from './pages/MealDetails';
-import DrinkDetails from './pages/DrinkDetails';
-import NotFound from './components/NotFound';
-
-import HomeRecipe from './pages/HomeRecipe';
-import HomeDrinks from './pages/HomeDrinks';
-import Explore from './pages/explore/Explore';
-import ExploreRecipes from './pages/explore/ExploreRecipes';
-import ExploreDrinks from './pages/explore/ExploreDrinks';
-import ExploreByIngredients from './pages/explore/ExploreByIngredients';
-import ExploreByLocal from './pages/explore/ExploreByLocal';
+import RecipeDetails from './pages/RecipeDetails';
 import Profile from './pages/Profile';
-import RecipesDone from './pages/RecipesDone';
-import RecipeFavorite from './pages/RecipeFavorite';
-import ExploreByIngredientsDrinks from './pages/explore/ExploreByIngredientsDrinks';
-
-import MealsInProgress from './pages/MealsInProgress';
-import DrinksInProgress from './pages/DrinksInProgress';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
+import ExploreIngredients from './pages/ExploreIngredients';
+import DetailsContextProvider from './context/DetailsContext';
+import FavoriteRecipes from './pages/FavoriteRecipes';
+import DoneRecipes from './pages/DoneRecipes';
+// import './App.css';
+import ExploreOrigin from './pages/ExploreOrigin';
+import RecipesInProgess from './pages/RecipesInProgress';
 
 function App() {
   return (
-    <BrowserRouter>
+    <DetailsContextProvider>
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route path="/" exact component={ Login } />
         <Route
           exact
-          path="/comidas/:id"
-          render={ (props) => <MealDetails { ...props } /> }
+          path="/comidas"
+          render={ (props) => <Home { ...props } type="meals" /> }
         />
         <Route
           exact
-          path="/bebidas/:id"
-          render={ (props) => <DrinkDetails { ...props } /> }
+          path="/bebidas"
+          render={ (props) => <Home { ...props } type="drinks" /> }
         />
-        <Route exact path="/comidas" component={ HomeRecipe } />
-        <Route exact path="/bebidas" component={ HomeDrinks } />
-        <Route path="/receitas-favoritas" component={ RecipeFavorite } />
-        <Route
-          path="/comidas/:id/in-progress"
-          render={ (props) => <MealsInProgress { ...props } /> }
-        />
-        <Route
-          path="/bebidas/:id/in-progress"
-          render={ (props) => <DrinksInProgress { ...props } /> }
-        />
-        <Route exact path="/explorar" component={ Explore } />
-        <Route exact path="/explorar/comidas" component={ ExploreRecipes } />
-        <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
+        <Route path="/perfil" component={ Profile } />
+        <Route path="/explorar" exact component={ Explore } />
+        <Route path="/explorar/comidas/area" component={ ExploreOrigin } />
         <Route
           exact
           path="/explorar/comidas/ingredientes"
-          component={ ExploreByIngredients }
+          // component={ ExploreIngredients }
+          render={ (props) => <ExploreIngredients { ...props } type="meals" /> }
         />
         <Route
           exact
           path="/explorar/bebidas/ingredientes"
-          component={ ExploreByIngredientsDrinks }
+          render={ (props) => <ExploreIngredients { ...props } type="drinks" /> }
         />
-        <Route exact path="/explorar/comidas/area" component={ ExploreByLocal } />
-        <Route exact path="/perfil" component={ Profile } />
-        <Route exact path="/receitas-feitas" component={ RecipesDone } />
-        <Route path="/receitas-favoritas" component={ RecipeFavorite } />
-        <Route path="*" component={ NotFound } />
+        <Route path="/explorar/comidas" exact component={ ExploreFoods } />
+        <Route path="/explorar/bebidas" exact component={ ExploreDrinks } />
+        <Route path="/explorar/comidas/area" exact component={ ExploreOrigin } />
+        <Route path="/explorar/bebidas/area" render={ () => <h1>Not Found</h1> } />
+        <Route
+          exact
+          path="/comidas/:id"
+          render={ (props) => <RecipeDetails { ...props } type="meals" /> }
+        />
+        <Route
+          exact
+          path="/bebidas/:id"
+          render={ (props) => <RecipeDetails { ...props } type="drinks" /> }
+        />
+        <Route path="/receitas-favoritas" component={ FavoriteRecipes } />
+        <Route path="/receitas-feitas" component={ DoneRecipes } />
+        <Route
+          exact
+          path="/comidas/:id/in-progress"
+          render={ (props) => <RecipesInProgess { ...props } type="meals" /> }
+        />
+        <Route
+          exact
+          path="/bebidas/:id/in-progress"
+          render={ (props) => <RecipesInProgess { ...props } type="drinks" /> }
+        />
       </Switch>
-    </BrowserRouter>
+    </DetailsContextProvider>
   );
 }
-
 export default App;
