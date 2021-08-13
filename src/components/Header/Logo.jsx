@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LogoContainer } from './styles';
 
-import logoSrc from '../../images/logo.svg';
+import logoSrc from '../../images/smallLogo.svg';
 
 function Logo() {
   return (

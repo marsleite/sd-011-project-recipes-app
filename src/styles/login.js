@@ -92,7 +92,7 @@ export const Container = styled.div`align-items: center;
 
   button {
     align-self: center;
-    background: #4C6663;
+    background: #172121;
     border: 0;
     border-radius: 8px;
     color: white;

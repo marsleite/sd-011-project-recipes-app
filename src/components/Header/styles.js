@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`align-items: space-around;
-  background: #fdfefb;
+  background: #F1F0EA;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -10,6 +10,7 @@ const HeaderContainer = styled.header`align-items: space-around;
   min-height: 10rem;
   /* max-width: 1420px; */
   padding: 20px;
+
   button, .container > button {
     align-self: center;
     background: inherit;
@@ -17,6 +18,7 @@ const HeaderContainer = styled.header`align-items: space-around;
     cursor: pointer;
     padding-right: 0.7rem;
   }
+
   .title-container {
     align-items: center;
     display: flex;
@@ -25,10 +27,12 @@ const HeaderContainer = styled.header`align-items: space-around;
     justify-content: center;
     line-height: 0.8;
     max-width: 68vw;
+
     img {
       align-self: center;
       height: auto;
     }
+
     h1 {
       align-self: flex-end;
       font-family: 'Montserrat Alternates', sans-serif;
@@ -39,6 +43,7 @@ const HeaderContainer = styled.header`align-items: space-around;
       padding-left: 5px;
     }
   }
+
   .container {
     display: flex;
     flex: 1;
@@ -60,6 +65,7 @@ const HeaderContainer = styled.header`align-items: space-around;
       }
     }
   }
+  
   @media only screen and ( max-width : 650px ) {
     gap: 2rem;
     /* .container {
@@ -94,15 +100,18 @@ export const LogoContainer = styled.div`align-items: center;
   display: flex;
   max-height: auto;
   max-width: 60vw;
+  
   img {
     width: 100%;
   }
+
   @media only screen and ( max-width : 650px ) {
     /* padding-left: 8px; */
     .title-container {
       margin: 0 auto;
       max-width: 65vw;
       padding-bottom: 1rem;
+
       h1 {
         align-self: flex-end;
         display: flex;
@@ -116,11 +125,13 @@ export const LogoContainer = styled.div`align-items: center;
       }
     }
   }
+
   @media only screen and ( min-width : 1240px ) {
     .title-container {
       max-height: 30vh;
       max-width: 60vw;
     }
+
     .container {
       button {
         height: 2.5rem;
@@ -128,6 +139,7 @@ export const LogoContainer = styled.div`align-items: center;
       }
     }
   }
+
   /* input {
     height: auto;
     width: 25rem;
