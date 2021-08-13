@@ -1,149 +1,76 @@
 import styled from 'styled-components';
+import SharedInput from '../../styles/shared/Input';
+import SharedButton from '../../styles/shared/Button';
 
-const HeaderContainer = styled.header`align-items: space-around;
-  background: #F1F0EA;
+export const ContainerMainInfos = styled.div`
+  text-align: center;
+  > h1 {
+    font-family: var(--font-second);
+    font-size: 2.5rem;
+    color: var(--blue-first-color);
+    margin: 1rem 0;
+  }
+`;
+
+export const ButtonProfile = styled.button`
+  position: ${({ searchIcon }) => (searchIcon ? 'absolute' : 'none')};
+  left: 1.8rem;
+  top: 1px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--blue-first-color);
+
+  &:active {
+    outline: none;
+  }
+
+  &:hover {
+    outline: none;
+  }
+`;
+
+export const ButtonSearch = styled.button`
+  position: absolute;
+  right: 1.8rem;
+  top: 0;
+  color: var(--blue-first-color);
+  background: none;
+  font-size: 2rem;
+  border: none;
+
+  &:active {
+    outline: none;
+  }
+
+  &:hover {
+    outline: none;
+  }
+`;
+
+export const Input = styled(SharedInput)``;
+
+export const ContainerShowSearch = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 0 auto;
-  max-width: 990px;
-  min-height: 10rem;
-  /* max-width: 1420px; */
-  padding: 20px;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: var(--global-space);
 
-  button, .container > button {
-    align-self: center;
-    background: inherit;
-    border: 0;
-    cursor: pointer;
-    padding-right: 0.7rem;
-  }
-
-  .title-container {
-    align-items: center;
+  > div {
     display: flex;
-    flex: 3;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 0.8;
-    max-width: 68vw;
+    gap: 1rem;
 
-    img {
-      align-self: center;
-      height: auto;
-    }
-
-    h1 {
-      align-self: flex-end;
-      font-family: 'Montserrat Alternates', sans-serif;
-      font-size: 1.5rem;
-      -webkit-font-smoothing: antialiased;
-      font-weight: 700;
-      margin: 0 auto;
-      padding-left: 5px;
-    }
-  }
-
-  .container {
-    display: flex;
-    flex: 1;
-    justify-content: space-evenly;
-    margin: 0 auto;
-    width: 100%;
-    button {
-      align-self: center;
-      border: 0;
-      cursor: pointer;
-      img {
-        display: flex;
-        /* height: 100%; */
-        height: 30px;
-        width: 30px;
-      }
-      & + button {
-        margin-right: 0.1rem;
-      }
-    }
-  }
-  
-  @media only screen and ( max-width : 650px ) {
-    gap: 2rem;
-    /* .container {
+    > label {
       display: flex;
-    } */
-    .title-container {
-      margin: 0 auto;
-      padding-bottom: 1rem;
-      img {
-        align-self: center;
-        justify-self: center;
-        position: relative;
-      }
-      .header-title-container {
-        margin: 0 6px 2px auto;
-        h1 {
-          align-self: center;
-          display: flex;
-          flex-wrap: wrap;
-          font-size: 1.2rem;
-          justify-self: center;
-          text-align: center;
-        }
-      }
+      height: 19px;
+      align-items: center;
+      gap: 0.2rem;
+      --font-first: 'Montserrat', sans-serif;
+
     }
   }
 `;
 
-export const LogoContainer = styled.div`align-items: center;
-  align-self: center;
-  background: inherit;
-  display: flex;
-  max-height: auto;
-  max-width: 60vw;
-  
-  img {
-    width: 100%;
-  }
-
-  @media only screen and ( max-width : 650px ) {
-    /* padding-left: 8px; */
-    .title-container {
-      margin: 0 auto;
-      max-width: 65vw;
-      padding-bottom: 1rem;
-
-      h1 {
-        align-self: flex-end;
-        display: flex;
-        font-size: 1.2rem;
-        justify-self: flex-end;
-        /* margin: 0 auto; */
-        max-width: 55vw;
-        /* max-width: 70vw; */
-        /* min-width: 50vw; */
-        text-align: center;
-      }
-    }
-  }
-
-  @media only screen and ( min-width : 1240px ) {
-    .title-container {
-      max-height: 30vh;
-      max-width: 60vw;
-    }
-
-    .container {
-      button {
-        height: 2.5rem;
-        max-height: 10vh;
-      }
-    }
-  }
-
-  /* input {
-    height: auto;
-    width: 25rem;
-  } */
+export const Button = styled(SharedButton)`
+  padding: 0.6rem;
 `;
-
-export default HeaderContainer;

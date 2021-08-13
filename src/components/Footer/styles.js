@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
-export const Container = styled.footer`background-color: #E0DDCF;
-  bottom: 0;
+const FooterContainerButtons = styled.footer`
   position: fixed;
-  width: 100%;
-`;
+  bottom: 0;
+  width: 100vw;
+  background: var(--background-third-color);
+  display: flex;
+  justify-content: space-around;
 
-export const Content = styled.ul`display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 0.5rem;
-  li {
-    list-style: none;
+  > button {
+    border: none;
+    background: none;
+    font-size: 2.5rem;
+    
+    > svg {
+      color: #748067;
+    }
   }
 `;
+
+export default FooterContainerButtons;
