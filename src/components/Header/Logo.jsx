@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LogoContainer } from './styles';
 
-function Logo({ logoSrc }) {
+import logoSrc from '../../images/logo.svg';
+
+function Logo() {
   return (
     <LogoContainer>
       <img src={ logoSrc } alt="letmeEat" />

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { LoginContainer, Container } from '../styles/login';
-import logoIcon from '../images/logoLoginPequeno.svg';
+import logoIcon from '../images/logo.svg';
 
 function Login() {
   const { setEmail, setPassword, disabledData, handleClick } = useContext(UserContext);
@@ -11,7 +11,7 @@ function Login() {
         <aside>
           <div className="img-wrapper">
             <object className="logo-letmeeat" type="image/svg+xml" data={ logoIcon }>
-              Logo letmeEat
+              Logo
             </object>
           </div>
         </aside>
@@ -20,20 +20,20 @@ function Login() {
         <div className="separator" />
         <Container>
           <label htmlFor="email">
-            Email
             <input
               type="text"
               data-testid="email-input"
               id="email"
+              placeholder="e-mail"
               onChange={ (event) => setEmail(event.target.value) }
             />
           </label>
           <label htmlFor="password">
-            Senha
             <input
               type="password"
               data-testid="password-input"
               id="password"
+              placeholder="senha"
               onChange={ (event) => setPassword(event.target.value) }
             />
           </label>

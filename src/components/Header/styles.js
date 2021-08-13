@@ -31,10 +31,10 @@ const HeaderContainer = styled.header`align-items: space-around;
     }
     h1 {
       align-self: flex-end;
-      font-family: Poppins , sans-serif;
+      font-family: 'Montserrat Alternates', sans-serif;
       font-size: 1.5rem;
       -webkit-font-smoothing: antialiased;
-      font-weight: 200;
+      font-weight: 700;
       margin: 0 auto;
       padding-left: 5px;
     }
