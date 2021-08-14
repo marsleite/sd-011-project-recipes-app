@@ -26,12 +26,12 @@ function ReceitasEmProgresso() {
   const [progressOfRecipe, setProgressOfRecipe] = useState(true);
   const [currentRecipe, setCurrentRecipe] = useState(false);
   const [favorite, setFavorite] = useState(false);
-  // const [linkCopy, setLinkCopy] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const {
     category,
     strAlcoholic,
+    id,
   } = currentRecipe;
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function ReceitasEmProgresso() {
     if (!localStorageRecipe) {
       addRecipeIdInLocalStorage(recipeType, recipeId);
     }
-    const fetchRecipeById = async (id, typeOfRecipes) => {
+    const fetchRecipeById = async (Id, typeOfRecipes) => {
       const recipe = await searchById(id, typeOfRecipes);
       setCurrentRecipe(recipe);
     };
@@ -98,7 +98,7 @@ function ReceitasEmProgresso() {
     <div className="progress-container">
       <header className="progress-header">
         <Link
-          to={ pathname.includes('bebidas') ? '/bebidas' : '/comidas' }
+          to={ pathname.includes('bebidas') ? `/bebidas/${id}` : `/comidas/${id}` }
           className="arrow-bg"
         >
           <img src={ Arrow } alt="arrow-left" className="arrow" />
@@ -113,13 +113,13 @@ function ReceitasEmProgresso() {
       <div className="progress-content">
         <img
           src={ currentRecipe.imgUrl }
-          alt="recipe"
+          alt={ currentRecipe.title }
           className="recipe-img"
           data-testid="recipe-photo"
         />
-        <h1 data-testid="recipe-title" className="recipe-title">
+        <h2 data-testid="recipe-title" className="recipe-title">
           { currentRecipe.title }
-        </h1>
+        </h2>
         <ButtonShare recipe={ { recipeType, recipeId } } />
         {/* <p
           data-testid="recipe-category"
@@ -129,7 +129,7 @@ function ReceitasEmProgresso() {
         <h3 className="ingredient-title">Ingredients</h3>
         <ul>
           { isLoading
-            ? 'isLoading '
+            ? 'isLoading'
             : inProgressIngredients.map(
               (ingredient, index) => (
                 <IngredientInput
@@ -146,7 +146,7 @@ function ReceitasEmProgresso() {
             )}
         </ul>
         <h3 className="instructions-title">Instructions</h3>
-        <p data-testid="instructions">
+        <p data-testid="instructions" className="progress-instructions">
           { currentRecipe.instructions }
         </p>
         <button

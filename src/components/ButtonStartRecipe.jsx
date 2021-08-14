@@ -20,6 +20,9 @@ function ButtonStartRecipe({ id }) {
 
   const handleLocalStorage = (recipeId) => {
     const key = handleObjectKey();
+    if (!localStorage.getItem('doneRecipes')) {
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
+    }
     const doneRecipesLocal = JSON.parse(localStorage.getItem('doneRecipes'));
     const inProgressLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (doneRecipesLocal[key] && doneRecipesLocal[key][recipeId]) {

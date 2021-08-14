@@ -39,10 +39,46 @@ export const addIngredientsInRecipeId = (recipe, recipeType, recipeId) => {
 
 export const addDoneRecipeInLocalStorage = (recipe) => {
   const LOCAL_STORAGE = JSON.parse(localStorage.getItem('doneRecipes'));
-  // localStorage.setItem('doneRecipes', JSON.stringify([...LOCAL_STORAGE, recipe]));
-  if (!LOCAL_STORAGE) {
-    localStorage.setItem('doneRecipes', JSON.stringify([recipe]));
-  } else {
-    localStorage.setItem('doneRecipes', JSON.stringify([...LOCAL_STORAGE, recipe]));
+  const createAt = new Date();
+
+  if (recipe.area !== '') {
+    const recipeObject = {
+      id: recipe.id,
+      type: 'comida',
+      area: recipe.area,
+      category: recipe.category,
+      alcoholicOrNot: '',
+      name: recipe.title,
+      image: recipe.imgUrl,
+      doneDate: createAt.toLocaleDateString(),
+      tags: recipe.tags,
+    };
+    if (!LOCAL_STORAGE) {
+      localStorage.setItem('doneRecipes', JSON.stringify([recipeObject]));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify(
+        [...LOCAL_STORAGE, recipeObject],
+      ));
+    }
+  }
+  if (recipe.area === '') {
+    const recipeObject = {
+      id: recipe.id,
+      type: 'bebida',
+      area: '',
+      category: recipe.category,
+      alcoholicOrNot: recipe.strAlcoholic,
+      name: recipe.title,
+      image: recipe.imgUrl,
+      doneDate: createAt.getDay(),
+      tags: [],
+    };
+    if (!LOCAL_STORAGE) {
+      localStorage.setItem('doneRecipes', JSON.stringify([recipeObject]));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify(
+        [...LOCAL_STORAGE, recipeObject],
+      ));
+    }
   }
 };

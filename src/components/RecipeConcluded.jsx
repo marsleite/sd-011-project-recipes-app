@@ -2,48 +2,36 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import '../styles/RecipeConcluded.css';
-import LinkCopy from './LinkCopy';
+import ButtonShare from './ButtonShare';
 
 function RecipeConcluded({ recipe, index }) {
-  const [linkCopy, setLinkCopy] = useState(false);
   const [recipes, setRecipes] = useState(recipe);
+  const recipeType = recipe.type === 'comida' ? 'meals' : 'cocktails';
+  const recipeId = recipe.id;
 
   useEffect(() => {
     setRecipes(recipe);
-    console.log('aqui', recipe.name);
   }, [recipe]);
 
   const history = useHistory();
 
-  const HandleRedirect = (recipeId) => {
-    if (recipes.type === 'comida') history.push(`comidas/${recipeId}`);
-    if (recipes.type === 'bebida') history.push(`bebidas/${recipeId}`);
-  };
-
-  const handleShareBtn = (recipeType, recipeId) => {
-    const hostURL = window.location.host;
-    if (recipeType === 'comida') {
-      navigator.clipboard.writeText(`${hostURL}/comidas/${recipeId}`);
-    }
-    if (recipeType === 'bebida') {
-      navigator.clipboard.writeText(`${hostURL}/bebidas/${recipeId}`);
-    }
-    return <LinkCopy />;
-  };
-
-  const handleLinkMessage = () => {
-    setLinkCopy(true);
+  const HandleRedirect = (id, type) => {
+    if (type === 'meals') history.push(`comidas/${id}`);
+    if (type === 'cocktails') history.push(`bebidas/${id}`);
   };
 
   return (
     <div className="RecipeConcludedContainer">
-      <img
-        src={ recipes.image }
-        alt="Recipe"
-        data-testid={ `${index}-horizontal-image` }
-        onClick={ () => HandleRedirect(recipes.id) }
+      <div
+        onClick={ () => HandleRedirect(recipes.id, recipeType) }
         aria-hidden="true"
-      />
+      >
+        <img
+          src={ recipes.image }
+          alt="Recipe"
+          data-testid={ `${index}-horizontal-image` }
+        />
+      </div>
       <div className="RecipeInfoConcluded">
         <span data-testid={ `${index}-horizontal-top-text` }>
           { recipes.type === 'comida' ? recipes.area : '' }
@@ -54,6 +42,8 @@ function RecipeConcluded({ recipe, index }) {
         <p
           className="RecipesFoodName"
           data-testid={ `${index}-horizontal-name` }
+          onClick={ () => HandleRedirect(recipes.id, recipeType) }
+          aria-hidden="true"
         >
           { recipes.name }
         </p>
@@ -62,32 +52,24 @@ function RecipeConcluded({ recipe, index }) {
           className="doneDate"
         >
           Feita em:
-          {/* { doneDate } */}
+          { recipes.doneDate }
         </p>
         <div className="tagContainer">
-          { recipes.type === 'comida' && recipes.tags.length > 0 ? (
-            recipes.tags.map((tagName, key) => (
+          {
+            recipes.tags && recipes.tags.map((tagName, key) => (
               <p
                 className="tagName"
                 key={ key }
-                data-testid={ `${index}-${recipes.tagName}-horizontal-tag` }
+                data-testid={ `${index}-${tagName}-horizontal-tag` }
               >
-                { recipes.tagName }
+                { tagName }
               </p>))
-          ) : '' }
+          }
         </div>
-        <button
-          className="shareBTN"
-          type="button"
-          data-testid={ `${index}-horizontal-share-btn` }
-          onClick={ () => {
-            handleShareBtn(recipes.type, recipes.id);
-            handleLinkMessage();
-          } }
-        >
-          <img src={ recipes.shareImage } alt="Compartilhar" />
-        </button>
-        { linkCopy && <LinkCopy /> }
+        <ButtonShare
+          recipe={ { recipeType, recipeId } }
+          index={ index }
+        />
       </div>
     </div>
   );

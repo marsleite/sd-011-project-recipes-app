@@ -11,16 +11,16 @@ function DoneRecipes({ filterBy }) {
   useEffect(() => {
     if (filterBy === 'All') setDoneItens(doneReceitas);
     if (filterBy === 'Foods') {
-      setDoneItens(doneItens.filter((recipe) => recipe.type === 'comida'));
+      setDoneItens(doneItens.filter((recipe) => recipe.area));
     }
     if (filterBy === 'Drinks') {
-      setDoneItens(doneItens.filter((recipe) => recipe.type === 'bebida'));
+      setDoneItens(doneItens.filter((recipe) => !recipe.area));
     }
   }, [filterBy]);
   return (
     <div className="DoneRecipesContainer">
       {
-        doneItens.map(
+        doneItens && doneItens.map(
           (recipe, index) => (
             <RecipeConcluded key={ index } index={ index } recipe={ recipe } />
           ),

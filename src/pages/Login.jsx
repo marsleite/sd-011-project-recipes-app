@@ -29,6 +29,7 @@ export default function Login() {
       cocktails: {},
       meals: {},
     }));
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
     history.push('/comidas');
   };
 
