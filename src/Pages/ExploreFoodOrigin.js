@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -13,13 +13,13 @@ export default function ExploreFoodOrigin() { {
   useEffect(() => {
     const getFoodArea = async () => {
       const endpoint = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-      const { result } = await fetch(endpoint).then((data) => data.json());
+      const result = await fetch(endpoint).then((data) => data.json());
       setFoodArea(result);
+      console.log(result);
     };
     getFoodArea();
-    console.log(foodArea);
   }, []);
-
+  console.log(foodArea);
   
 
   return (

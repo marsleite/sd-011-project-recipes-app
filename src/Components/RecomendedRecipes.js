@@ -5,12 +5,12 @@ import { getDrink, getFood } from '../Services/FetchApi';
 import MyContext from '../Context/MyContext';
 import CardRecipes from './CardRecipes';
 import './Recomended.css';
+
 // eslint-disable-next-line react/prop-types
 function RecomendedRecipes({ origem }) {
   const { cards, setCards } = useContext(MyContext);
   const busca = async () => {
-    console.log(origem);
-    if (origem.includes('comidas')) {
+      if (origem.includes('comidas')) {
       const resposta = await getDrink();
       setCards(resposta.drinks);
     } else {
@@ -33,7 +33,7 @@ function RecomendedRecipes({ origem }) {
   };
   if (origem.includes('comidas')) {
     return (
-      <div className="slider">
+      <div>
         {cards.length > 0 && renderCardRecipes().map((recp, index) => (
           <Link
             data-testid={ `${index}-recomendation-card` }
@@ -52,7 +52,7 @@ function RecomendedRecipes({ origem }) {
       </div>);
   }
   return (
-    <div className="cardlist">
+    <div>
       {cards.length > 0 && renderCardRecipes().map((recp, index) => (
         <Link
           className="recomendation-card"

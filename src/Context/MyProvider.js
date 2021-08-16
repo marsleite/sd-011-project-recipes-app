@@ -18,13 +18,18 @@ export default function MyProvider({ children }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [userEmailProfile, setUserEmailProfile] = useState('');
   const [drinkIngredients, setDrinkIngredients] = useState([]);
-  const setMealsAndDrinkByIngredients = useState();
   const [setFoodArea, foodArea] = useState([]);
+  const [foodIngredients, setFoodIngredients] = useState([]);
+  const [mealsAndDrinkByIngredients, setMealsAndDrinkByIngredients] = useState([]);
+
 
 
   const context = {
+    foodIngredients,
+    setFoodIngredients,
     setFoodArea,
     foodArea,
+    mealsAndDrinkByIngredients,
     setMealsAndDrinkByIngredients,
     drinkIngredients,
     setDrinkIngredients,

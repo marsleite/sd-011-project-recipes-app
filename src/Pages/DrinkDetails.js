@@ -8,6 +8,7 @@ import checkInProgress from '../Services/checkInProgress';
 import RecomendedRecipes from '../Components/RecomendedRecipes';
 import './Styles/detailsrecipe.css';
 
+
 function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
   const [recipes, setRecipes] = useState([]);
   // Didmount - Faz fetch trazendo a receita pelo id e seta o stado recipes com as receita
@@ -21,6 +22,7 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
     };
     getApi();
   }, [id]);
+
   // retorna o array com os ingredientes
   const ingredientsRecipe = () => {
     const arrayIndredientKids = Object.keys(recipes)
@@ -34,7 +36,7 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
     });
     return ingredients;
   };
-  // retorna um array com as medidas de cada ingredientes
+  // // retorna um array com as medidas de cada ingredientes
   const ingredientsMesure = () => {
     const arrayIndredientKids = Object.keys(recipes)
       .filter((item) => item
@@ -54,7 +56,7 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
       newArray.push(`-${ingredientsRecipe()[index]} - ${ingredientsMesure()[index]}`);
     }
     return newArray;
-  };
+  };  
   const essaPagina = pathname;
 
   checkInProgress();
@@ -66,8 +68,6 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
     }
     return 'Iniciar Receita';
   };
-  // console.log(`minha chave instructions: ${recipes.strInstructions}`);
-  // console.log(`minha chave alcoholic: ${recipes.strAlcoholic}`);
 
   return (
     <div className="paidobutton">

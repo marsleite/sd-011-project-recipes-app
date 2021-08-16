@@ -1,14 +1,13 @@
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import MyContext from '../Context/MyContext';
 import './RecipesFoods.css';
 
 export default function ExploreDrinksIngredient() {
   
 const [drinkIngredients, setDrinkIngredients] = useState([]);
-const [setMealsAndDrinkByIngredients] = useContext(MyContext);
+const [mealsAndDrinkByIngredients, setMealsAndDrinkByIngredients] = useState([]);
 const numberOfIngredients = 12;
 
 useEffect(() => {
@@ -24,6 +23,7 @@ const getRecipesByIngredient = async (param) => {
   const endpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${param}`;
   const { drinks } = await fetch(endpoint).then((data) => data.json());
   setMealsAndDrinkByIngredients(drinks.slice(0, numberOfIngredients));
+  console.log(drinks);
 };
 
 const getTwelveIngredients = () => {
