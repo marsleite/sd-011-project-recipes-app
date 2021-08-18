@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { RequestHook } from '../Context/RequestHook';
 import CardRecipe from './CardRecipe';
 import { searchFoodsAll, searchByIngredient } from '../services/RequestFood';
@@ -44,17 +44,18 @@ function CardRecipeList({ origin }) {
     );
   }
 
-  // function changeLocation(array) {
-  //   if (array.length === 1) {
-  //     if (origin === 'Food') {
-  //       return <Redirect to={ `comidas/${array[0].idMeal}` } />;
-  //     }
-  //     return <Redirect to={ `bebidas/${array[0].idDrink}` } />;
-  //   }
-  // }
+  function changeLocation(id) {
+    if (id.length === 1) {
+      if (origin === 'Food') {
+        return <Redirect to={ `comidas/${id[0].idMeal}` } />;
+      }
+      return <Redirect to={ `bebidas/${id[0].idDrink}` } />;
+    }
+  }
 
   return (
     <div>
+      { filtered.length === 1 && changeLocation(filtered) }
       { !(byCategory || byFilter) ? renderItems(initialItens) : renderItems(filtered) }
     </div>
   );
