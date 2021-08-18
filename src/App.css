@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap') ;
+
 .footer {
   bottom: 0;
   position: fixed;
@@ -37,7 +39,7 @@
 }
 
 .showImgCarrossel {
-  visibility: visible;
+  display: visible;
 }
 
 .hideImgCarrossel {
@@ -46,4 +48,31 @@
 
 .imageDoneRecipe {
   width: 100%;
+}
+
+.main-login {
+  display: flex;
+  width: 100%;
+}
+
+.container-login {
+  height: 100%;
+  margin-top: 20%;
+  max-width: 30%;
+}
+
+.flex {
+  display: flex;
+}
+
+.header-menu {
+  font-family: Style Script , cursive;
+  justify-content: center;
+  margin: 5px;
+  text-align: center;
+}
+
+.container-recipes {
+  overflow: scroll;
+  text-align: center;
 }
