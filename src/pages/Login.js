@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { saveTokensAndEmail } from '../helpers/handleLocalStorage';
 import LSContext from '../context/LSContext';
+import logo from '../images/logo.svg';
 
 function Login() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -14,40 +15,44 @@ function Login() {
   }
 
   return (
-    <form className="form-login" onChange={ validateLogin }>
-      <h1>Login</h1>
-      <label htmlFor="email-input">
-        <input
-          type="text"
-          data-testid="email-input"
-          placeholder="Email"
-          id="email-input"
-          required
-          pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-          onChange={ ({ target: { value } }) => (setEmail(value)) }
-        />
-      </label>
-      <label htmlFor="password-input">
-        <input
-          type="password"
-          data-testid="password-input"
-          placeholder="Senha"
-          id="password-input"
-          required
-          pattern=".{7,}"
-        />
-      </label>
-      <Link to="/comidas">
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={ isButtonDisabled }
-          onClick={ () => saveTokensAndEmail(email, setLSEmail) }
-        >
-          Entrar
-        </button>
-      </Link>
-    </form>
+    <div className="login-page">
+      <img src={ logo } alt="Logo Pesadelo dos Restaurantes" className="login-logo" />
+      <form className="form-login" onChange={ validateLogin }>
+        <label htmlFor="email-input" className="login-email">
+          <input
+            type="text"
+            data-testid="email-input"
+            placeholder="Email"
+            id="email-input"
+            required
+            pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+            onChange={ ({ target: { value } }) => (setEmail(value)) }
+          />
+        </label>
+        <label htmlFor="password-input" className="login-password">
+          <input
+            type="password"
+            data-testid="password-input"
+            placeholder="Senha"
+            id="password-input"
+            required
+            pattern=".{7,}"
+          />
+        </label>
+        <Link to="/comidas">
+          <button
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={ isButtonDisabled }
+            onClick={ () => saveTokensAndEmail(email, setLSEmail) }
+            className="login-btn"
+          >
+            Entrar
+          </button>
+        </Link>
+      </form>
+    </div>
+
   );
 }
 export default Login;

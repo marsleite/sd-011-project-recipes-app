@@ -25,21 +25,32 @@ const Profile = () => {
   return (
     <>
       <Header title="Perfil" />
-      <section>
-        <h3 data-testid="profile-email">{ userEmail }</h3>
-        <Link to="/receitas-feitas" data-testid="profile-done-btn">
-          Receitas Feitas
+      <section className="div-profile">
+        <h3 data-testid="profile-email" className="profile-email">{ userEmail }</h3>
+        <Link to="/receitas-feitas">
+          <button
+            type="button"
+            data-testid="profile-done-btn"
+            className="profile-done-btn"
+          >
+            Receitas Feitas
+          </button>
         </Link>
-        <br />
-        <Link to="/receitas-favoritas" data-testid="profile-favorite-btn">
-          Receitas Favoritas
+        <Link to="/receitas-favoritas">
+          <button
+            type="button"
+            data-testid="profile-favorite-btn"
+            className="profile-favorite-btn"
+          >
+            Receitas Favoritas
+          </button>
         </Link>
-        <br />
         <Link to="/">
           <button
             data-testid="profile-logout-btn"
             type="button"
             onClick={ () => resetContext() }
+            className="profile-logout-btn"
           >
             Sair
           </button>

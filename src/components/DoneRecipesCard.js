@@ -21,7 +21,7 @@ function DoneRecipesCard({ recipe, index }) {
   const SliceLink = (window.location.href).slice(0, sliceNumber);
   const pathLink = SliceLink.concat(path);
   return (
-    <section>
+    <section className="recipes-card-box">
       <div>
         <Link to={ path }>
           <img
@@ -29,11 +29,13 @@ function DoneRecipesCard({ recipe, index }) {
             alt={ name }
             data-testid={ `${index}-horizontal-image` }
             style={ { width: '100px' } }
+            className="done-recipes-box-image"
           />
         </Link>
       </div>
       <div
         data-testid={ `${index}-recipe-card` }
+        className="done-recipe-card"
       >
 
         <h5
@@ -52,24 +54,23 @@ function DoneRecipesCard({ recipe, index }) {
         <p
           data-testid={ `${index}-horizontal-done-date` }
         >
-          Feita em
-          { doneDate }
+          {`Feita em ${doneDate}`}
         </p>
-        <div>
-          <ShareButton link={ pathLink } index={ index } />
-        </div>
-        <div>
+        <div className="done-recipe-div-tag">
           {tags.map((tag) => (
-            <p
+            <span
               key={ tag }
               data-testid={ `${index}-${tag}-horizontal-tag` }
+              className="done-recipe-tag"
             >
               { tag }
-            </p>
+            </span>
           ))}
         </div>
       </div>
-
+      <div className="done-share">
+        <ShareButton link={ pathLink } index={ index } />
+      </div>
     </section>
 
   );

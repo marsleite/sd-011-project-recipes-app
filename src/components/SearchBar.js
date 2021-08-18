@@ -19,6 +19,16 @@ function SearchBar() {
     }
   }, [pathname, data, history]);
 
+  useEffect(() => {
+    const filterButton = document.querySelector('.filter-btn').style;
+    if (pathname === '/comidas') {
+      filterButton.backgroundColor = '#FAC065';
+    }
+    if (pathname === '/bebidas') {
+      filterButton.backgroundColor = '#E34F5E';
+    }
+  }, [pathname]);
+
   async function searchButton() {
     if (pathname === '/comidas') {
       const newResults = await searchBarFetchMeal(search, radio) || [];
@@ -41,8 +51,8 @@ function SearchBar() {
   }
 
   return (
-    <form>
-      <label htmlFor="search-input">
+    <form className="search-bar">
+      <label htmlFor="search-input" className="search-input">
         <input
           data-testid="search-input"
           id="search-input"
@@ -51,43 +61,46 @@ function SearchBar() {
           type="text"
         />
       </label>
-      <label htmlFor="ingredient-search-radio">
-        <input
-          data-testid="ingredient-search-radio"
-          id="ingredient-search-radio"
-          name="search-radio"
-          onClick={ ({ target: { value } }) => setRadio(value) }
-          type="radio"
-          value="ingredient"
-        />
-        Ingrediente
-      </label>
-      <label htmlFor="name-search-radio">
-        <input
-          data-testid="name-search-radio"
-          id="name-search-radio"
-          name="search-radio"
-          onClick={ ({ target: { value } }) => setRadio(value) }
-          type="radio"
-          value="name"
-        />
-        Nome
-      </label>
-      <label htmlFor="first-letter-search-radio">
-        <input
-          data-testid="first-letter-search-radio"
-          id="first-letter-search-radio"
-          name="search-radio"
-          onClick={ ({ target: { value } }) => setRadio(value) }
-          type="radio"
-          value="firstLetter"
-        />
-        Primeira letra
-      </label>
+      <div className="search-radios">
+        <label htmlFor="ingredient-search-radio">
+          <input
+            data-testid="ingredient-search-radio"
+            id="ingredient-search-radio"
+            name="search-radio"
+            onClick={ ({ target: { value } }) => setRadio(value) }
+            type="radio"
+            value="ingredient"
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="name-search-radio">
+          <input
+            data-testid="name-search-radio"
+            id="name-search-radio"
+            name="search-radio"
+            onClick={ ({ target: { value } }) => setRadio(value) }
+            type="radio"
+            value="name"
+          />
+          Nome
+        </label>
+        <label htmlFor="first-letter-search-radio">
+          <input
+            data-testid="first-letter-search-radio"
+            id="first-letter-search-radio"
+            name="search-radio"
+            onClick={ ({ target: { value } }) => setRadio(value) }
+            type="radio"
+            value="firstLetter"
+          />
+          Primeira letra
+        </label>
+      </div>
       <button
         type="button"
         data-testid="exec-search-btn"
         onClick={ searchButton }
+        className="filter-btn"
       >
         Buscar
       </button>

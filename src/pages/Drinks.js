@@ -4,6 +4,7 @@ import MainContext from '../context/MainContext';
 import Header from '../components/Header';
 import FooterMenu from '../components/FooterMenu';
 import RecipesCardsContainer from '../components/RecipesCardsContainer';
+import DrinkLoader from '../components/DrinkLoader';
 import {
   getInitialDrinksRecipes,
   getDrinksCategoryList,
@@ -47,6 +48,7 @@ function Drinks() {
             type="button"
             data-testid={ `${item.strCategory}-category-filter` }
             onClick={ filterByCategory }
+            className="drink-btn-category"
           >
             {item.strCategory}
           </button>)
@@ -72,19 +74,24 @@ function Drinks() {
   }, [setData, setLoading, setCategoryList, state]);
 
   return (
-    <div>
-      <Header title="Bebidas" isButtonVisible />
-      <button
-        data-testid="All-category-filter"
-        type="button"
-        onClick={ filterByCategory }
-      >
-        All
-      </button>
-      {loading ? null : categoryButtons()}
-      <RecipesCardsContainer test="recipe" />
-      <FooterMenu />
-    </div>
+    loading ? <DrinkLoader /> : (
+      <div>
+        <Header title="Bebidas" isButtonVisible />
+        <div className="drink-div-category">
+          <button
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ filterByCategory }
+            className="drink-btn-category"
+          >
+            All
+          </button>
+          {loading ? null : categoryButtons()}
+        </div>
+        <RecipesCardsContainer test="recipe" />
+        <FooterMenu />
+      </div>
+    )
   );
 }
 
