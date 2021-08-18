@@ -22,10 +22,9 @@ function DetailsDrink(props) {
     setInitialItens(items);
   }
 
-  useEffect(() => {
     getDetailsById();
     getAllCategories();
-  }, []);
+  }, [id, setInitialItensFood]);
 
   function renderCard(object, number) {
     return (

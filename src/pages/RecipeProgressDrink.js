@@ -17,8 +17,13 @@ function RecipeProgressDrink(props) {
   }
 
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchId(id);
+      setInitialItemApi(itemsDrink);
+    }
+
     getDetailsById();
-  }, []);
+  }, [id]);
 
   function isChecked(numero) {
     setChangeInput(() => !changeInput);
