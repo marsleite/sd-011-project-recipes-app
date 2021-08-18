@@ -84,11 +84,15 @@ export default function Details({ type }) {
             <h4 className="text-secondary" data-testid="recipe-category">{ category }</h4>
           </div>
           <div className="d-flex">
-            <ShareButton type={ drinkOrFood } id={ id } dataTestid="share-btn" />
-            <FavoriteButton
-              recipe={ recipe }
-              dataTestid="favorite-btn"
-            />
+            <div className="mx-2">
+              <ShareButton type={ drinkOrFood } id={ id } dataTestid="share-btn" />
+            </div>
+            <div className="mx-2">
+              <FavoriteButton
+                recipe={ recipe }
+                dataTestid="favorite-btn"
+              />
+            </div>
           </div>
         </div>
         <h3 className="ml-2"> Ingredientes </h3>

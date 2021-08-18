@@ -8,7 +8,6 @@ export const TransparentButton = styled.div`
   border: none;
   padding: 0;
   background-color: transparent;
-  color: transparent;
 `;
 
 export const Underline = styled.p`
@@ -25,11 +24,12 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const HeaderNavBar = styled.div`
+export const HeaderNavBar = styled.header`
   display: flex;
   flex-direction: column;
   transition: background-color 0.25s;
   background-color: ${({ drink }) => (drink ? '#a73d7e' : '#fcdc4d')};
+  border-bottom: 1px solid;
 `;
 
 export const FooterBar = styled.footer`

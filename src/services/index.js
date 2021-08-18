@@ -204,6 +204,7 @@ export function getIds(type, recipe) {
     reverseType: verify ? 'bebida' : 'comida',
     area: verify ? recipe.strArea : '',
     category: verify ? recipe.strCategory : recipe.strAlcoholic,
+    alcoholicOrNot: verify ? '' : recipe.strAlcoholic,
     name: verify ? recipe.strMeal : recipe.strDrink,
     image: verify ? recipe.strMealThumb : recipe.strDrinkThumb,
     video: (recipe.strYoutube) ? `https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}` : null,
