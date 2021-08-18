@@ -122,8 +122,7 @@ function FoodDetails({ match: { params: { id } }, location: { pathname } }) {
           url={ recipes.strYoutube }
         />
       </div>
-      {/* <h3 data-testid={ `${index}-recomendation-card"` }>Recomendadas</h3> */}
-      <div id="recommended"><h4>oi</h4></div>
+      <div id="recommended"><h4>Recomendations:</h4></div>
       <br />
       <div className="recommended">
         <RecomendedRecipes origem={ essaPagina } />

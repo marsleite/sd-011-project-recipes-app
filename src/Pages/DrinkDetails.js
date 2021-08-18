@@ -115,6 +115,8 @@ function DrinkDetails({ match: { params: { id } }, location: { pathname } }) {
             </li>)) }
       </ul>
       <h3 data-testid="instructions">{recipes.strInstructions}</h3>
+      <br />
+      <h4>Recomendations:</h4>
       <div id="recommended"><RecomendedRecipes origem={ essaPagina } /></div>
       <div>
         <Link to={ `/bebidas/${recipes.idDrink}/in-progress` } params={ recipes.idDrink }>
