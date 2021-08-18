@@ -23,3 +23,8 @@
 .radio-btn {
   margin-right: 3px;
 }
+
+.search-btn {
+  background-color: white;
+  font-weight: 600;
+}

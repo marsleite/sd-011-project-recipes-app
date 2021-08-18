@@ -12,6 +12,7 @@ import BebidaEmProgresso from './pages/BebidaEmProgresso';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import Explorar from './pages/Explorar';
+import ExplorarComidaBebida from './pages/ExplorarComidaBebida';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import ExplorarArea from './pages/ExplorarArea';
 import ExplorarIngredientes from './pages/ExplorarIngredientes';
@@ -52,8 +53,8 @@ function App() {
           />
           { /* não tem header/footer /\ */ }
           <Route exact path="/explorar" component={ Explorar } />
-          <Route exact path="/explorar/comidas" component={ NotFound } />
-          <Route exact path="/explorar/bebidas" component={ NotFound } />
+          <Route exact path="/explorar/comidas" component={ ExplorarComidaBebida } />
+          <Route exact path="/explorar/bebidas" component={ ExplorarComidaBebida } />
           <Route
             exact
             path="/explorar/comidas/ingredientes"

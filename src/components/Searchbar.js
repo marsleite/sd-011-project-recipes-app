@@ -99,7 +99,7 @@ function Searchbar() {
       <button
         onClick={ () => fetchApi() }
         type="button"
-        className="btn"
+        className="btn search-btn"
         data-testid="exec-search-btn"
       >
         Pesquisar

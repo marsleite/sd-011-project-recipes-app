@@ -8,7 +8,7 @@
 }
 
 .explorar-btn {
-  background-color: #ddd;
+  background-color: white;
   border: none;
   border-radius: 12px;
   box-shadow: #333 2px 2px 2px;
@@ -30,6 +30,10 @@
 
 .big-font {
   font-size: 22px;
+}
+
+.medium-font {
+  font-size: 18px;
 }
 
 .explore-ingredient {
