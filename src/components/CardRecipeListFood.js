@@ -4,7 +4,7 @@ import { RequestHook } from '../Context/RequestHook';
 import CardRecipe from './CardRecipe';
 import { searchFoodsAll, searchByIngredient } from '../services/RequestFood';
 
-function CardRecipeList() {
+function CardRecipeListFood() {
   const {
     byCategory,
     byFilter,
@@ -50,4 +50,4 @@ function CardRecipeList() {
   );
 }
 
-export default CardRecipeList;
+export default CardRecipeListFood;

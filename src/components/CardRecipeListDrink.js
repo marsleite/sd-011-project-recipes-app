@@ -5,7 +5,7 @@ import CardRecipe from './CardRecipe';
 
 import { searchDrinksAll, searchDrinkByIngredient } from '../services/RequestDrinks';
 
-function CardRecipeList() {
+function CardRecipeListDrink() {
   const {
     byCategory,
     byFilter,
@@ -51,4 +51,4 @@ function CardRecipeList() {
   );
 }
 
-export default CardRecipeList;
+export default CardRecipeListDrink;

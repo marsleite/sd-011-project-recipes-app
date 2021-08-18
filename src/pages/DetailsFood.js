@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { searchById } from '../services/RequestFood';
 import { searchDrinksAll } from '../services/RequestDrinks';
 import { RequestHook } from '../Context/RequestHook';
-import Clipboard from '../components/Clipboard2';
+import Clipboard from '../components/Clipboard';
 
 function DetailsFood(props) {
   const { match: { params: { id } } } = props;
@@ -31,7 +31,7 @@ function DetailsFood(props) {
   function renderIngredient(food) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1; numero <= limitItens; numero += 1) {
+    for (let numero = 1;numero <= limitItens;numero += 1) {
       if (food[`strIngredient${numero}`] !== null
         && food[`strIngredient${numero}`] !== '') {
         array.push(
