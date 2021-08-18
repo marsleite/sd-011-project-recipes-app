@@ -7,7 +7,10 @@ import ButtonSurpriseMe from '../components/ButtonSurpriseMe';
 
 function ExplorarComidas() {
   return (
-    <div>
+    <div style={{
+      height: '640px',
+      backgroundColor: "#f6f6f6",
+    }}>
       <Header title="Explorar Comidas" />
       <div className="explorar-comidas-content">
         <Link

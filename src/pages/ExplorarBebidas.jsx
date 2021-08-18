@@ -8,7 +8,10 @@ import '../styles/ExplorarBebidas.css';
 
 function ExplorarBebidas() {
   return (
-    <div>
+    <div style={{
+      height: '640px',
+      backgroundColor: "#f6f6f6",
+    }}>
       <Header title="Explorar Bebidas" />
       <div className="explorar-bebidas-content">
         <Link

@@ -1,0 +1,18 @@
+.loading {
+  /* background-color: tomato; */
+  margin: 0 auto;
+  width: 180px;
+  animation: infinite load 1s;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
