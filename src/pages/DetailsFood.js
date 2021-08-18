@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { searchById } from '../services/RequestFood';
 import { searchDrinksAll } from '../services/RequestDrinks';
 
@@ -14,6 +16,8 @@ function DetailsFood(props) {
   const { initialItensDrink, setInitialItensDrink } = RequestHook();
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
+  const history = useHistory();
+  const ID = history.location.pathname.split('/')[2];
 
   useEffect(() => {
     async function getDetailsById() {
@@ -127,15 +131,18 @@ function DetailsFood(props) {
                 ))
             }
           </div>
-          <button
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-            type="button"
-          >
-            Iniciar Receita
-          </button>
+          <Link to={ `/comidas/${ID}/in-progress` }>
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+            >
+              Iniciar Receita
+            </button>
+          </Link>
           {/* { startRecipeButton() } */ }
         </div>
+
       ))
   );
 }

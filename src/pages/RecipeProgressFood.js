@@ -8,7 +8,6 @@ function RecipeProgressFood(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInputFood, setChangeInputFood] = useState(false);
-  const [changeInputFoodChecked, setchangeInputFoodChecked] = useState('');
 
   useEffect(() => {
     async function getDetailsById() {
@@ -19,13 +18,17 @@ function RecipeProgressFood(props) {
     getDetailsById();
   }, [id]);
 
-  function isCheckedFood(numero) {
+  function isCheckedFood(numero, e) {
+    if (e.currentTarget.className !== 'checked') {
+      e.currentTarget.className = 'checked';
+    } else if (e.currentTarget.className === 'checked') {
+      e.currentTarget.className = '';
+    }
+
     setChangeInputFood(() => !changeInputFood);
     if (changeInputFood === false) {
-      setchangeInputFoodChecked('checked');
       localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
     } else {
-      setchangeInputFoodChecked('');
       localStorage.removeItem('inProgressRecipes');
     }
   }
@@ -33,6 +36,7 @@ function RecipeProgressFood(props) {
   function renderIngrediente(food) {
     const array = [];
     const limitItens = 15;
+
     for (let numero = 1; numero <= limitItens; numero += 1) {
       if (food[`strIngredient${numero}`] !== null
         && food[`strIngredient${numero}`] !== '') {
@@ -41,13 +45,14 @@ function RecipeProgressFood(props) {
             <label
               htmlFor={ numero }
               data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isCheckedFood(`${numero - 1}-ingredient-step`) }
-              className={ changeInputFoodChecked }
+              onChange={ (e) => isCheckedFood(`${numero}-ingredient-step`, e) }
+              className="teste"
             >
               <input
                 type="checkbox"
               />
-              { `${food[`strIngredient${numero}`]} ` }
+              { `${food[`strIngredient${numero}`]} `}
+
               { (food[`strMeasure${numero}`] !== null
               && food[`strMeasure${numero}`] !== '')
                 ? <span>{ `${food[`strMeasure${numero}`]}` }</span>
@@ -75,6 +80,7 @@ function RecipeProgressFood(props) {
         </h4>
         <div>
           <h3>Ingredientes</h3>
+
           { renderIngrediente(meal) }
         </div>
         <h3>Instruções</h3>
