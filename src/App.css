@@ -1,68 +1,91 @@
-.meals {
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.inputForm {
   align-items: center;
-  background: #0fa36b;
-  color: #464646;
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
-  height: 100vh;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.loginContainer {
+  align-items: center;
+  background-color: whitesmoke;
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 250px;
+}
+
+.details-page {
+  color: #464646;
+  height: 100vh;
+  width: 100vw;
+}
+
+.buttons {
+  background-color: #1c1d1c;
+  color: #f1ecec;
+  margin: 5px;
+  padding: 10px;
+}
+
+.recomendation-card {
+  display: flex;
+  margin: 10px 5px;
+  overflow-x: scroll;
+}
+
+.recomendation-card > button {
+  margin-right: 5px;
+}
+
+.recomendation-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  margin: 3px;
+  width: 170px;
+}
+
+.recipe-card-title {
+  background-color: white;
+  color: #1c1d1c;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.recipe-card img {
+  border-radius: 0.6rem;
+  height: 90%;
+  object-fit: fill;
+  width: 170px;
+}
+
+.start-recipe-btn {
+  background-color: #791515;
+  bottom: 0;
+  color: #f1ecec;
+  margin: 0;
+  padding: 15px;
+  position: fixed;
   width: 100%;
-}
-
-.rocksGlass {
-  animation: shake 1s infinite ease;
-  max-height: 80vh;
-}
-
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
-
-.meals > .logo {
-  animation: shake 1.5s infinite ease;
-  color: aliceblue;
-  font-family: Montserrat , sans-serif;
-  font-size: 3em;
-  font-weight: 900;
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(5deg);
-  }
-
-  50% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes clink {
-
-  0% {
-    transform: rotate(-10deg);
-  }
-
-  50% {
-    transform: rotate(20deg);
-  }
-
-  100% {
-    transform: rotate(-10deg);
-  }
 }
