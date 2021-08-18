@@ -43,6 +43,6 @@ export function renderWithRouterAndBothContext(route = '/') {
         </MainProvider>
       </LSProvider>,
     ),
-    location: () => testLocation,
+    pathname: () => testLocation.pathname,
   };
 }

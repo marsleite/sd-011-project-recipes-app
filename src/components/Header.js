@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MainContext from '../context/MainContext';
 import ProfileIcon from '../images/white/profileIcon.svg';
@@ -57,16 +58,14 @@ function Header({ title, isButtonVisible }) {
   return (
     <header className="header-app">
       <div className="header-div">
-        <a
-          href="/perfil"
-        >
+        <Link to="/perfil">
           <img
             data-testid="profile-top-btn"
             src={ ProfileIcon }
             alt="user profile"
             className="profile-icon"
           />
-        </a>
+        </Link>
         <h3 data-testid="page-title">{ title }</h3>
         { searchButton() }
       </div>
