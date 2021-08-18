@@ -49,7 +49,8 @@ class Header extends Component {
         >
           { title }
         </h1>
-        { search ? this.renderSearchButton() : '' }
+        { search ? this.renderSearchButton()
+          : <button type="button" className="button-1">X</button> }
         { showInput ? <SearchBar /> : '' }
       </header>
     );

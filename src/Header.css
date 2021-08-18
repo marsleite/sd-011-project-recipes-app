@@ -23,3 +23,8 @@
   padding-top: 10px;
 }
 
+.button-1 {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}

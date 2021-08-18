@@ -59,10 +59,10 @@ class ExploreFoodByArea extends Component {
             </option>
           )) }
         </select>
-        <ul>
+        <div className="card-list-container">
           { foodCardsList && foodCardsList.map((item, index) => (
             <FoodCard key={ item.idMeal } food={ item } index={ index } />)) }
-        </ul>
+        </div>
         <Footer />
       </div>
     );

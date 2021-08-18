@@ -25,10 +25,10 @@ class Foods extends Component {
       <main className="foods">
         <Header title="Comidas" search />
         <FoodCategories />
-        <ul>
+        <div className="card-list-container">
           { foodCardsList.map((item, index) => (
             <FoodCard key={ item.idMeal } food={ item } index={ index } />)) }
-        </ul>
+        </div>
         <Footer />
       </main>
     );
