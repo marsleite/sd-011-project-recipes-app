@@ -1,7 +1,6 @@
-/* width */
 .categoryFilterContainer {
-  background-color: #F6F6F6;
   align-items: center;
+  background-color: #F6F6F6;
   display: flex;
   flex-wrap: wrap;
   height: 100px;
@@ -10,28 +9,28 @@
 }
 
 .selectedCat {
-  transition: ease 0.2s;
   background-image: linear-gradient(200deg, rgb(119, 216, 179), #0fa36b) !important;
   color: white !important;
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.219) !important; */
-
+  transition: ease 0.2s;
 }
 
-.categoryFilterContainer button {
-  background: none;
-  border: none;
-  border-radius: 15px;
+.catBtn {
   background-color: white;
-  outline: none;
-  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.062); */
+  border-radius: 15px;
+  border: none;
   color: black;
-  padding-top: 3px;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 700;
   height: 35px;
-  width: 90px;
   margin: 0 10px;
+  outline: none;
+  padding-top: 3px;
   transition: ease 0.2s;
+  width: 90px;
   z-index: 1;
+}
+
+.catBtn-mn {
+  font-size: 10px;
 }
 

@@ -1,58 +1,42 @@
 .origem-content {
 
   /* background-color: aqua; */
+  align-items: center;
   background-color: #f6f6f6;
-  height: 540px;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 540px;
+  width: 100%;
 }
 
 select {
-  margin: 20px 0;
   background-color: #0fa36b;
-  height: 30px;
-  border: none;
   border-radius: 10px;
-  width: 100px;
-  outline: none;
-  font-weight: 700;
+  border: none;
   color: white;
-  /* padding: px; */
-  /* padding: 0 0 0 36px; */
   font-size: 14px;
-  /* overflow: hidden; */
-  /* line-height: 38px; */
-  /* -webkit-appearance: none; */
-  /* -moz-appearance: none; */
-  /* text-indent: 1px; */
-  /* text-overflow: ''; */
+  font-weight: 700;
+  height: 30px;
+  margin: 20px 0;
+  outline: none;
+  width: 100px;
 }
 
 select option {
-  font-size: 14px;
   background-color: #0fa36b;
-  border: none;
   border-radius: 10px;
+  border: none;
+  font-size: 14px;
   font-weight: 700;
   height: 10px;
 }
 
 .origem-foods-container {
   align-items: center;
-
-  /* background-color: brown; */
   background-color: #f6f6f6;
   display: flex;
-  /* flex-flow: row wrap; */
   flex-wrap: wrap;
   height: 475px;
-
-  /* justify-content: space-around; */
   overflow: auto;
-  /* padding: 0 10px; */
-
-  /* margin-right: 50px; */
   width: 360px;
 }

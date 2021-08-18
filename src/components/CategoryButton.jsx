@@ -10,13 +10,13 @@ function CategoryButton({ categoryName }) {
     setIngredient,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
-
+  const isString = typeof(categoryName) === 'string';
   const handleToggleCategory = (category) => {
-    if (currentCategory === category) {
+    if (currentCategory.slice(0, 4) === category.slice(0, 4)) {
       setIngredient(null);
       return setCurrentCategory('All');
     }
-    if (currentCategory !== category) {
+    if (currentCategory.slice(0, 4) !== category.slice(0, 4)) {
       setIngredient(null);
       return setCurrentCategory(category);
     }
@@ -25,21 +25,23 @@ function CategoryButton({ categoryName }) {
   useEffect(() => {
     const ex = document.querySelector('.selectedCat');
     if (ex) ex.classList.remove('selectedCat');
-    document.querySelector(`.${currentCategory}`).classList.add('selectedCat');
+    document.querySelector(`.${currentCategory.slice(0, 4)}`).classList.add('selectedCat');
   }, [currentCategory, pathname]);
 
   const changeStyle = () => {
     const ex = document.querySelector('.selectedCat');
     console.log(ex);
     if (ex) ex.classList.remove('selectedCat');
-    const sel = (document.querySelector(`.${categoryName}`));
+    const sel = (document.querySelector(`.${categoryName.slice(0, 4)}`));
     sel.classList.add('selectedCat');
   };
 
   return (
     <button
       type="button"
-      className={ `catBtn ${categoryName}` }
+      className={ `catBtn
+      ${isString && categoryName.slice(0, 4)}
+      ${(isString && categoryName.length > 10) && 'catBtn-mn'}` }
       data-testid={ `${categoryName}-category-filter` }
       onClick={ () => {
         handleToggleCategory(categoryName);

@@ -1,16 +1,16 @@
 .footer {
+  /* margin-bottom: 10px; */
   align-items: center;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
   bottom: 0;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.062);
   display: flex;
+  height: 67px;
   justify-content: space-around;
   position: fixed;
-  width: 360px;
-  height: 67px;
   top: 574px;
-  /* margin-bottom: 10px; */
-  border-radius: 20px 20px 0 0;
-  background-color: white;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.062);
+  width: 360px;
 }
 
 .footer img {
@@ -19,34 +19,34 @@
 
 .link {
   /* background-color: blue; */
-  width: 30%;
-  height: 40px;
   border-radius: 20px;
   display: flex;
+  height: 40px;
   justify-content: center;
   transition: 0.2s ease;
+  width: 30%;
 }
 
 .selectedLink{
   background-color: #F6F6F6;
-  width: 30%;
-  height: 40px;
   border-radius: 20px;
   display: flex;
+  height: 40px;
   justify-content: center;
   transition: 0.2s ease;
+  width: 30%;
 }
 
 .selection {
-  background-color: #F6F6F6;
   /* background-color: red; */
-  width: 30%;
-  height: 40px;
+  background-color: #F6F6F6;
   border-radius: 20px;
-  transition: 0.2s ease;
+  height: 40px;
   position: absolute;
-  z-index: -1;
   transform: translateX(0);
+  transition: 0.2s ease;
+  width: 30%;
+  z-index: -1;
 }
 
 .seletcion-start {
