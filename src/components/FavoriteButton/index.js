@@ -6,12 +6,17 @@ import { updateFavoriteRecipes } from '../../actions/favoriteRecipes';
 import WhiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import BlackHeartIcon from '../../images/blackHeartIcon.svg';
 
+const recipeId = window.location.pathname.replace(/[^\d]/g, '');
+const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
+const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
+
 class FavoriteButton extends React.Component {
   constructor() {
     super();
 
     this.state = {
       isFavorite: false,
+      recipe: {},
     };
 
     this.handleFavorite = this.handleFavorite.bind(this);
@@ -19,6 +24,7 @@ class FavoriteButton extends React.Component {
 
   componentDidMount() {
     this.isFavorite();
+    this.fetchRecipe();
   }
 
   handleFavorite() {
@@ -41,13 +47,13 @@ class FavoriteButton extends React.Component {
     const favoriteRecipes = getFromStorage('favoriteRecipes');
 
     const updatedFavoriteRecipes = favoriteRecipes
-      .filter(({ id }) => id !== recipe.id);
+      .filter(({ id }) => id !== recipe.id || recipeId);
 
     this.handleFavoriteUpdate(updatedFavoriteRecipes);
   }
 
-  addToFavorites() {
-    const { recipe } = this.props;
+  async addToFavorites() {
+    const { recipe } = this.state;
     const favoriteRecipes = getFromStorage('favoriteRecipes') || [];
 
     const updatedFavoriteRecipes = [...favoriteRecipes, recipe];
@@ -63,15 +69,46 @@ class FavoriteButton extends React.Component {
 
   isFavorite() {
     const { recipe } = this.props;
-    const favoriteRecipes = getFromStorage('favoriteRecipes');
+    const favoriteRecipes = getFromStorage('favoriteRecipes') || [];
 
     this.setState({
-      isFavorite: favoriteRecipes.some(({ id }) => id === recipe.id),
+      isFavorite: favoriteRecipes.some(({ id }) => id === recipe.id || recipeId),
+    });
+  }
+
+  async fetchRecipe() {
+    let { recipe } = this.props;
+
+    if (Object.keys(recipe).length === 0) {
+      const type = window.location.pathname.includes('comidas') ? 'comida' : 'bebida';
+      const url = type === 'comida' ? mealUrl : drinkUrl;
+
+      const fetchedRecipe = await fetch(url)
+        .then((response) => response.json())
+        .then((data) => (type === 'comida' ? data.meals[0] : data.drinks[0]));
+
+      recipe = {
+        id: recipeId,
+        type,
+        area: fetchedRecipe.strArea || '',
+        category: fetchedRecipe.strCategory || '',
+        alcoholicOrNot: fetchedRecipe.strAlcoholic || '',
+        name: type === 'comida'
+          ? fetchedRecipe.strMeal
+          : fetchedRecipe.strDrink,
+        image: type === 'comida'
+          ? fetchedRecipe.strMealThumb
+          : fetchedRecipe.strDrinkThumb,
+      };
+    }
+
+    this.setState({
+      recipe,
     });
   }
 
   render() {
-    const { id, count } = this.props;
+    const { id, dataTestId } = this.props;
     const { isFavorite } = this.state;
 
     return (
@@ -79,7 +116,7 @@ class FavoriteButton extends React.Component {
         <img
           src={ isFavorite ? BlackHeartIcon : WhiteHeartIcon }
           alt="Favoritar"
-          data-testid={ `${count}-horizontal-favorite-btn` }
+          data-testid={ dataTestId }
         />
       </button>
     );
@@ -102,7 +139,7 @@ FavoriteButton.defaultProps = {
 };
 
 FavoriteButton.propTypes = {
-  count: PropTypes.number,
   favoriteRecipes: PropTypes.arrayOf(PropTypes.object),
   dispatchUpdateFavorites: PropTypes.func,
+  dataTestId: PropTypes.string,
 }.isRequired;
