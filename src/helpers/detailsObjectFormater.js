@@ -15,7 +15,7 @@ export const mealsObjectFormater = (recipeData) => {
     video: recipeData.strYoutube,
     category: recipeData.strCategory,
     id: recipeData.idMeal,
-    tags: recipeData.strTags.split(','),
+    tags: recipeData.strTags && recipeData.strTags.split(','),
   };
 
   return mealObject;

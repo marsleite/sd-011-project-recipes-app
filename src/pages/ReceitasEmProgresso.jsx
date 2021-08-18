@@ -27,7 +27,7 @@ function ReceitasEmProgresso() {
   const [currentRecipe, setCurrentRecipe] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  console.log(isLoading)
   const {
     category,
     strAlcoholic,
@@ -48,7 +48,9 @@ function ReceitasEmProgresso() {
       addRecipeIdInLocalStorage(recipeType, recipeId);
     }
     const fetchRecipeById = async (Id, typeOfRecipes) => {
-      const recipe = await searchById(id, typeOfRecipes);
+      console.log('fetch')
+      const recipe = await searchById(Id, typeOfRecipes);
+      console.log(recipe)
       setCurrentRecipe(recipe);
     };
     fetchRecipeById(recipeId, type);
@@ -64,8 +66,16 @@ function ReceitasEmProgresso() {
   }, [newRender]);
 
   useEffect(() => {
+    if (inProgressIngredients) {
+      setProgressOfRecipe(inProgressIngredients.some((item) => !item.includes('done')));
+    }
+  }, [inProgressIngredients])
+
+  useEffect(() => {
+    console.log(currentRecipe)
     const localStorageRecipe = JSON.parse(localStorage
       .getItem('inProgressRecipes'))[recipeType][recipeId];
+      console.log(localStorageRecipe)
     if (currentRecipe && localStorageRecipe.length === 0) {
       addIngredientsInRecipeId(currentRecipe, recipeType, recipeId);
       setNewRender(!newRender);

@@ -39,6 +39,7 @@ function IngredientInput(
       <input
         id="inputCheckbox"
         defaultChecked={ isChecked }
+        checked={ isChecked }
         type="checkbox"
         onClick={ (event) => handleCheckIngredient(event) }
         // readOnly
