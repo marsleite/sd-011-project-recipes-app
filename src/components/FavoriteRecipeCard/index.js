@@ -39,7 +39,10 @@ class FavoriteRecipeCard extends React.Component {
             testLocation="img"
             url={ `${window.location.origin}${detailPage}` }
           />
-          <FavoriteButton recipe={ recipe } count={ count } />
+          <FavoriteButton
+            recipe={ recipe }
+            dataTestId={ `${count}-horizontal-favorite-btn` }
+          />
         </section>
       </section>
     );

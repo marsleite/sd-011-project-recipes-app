@@ -7,6 +7,8 @@ import {
 import FinishRecipeButton from '../components/FinishRecipeButton';
 import { getFromStorage, setToStorage } from '../helpers/utils';
 import style from './RecipeInProgress.module.css';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 
 function RecipeInProgress({
   match: { params: { id }, path },
@@ -87,12 +89,19 @@ function RecipeInProgress({
 
   const isStepDone = (index) => inProgress[id] && inProgress[id].includes(index + 1);
 
+  const detailPage = `/${type}/${id}`;
+
   return (
     <main data-testid="recipes-page">
       <img src={ details.strThumb } alt="" data-testid="recipe-photo" />
       <h1 data-testid="recipe-title">{ details.str }</h1>
-      <button type="button" data-testid="share-btn">Compartilhar</button>
-      <button type="button" data-testid="favorite-btn">Favoritar</button>
+      <ShareButton
+        dataTestId="share-btn"
+        testLocation="button"
+        url={ `${window.location.origin}${detailPage}` }
+      />
+
+      <FavoriteButton recipe={ recipe } dataTestId="favorite-btn" />
       <p data-testid="recipe-category">{ details.strCategory }</p>
       <ul>
         {
@@ -100,7 +109,7 @@ function RecipeInProgress({
             <li key={ ingredient } data-testid={ `${index}-ingredient-step` }>
               <label
                 htmlFor={ `ingredient${index + 1}` }
-                className={ isStepDone(index) && style.checked }
+                className={ isStepDone(index) ? style.checked : null }
               >
                 <input
                   type="checkbox"
