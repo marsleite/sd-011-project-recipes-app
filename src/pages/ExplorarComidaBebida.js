@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import MenuInferior from '../components/MenuInferior';
+import BtnBebidas from '../components/BtnBebidas';
+import BtnComidas from '../components/BtnComidas';
 
 function Explorar() {
   function LocationAtual() {
@@ -17,21 +19,9 @@ function Explorar() {
           ? 'Explorar Bebidas'
           : 'Explorar Comidas' }
       />
-      <Link to="/explorar/comidas">
-        <button type="button" data-testid="explore-by-ingredient">
-          Por Ingredientes
-        </button>
-      </Link>
-      <Link to="/explorar/bebidas">
-        <button type="button" data-testid="explore-by-area">
-          Por Local de Origem
-        </button>
-      </Link>
-      <Link to="/explorar/bebidas">
-        <button type="button" data-testid="explore-surprise">
-          Me Surpreenda!
-        </button>
-      </Link>
+      { LocationAtual() === '/explorar/comidas'
+        ? BtnComidas()
+        : BtnBebidas() }
       <MenuInferior />
     </div>
   );
