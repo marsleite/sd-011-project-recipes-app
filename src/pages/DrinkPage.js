@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderDrink from '../components/HeaderDrink';
-import CardRecipeList from '../components/CardRecipeList';
+import CardRecipeListDrink from '../components/CardRecipeListDrink';
 import Footer from '../components/Footer';
 import NavCategories from '../components/NavCategories';
 
@@ -9,7 +9,7 @@ function drinkPage() {
     <div>
       <HeaderDrink title="Bebidas" search />
       <NavCategories origin="Drink" />
-      <CardRecipeList origin="Drink" />
+      <CardRecipeListDrink origin="Drink" />
       <Footer />
     </div>
   );
