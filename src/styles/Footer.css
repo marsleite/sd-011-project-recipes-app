@@ -4,8 +4,9 @@
   display: flex;
   justify-content: space-around;
   position: fixed;
-  width: 100%;
+  width: 360px;
   height: 67px;
+  top: 574px;
   /* margin-bottom: 10px; */
   border-radius: 20px 20px 0 0;
   background-color: white;
