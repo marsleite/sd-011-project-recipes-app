@@ -1,5 +1,6 @@
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import CardRecipes from '../Components/CardRecipes'
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './RecipesFoods.css';
@@ -7,8 +8,8 @@ import './RecipesFoods.css';
 export default function ExploreDrinksIngredient() {
   
 const [drinkIngredients, setDrinkIngredients] = useState([]);
-//const [mealsAndDrinkByIngredients, setMealsAndDrinkByIngredients] = useState([]);
 const numberOfIngredients = 12;
+const showMaxRecipes = 12;
 
 useEffect(() => {
   const getIngredients = async () => {
@@ -22,7 +23,7 @@ useEffect(() => {
 const getRecipesByIngredient = async (param) => {
   const endpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${param}`;
   const { drinks } = await fetch(endpoint).then((data) => data.json());
-  //setMealsAndDrinkByIngredients(drinks.slice(0, numberOfIngredients));
+
   return (
     <div className="cardlist">
         {drinks.length > 0 && drinks.map((recp, index) => (
@@ -46,8 +47,7 @@ const getRecipesByIngredient = async (param) => {
         ))}
       </div>
   )
-  console.log(drinks);
-};
+  };
 
 const getTwelveIngredients = () => {
   const twelveIngredients = drinkIngredients
@@ -56,7 +56,7 @@ const getTwelveIngredients = () => {
     twelveIngredients.map((ingredient, index) => {
       const name = ingredient.strIngredient1;
       return (
-        <div>
+        <div className='cardlist'>
         <Link
           to="/bebidas"
           key={ index }
@@ -68,7 +68,7 @@ const getTwelveIngredients = () => {
             data-testid={ `${index}-card-img` }
             src={ `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png` }
             alt={ name }
-            className="drinksimg"
+            className="foodimg"
           />
           <p
             data-testid={ `${index}-card-name` }
@@ -82,7 +82,6 @@ const getTwelveIngredients = () => {
     })
   );
 };
-
 return (
   <div>
     <Header />

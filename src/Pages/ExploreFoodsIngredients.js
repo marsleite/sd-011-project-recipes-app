@@ -9,6 +9,7 @@ export default function ExploreFoodIngredients() {
 const [foodIngredients, setFoodIngredients] = useState([]);
 const [setMealsAndDrinkByIngredients] = useState([]);
 const numberOfIngredients = 12;
+const showMaxRecipes = 12;
 
 useEffect(() => {
   const getIngredients = async () => {
@@ -22,7 +23,7 @@ useEffect(() => {
 const getRecipesByIngredient = async (param) => {
   const endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${param}`;
   const { meals } = await fetch(endpoint).then((data) => data.json());
-  setMealsAndDrinkByIngredients(meals.slice(0, numberOfIngredients));
+
 };
 
 const getTwelveIngredients = () => {
@@ -30,11 +31,11 @@ const getTwelveIngredients = () => {
     .filter((ingredient, index) => index < numberOfIngredients);
   return (
     twelveIngredients.map((ingredient, index) => {
-      const name = ingredient.strIngredient1;
+      const name = ingredient.strIngredient;
       return (
-        <div>
+        <div className='cardlist'>
           <Link
-            to="/bebidas"
+            to="/comidas"
             key={ index }
             className="ingredient"
             data-testid={ `${index}-ingredient-card` }
@@ -42,8 +43,9 @@ const getTwelveIngredients = () => {
           >
             <img
               data-testid={ `${index}-card-img` }
-              src={ `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png` }
+              src={ `https://www.themealdb.com/images/ingredients/${name}-Small.png` }
               alt={ name }
+              className='foodimg'
             />
             <p
               data-testid={ `${index}-card-name` }
