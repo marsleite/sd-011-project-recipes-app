@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Shareicon from '../images/shareIcon.svg';
 
-function Clipboard() {
+function Clipboard2() {
   const [copied, setCopied] = useState(false);
 
   return (
@@ -20,4 +20,4 @@ function Clipboard() {
     </div>
   );
 }
-export default Clipboard;
+export default Clipboard2;
