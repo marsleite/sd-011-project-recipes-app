@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { searchDrinkById } from '../services/RequestDrinks';
 import { searchFoodsAll } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
-import Clipboard from '../components/Clipboard';
+import Clipboard from '../components/Clipboard2';
 
 function DetailsDrink(props) {
   const { match: { params: { id } } } = props;
@@ -37,7 +37,7 @@ function DetailsDrink(props) {
           className="recomendation-button"
           hidden={ number > 1 }
         >
-          <p data-testid={ `${number}-recomendation-title` }>{object.strMeal}</p>
+          <p data-testid={ `${number}-recomendation-title` }>{ object.strMeal }</p>
           <img
             src={ object.strMealThumb }
             alt={ `${number}-card-name` }
@@ -52,7 +52,7 @@ function DetailsDrink(props) {
     const array = [];
     const limitItens = 15;
 
-    for (let numero = 1; numero <= limitItens; numero += 1) {
+    for (let numero = 1;numero <= limitItens;numero += 1) {
       if (drink[`strIngredient${numero}`] !== null
         && drink[`strIngredient${numero}`] !== '') {
         array.push(
@@ -94,6 +94,7 @@ function DetailsDrink(props) {
           <p data-testid="instructions">{ drink.strInstructions }</p>
 
           <Clipboard />
+
           <button
             className="buttons"
             type="button"
