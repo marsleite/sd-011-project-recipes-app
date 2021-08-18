@@ -7,20 +7,20 @@ import '../styles/Explorar.css';
 const Explorar = () => (
   <div className="explorar-container">
     <Header title="Explorar" />
-    <div>
+    <div className="explorar-content">
       <Link
         to="/explorar/comidas"
         data-testid="explore-food"
+        className="explore-food"
       >
         <button type="button">
           Explorar Comidas
         </button>
       </Link>
-    </div>
-    <div>
       <Link
         to="/explorar/bebidas"
         data-testid="explore-drinks"
+        className="explore-drinks"
       >
         <button type="button">
           Explorar Bebidas

@@ -39,12 +39,16 @@ function Header(props) {
             />
           </div>
           <h3
-            className="container-title-header"
+            className={ title.split(' ').length === 2
+            ? "container-title-header-min"
+            : "container-title-header"}
             data-testid="page-title"
           >
             { title }
           </h3>
-          <div className="search-icon-bg">
+          <div className={showSearchIcon 
+            ? "search-icon-bg" 
+              : "search-icon-bg-t"}>
             { showSearchIcon ? searchIconRender : null }
           </div>
         </div>

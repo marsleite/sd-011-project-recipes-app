@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-
+import '../styles/ExplorarComidas.css';
 import ButtonSurpriseMe from '../components/ButtonSurpriseMe';
 
 function ExplorarComidas() {
   return (
     <div>
       <Header title="Explorar Comidas" />
-      <div>
+      <div className="explorar-comidas-content">
         <Link
           to="/explorar/comidas/ingredientes"
           data-testid="explore-by-ingredient"
@@ -26,8 +26,8 @@ function ExplorarComidas() {
             Por Local de Origem
           </button>
         </Link>
+        <ButtonSurpriseMe />
       </div>
-      <ButtonSurpriseMe />
       <Footer />
     </div>
   );

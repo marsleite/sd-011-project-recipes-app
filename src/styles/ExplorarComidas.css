@@ -1,16 +1,11 @@
-.explorar-container {
-  height: 640px;
-  width: 360px;
-}
-
-.explorar-content {
+.explorar-comidas-content {
   display: flex;
   /* justify-content: center; */
   flex-direction: column;
   align-items: center;
 }
 
-.explore-food button, .explore-drinks button {
+.explorar-comidas-content button {
   border: none;
   font-weight: 700;
   font-size: 20px;
