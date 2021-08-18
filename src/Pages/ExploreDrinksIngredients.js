@@ -7,7 +7,7 @@ import './RecipesFoods.css';
 export default function ExploreDrinksIngredient() {
   
 const [drinkIngredients, setDrinkIngredients] = useState([]);
-const [mealsAndDrinkByIngredients, setMealsAndDrinkByIngredients] = useState([]);
+//const [mealsAndDrinkByIngredients, setMealsAndDrinkByIngredients] = useState([]);
 const numberOfIngredients = 12;
 
 useEffect(() => {
@@ -22,7 +22,30 @@ useEffect(() => {
 const getRecipesByIngredient = async (param) => {
   const endpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${param}`;
   const { drinks } = await fetch(endpoint).then((data) => data.json());
-  setMealsAndDrinkByIngredients(drinks.slice(0, numberOfIngredients));
+  //setMealsAndDrinkByIngredients(drinks.slice(0, numberOfIngredients));
+  return (
+    <div className="cardlist">
+        {drinks.length > 0 && drinks.map((recp, index) => (
+          index < showMaxRecipes
+          && (
+            <Link
+              className="link"
+              key={ recp.idMeal }
+              to={ {
+                pathname: `/comidas/${recp.idMeal}`,
+              } }
+            >
+              <CardRecipes
+                key={ index }
+                index={ index }
+                thumb={ recp.strMealThumb }
+                title={ recp.strMeal }
+              />
+            </Link>
+          )
+        ))}
+      </div>
+  )
   console.log(drinks);
 };
 
@@ -45,7 +68,7 @@ const getTwelveIngredients = () => {
             data-testid={ `${index}-card-img` }
             src={ `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png` }
             alt={ name }
-            className="foodimg"
+            className="drinksimg"
           />
           <p
             data-testid={ `${index}-card-name` }
