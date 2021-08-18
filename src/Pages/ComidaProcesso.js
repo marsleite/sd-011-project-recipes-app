@@ -109,7 +109,7 @@ function ComidaProcesso() {
       name: strMeal,
       image: strMealThumb,
       doneDate: currentDate, //  implementar função para buscar tempo
-      tags: strTags.split(''),
+      tags: strTags.split(','),
     };
 
     let currentDoneRecipesStoraged = [];

@@ -57,31 +57,29 @@ function RenderRecomendations({ typeReco }) {
   if (recipes === undefined) return <p>Loading</p>;
 
   return (
-    <section>
-      <Carousel className="carousel-container" responsive={ responsive }>
-        <h3>Recommendations</h3>
+    <section className="carousel-container">
+      <h3>Recommendations</h3>
+      <Carousel responsive={ responsive }>
         {(type !== '' && recipes !== null)
             && recipes.slice(0, limitRecipes).map((recipe, index) => (
-              <div key={ index } className="carousel-content">
-                <Link
-                  className="recomendation-link"
-                  to={ `/${typeReco}/${recipe[id]}` }
+              <Link
+                className="recomendation-link"
+                to={ `/${typeReco}/${recipe[id]}` }
+                key={ index }
+              >
+                <div
+                  data-testid={ `${index}-recomendation-card` }
                   key={ index }
                 >
-                  <div
-                    data-testid={ `${index}-recomendation-card` }
-                    key={ index }
-                    className="carousel-card"
-                  >
-                    <img
-                      data-testid={ `${index}-card-img` }
-                      src={ recipe[image] }
-                      alt={ name }
-                    />
-                    <p data-testid={ `${index}-recomendation-title` }>{recipe[name]}</p>
-                  </div>
-                </Link>
-              </div>
+                  <img
+                    data-testid={ `${index}-card-img` }
+                    src={ recipe[image] }
+                    alt={ name }
+                  />
+                  <p data-testid={ `${index}-recomendation-title` }>{recipe[name]}</p>
+                </div>
+              </Link>
+
             ))}
 
       </Carousel>

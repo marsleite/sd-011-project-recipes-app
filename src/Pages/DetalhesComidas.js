@@ -28,9 +28,7 @@ const getIngredientsAndMeasures = (type, recipe) => {
 
 const getIngredients2 = (recipe) => {
   const ingredients = getIngredientsAndMeasures('strIngredient', recipe);
-  console.log(ingredients);
   const measure = getIngredientsAndMeasures('strMeasure', recipe);
-  console.log(measure);
   return ingredients.map((ingredient, index) => (
     <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
       { `${ingredient} - ${measure[index] || ''}` }
