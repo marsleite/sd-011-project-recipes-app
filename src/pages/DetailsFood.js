@@ -31,7 +31,7 @@ function DetailsFood(props) {
   function renderIngredient(food) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1;numero <= limitItens;numero += 1) {
+    for (let numero = 1; numero <= limitItens; numero += 1) {
       if (food[`strIngredient${numero}`] !== null
         && food[`strIngredient${numero}`] !== '') {
         array.push(
