@@ -24,6 +24,7 @@ function ShareButton({ link, index }) {
     >
       {copy ? (
         <span
+          data-testid="link-copied"
           className={ pathname.includes('receitas')
             ? 'link-black' : 'link-white' }
         >
