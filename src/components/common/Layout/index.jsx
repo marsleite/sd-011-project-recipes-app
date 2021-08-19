@@ -6,7 +6,7 @@ import '../../../styles/components/common/Layout.css';
 import Footer from './Footer';
 import Header from './Header';
 
-function Layout({ children, title, search, noHeader, noFooter }) {
+function Layout({ children, title, search, noHeader, noFooter, noProfileLink }) {
   const dispatch = useDispatch();
   const { ingredients } = useIngredients();
   useEffect(() => {
@@ -24,7 +24,7 @@ function Layout({ children, title, search, noHeader, noFooter }) {
 
   return (
     <>
-      { noHeader || <Header search={ search } title={ title } />}
+      { noHeader || <Header search={ search } title={ title } noProfileLink={ noProfileLink } />}
       { children }
       { noFooter || <Footer /> }
     </>
@@ -38,6 +38,7 @@ Layout.defaultProps = {
   search: false,
   noHeader: false,
   noFooter: false,
+  noProfileLink: false,
 };
 
 Layout.propTypes = {
@@ -49,4 +50,5 @@ Layout.propTypes = {
   title: PropTypes.string,
   search: PropTypes.bool,
   noHeader: PropTypes.bool,
+  noProfileLink: PropTypes.bool,
 };

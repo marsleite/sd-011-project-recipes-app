@@ -5,7 +5,7 @@ import SearchForm from '../../Home/SearchForm';
 import ProfileIcon from '../../../images/profileIcon.svg';
 import SearchIcon from '../../../images/searchIcon.svg';
 
-function Header({ search, title }) {
+function Header({ search, title, noProfileLink }) {
   const [showInput, setShowInput] = useState(false);
 
   const handleShowSeachInput = () => (
@@ -16,14 +16,17 @@ function Header({ search, title }) {
 
   return (
     <header className="HEADER">
-      <Link to="/perfil">
-        <img
-          className="icon"
-          data-testid="profile-top-btn"
-          alt="Ver meu perfil"
-          src={ ProfileIcon }
-        />
-      </Link>
+      {
+        noProfileLink || (
+          <Link to="/perfil">
+            <img
+              className="icon"
+              data-testid="profile-top-btn"
+              alt="Ver meu perfil"
+              src={ ProfileIcon }
+            />
+          </Link>)
+      }
       <h1 className="title" data-testid="page-title">{ title }</h1>
       { search
             && (
@@ -48,11 +51,13 @@ function Header({ search, title }) {
 Header.defaultProps = {
   search: false,
   title: 'Comidas',
+  noProfileLink: false,
 };
 
 Header.propTypes = {
   search: PropTypes.bool,
   title: PropTypes.string,
+  noProfileLink: PropTypes.bool,
 };
 
 export default Header;

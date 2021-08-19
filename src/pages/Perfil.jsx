@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Layout } from '../components';
-import { useTheme, useUser, updateEmail } from '../hooks';
+import { useUser, updateEmail } from '../hooks';
+
+import '../styles/pages/Perfil.css';
 
 function Perfil() {
-  const { colors } = useTheme();
   const { email } = useUser();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,12 +21,6 @@ function Perfil() {
     }
   }, [dispatch, email]);
 
-  const styles = {
-    main: {
-      backgroundColor: colors.background,
-      color: colors.text400,
-    },
-  };
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
@@ -33,31 +28,35 @@ function Perfil() {
   };
 
   return (
-    <Layout title="Perfil">
-      <main style={ styles.main }>
-        <h2 data-testid="page-title">Perfil</h2>
-        <span data-testid="profile-email">{ `Email: ${email} `}</span>
-        <button
-          type="button"
-          data-testid="profile-done-btn"
-          onClick={ () => history.push('/receitas-feitas') }
-        >
-          Receitas Feitas
-        </button>
-        <button
-          type="button"
-          data-testid="profile-favorite-btn"
-          onClick={ () => history.push('/receitas-favoritas') }
-        >
-          Receitas Favoritas
-        </button>
-        <button
-          type="button"
-          data-testid="profile-logout-btn"
-          onClick={ logout }
-        >
-          Sair
-        </button>
+    <Layout title="Perfil" noProfileLink>
+      <main className="PROFILE">
+        <section><p className="email" data-testid="profile-email">{ `Email: ${email} `}</p></section>
+        <section className="links">
+          <button
+            className="button"
+            type="button"
+            data-testid="profile-done-btn"
+            onClick={ () => history.push('/receitas-feitas') }
+          >
+            Receitas Feitas
+          </button>
+          <button
+            className="button"
+            type="button"
+            data-testid="profile-favorite-btn"
+            onClick={ () => history.push('/receitas-favoritas') }
+          >
+            Receitas Favoritas
+          </button>
+          <button
+            className="button"
+            type="button"
+            data-testid="profile-logout-btn"
+            onClick={ logout }
+          >
+            Sair
+          </button>
+        </section>
       </main>
     </Layout>
   );
