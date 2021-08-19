@@ -12,7 +12,6 @@ function CardRecipeListFood() {
     filtered,
     initialItens,
     setInitialItens } = RequestHook();
-
   const MAX_RESULT = 12;
 
   async function loadInitialItens() {
