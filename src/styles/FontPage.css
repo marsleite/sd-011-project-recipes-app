@@ -31,3 +31,24 @@ h3 {
   /* color: white;  
   text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px */
 }
+
+.a-p {
+  font-size: 20px;
+  text-align: center;
+  background: -webkit-linear-gradient(red,orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.div-food-area {
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding:  5px;
+  margin: 10px;  
+}
+
+.div-food-area img{
+  border-radius: 5px;
+}

@@ -34,18 +34,20 @@ export default function IngredientsCard({ ingredient, index, type }) {
   }
 
   return (
-    <button type="button" onClick={ () => renderIngredients() }>
-      <div data-testid={ `${index}-ingredient-card` }>
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <a href="#" role="button" onClick={ () => renderIngredients() }>
+      <div className="col-6 d-inline-block flex-column align-self-center align-items-center mt-3 mb-3" data-testid={ `${index}-ingredient-card` }>
         <img
           data-testid={ `${index}-card-img` }
+          className="food-card w-100 rounded-circle p-2"
           alt={ `Imagem of a/an ${strName}` }
           src={ INGREDIENT_IMAGE }
         />
         <div>
-          <p data-testid={ `${index}-card-name` }>{strName}</p>
+          <p style={ { textAlign: 'center' } } className="a-p text-truncate" data-testid={ `${index}-card-name` }>{strName}</p>
         </div>
       </div>
-    </button>
+    </a>
   );
 }
 

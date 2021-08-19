@@ -22,25 +22,28 @@ function ExploreDrinksIngredients() {
   }, []);
 
   return (
-    <>
-      <div>
-        <h1 data-testid="page-title">Explorar Ingredientes</h1>
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-      </div>
+    <div>
+      <section className="container pt-3 px-3">
+        <div className="header">
+          <h1 data-testid="page-title">Explorar Ingredientes</h1>
+          <img
+            data-testid="profile-top-btn"
+            src={ profileIcon }
+            className="profile-icon"
+            alt="Botão que direciona para a tela de perfil"
+          />
+        </div>
+        {!load && drinkIngredients.map((ingredient, index) => (
+          <IngredientsCard
+            key={ index }
+            ingredient={ ingredient }
+            index={ index }
+            type="drink"
+          />
+        ))}
+      </section>
       <FooterBar />
-      {!load && drinkIngredients.map((ingredient, index) => (
-        <IngredientsCard
-          key={ index }
-          ingredient={ ingredient }
-          index={ index }
-          type="drink"
-        />
-      ))}
-    </>
+    </div>
   );
 }
 

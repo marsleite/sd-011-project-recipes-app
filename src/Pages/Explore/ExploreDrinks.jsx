@@ -19,35 +19,41 @@ function ExploreDrinks() {
   }, []);
 
   return (
-    <>
-      <div>
-        <h1 data-testid="page-title">Explorar Bebidas</h1>
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-      </div>
-      <div>
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explorar/bebidas/ingredientes') }
-        >
-          Por Ingredientes
-        </button>
+    <div>
+      <section className="container pt-3 px-3">
+        <div className="header">
+          <h1 data-testid="page-title">Explorar Bebidas</h1>
+          <img
+            data-testid="profile-top-btn"
+            className="profile-icon"
+            src={ profileIcon }
+            alt="Botão que direciona para a tela de perfil"
+          />
+        </div>
+        <div className="d-flex flex-column justify-content-center">
+          <button
+            type="button"
+            style={ { marginTop: '120px', marginBottom: '20px' } }
+            className="button"
+            data-testid="explore-by-ingredient"
+            onClick={ () => history.push('/explorar/bebidas/ingredientes') }
+          >
+            Por Ingredientes
+          </button>
 
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ () => history.push(`/bebidas/${drinkId}`) }
-        >
-          Me Surpreenda!
-        </button>
+          <button
+            type="button"
+            className="button"
+            data-testid="explore-surprise"
+            onClick={ () => history.push(`/bebidas/${drinkId}`) }
+          >
+            Me Surpreenda!
+          </button>
 
-      </div>
+        </div>
+      </section>
       <FooterBar />
-    </>
+    </div>
   );
 }
 

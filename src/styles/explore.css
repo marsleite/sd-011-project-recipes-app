@@ -21,3 +21,8 @@
   color:black;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);  
 }
+
+.food-card {
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8); 
+  background-color: white;  
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import profileIcon from '../../images/profileIcon.svg';
 import FooterBar from '../Components/FooterBar';
 import IngredientsCard from '../Components/IngredientsCard';
+import '../../styles/explore.css';
 
 function ExploreFoodsIngredients() {
   const [IngredientId, setIngredientId] = React.useState();
@@ -22,26 +23,29 @@ function ExploreFoodsIngredients() {
   }, []);
 
   return (
-    <>
-      <div>
-        <h1 data-testid="page-title">Explorar Ingredientes</h1>
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-      </div>
-      <FooterBar />
-      {!load ? IngredientId
-        .map((ingredient, index) => (
-          <IngredientsCard
-            ingredient={ ingredient }
-            index={ index }
-            key={ index }
-            type="meal"
+    <div>
+      <section className="container pt-3 px-3">
+        <div className="header">
+          <h1 data-testid="page-title">Explorar Ingredientes</h1>
+          <img
+            data-testid="profile-top-btn"
+            className="profile-icon"
+            src={ profileIcon }
+            alt="Botão que direciona para a tela de perfil"
           />
-        )) : null}
-    </>
+        </div>        
+        {!load ? IngredientId
+          .map((ingredient, index) => (
+            <IngredientsCard
+              ingredient={ ingredient }
+              index={ index }
+              key={ index }
+              type="meal"
+            />
+          )) : null}
+      </section>
+      <FooterBar />
+    </div>
   );
 }
 

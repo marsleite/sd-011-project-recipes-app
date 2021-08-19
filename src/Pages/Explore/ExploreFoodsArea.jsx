@@ -49,50 +49,56 @@ function ExploreFoodsArea() {
     }
   }, [filter]);
   return (
-    <>
-      <div>
-        <h1 data-testid="page-title">Explorar Origem</h1>
-        <img
-          data-testid="search-top-btn"
-          src={ searchIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-      </div>
-      <select onChange={ (e) => areaRequest(e) } data-testid="explore-by-area-dropdown">
-        <option data-testid="All-option">All</option>
-        {areas && areas.map(({ strArea }, i) => (
-          <option
-            key={ `${strArea}${i}` }
-            data-testid={ `${strArea}-option` }
-          >
-            {strArea}
-          </option>
-        ))}
-      </select>
-      <div>
-        <h1>Resultados</h1>
-        <div>
-          {foods.map(({ strMeal, strMealThumb, idMeal }, i) => (
-            <Link to={ `/comidas/${idMeal}` } key={ `${idMeal}` }>
-              <div data-testid={ `${i}-recipe-card` }>
-                <p data-testid={ `${i}-card-name` }>{ strMeal }</p>
-                <img
-                  data-testid={ `${i}-card-img` }
-                  src={ strMealThumb }
-                  alt={ `Imagem de ${strMeal}` }
-                />
-              </div>
-            </Link>
-          ))}
+    <div className="pb-3">
+      <section className="container pt-3 px-3">
+        <div className="header">
+          <h1 data-testid="page-title">Explorar Origem</h1>
+          <img
+            data-testid="profile-top-btn"
+            src={ profileIcon }
+            className="profile-icon"
+            alt="Botão que direciona para a tela de perfil"
+          />
+          <img
+            data-testid="search-top-btn"
+            src={ searchIcon }
+            className="search-icon"
+            alt="Botão que direciona para a tela de perfil"
+          />
         </div>
-      </div>
+        <div className="d-flex justify-content-center">
+          <select onChange={ (e) => areaRequest(e) } data-testid="explore-by-area-dropdown">
+            <option data-testid="All-option">All</option>
+            {areas && areas.map(({ strArea }, i) => (
+              <option
+                key={ `${strArea}${i}` }
+                data-testid={ `${strArea}-option` }
+              >
+                {strArea}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <div>
+            {foods.map(({ strMeal, strMealThumb, idMeal }, i) => (
+              <Link to={ `/comidas/${idMeal}` } key={ `${idMeal}` }>
+                <div className="div-food-area pb-3" data-testid={ `${i}-recipe-card` }>
+                  <p className="a-p" data-testid={ `${i}-card-name` }>{ strMeal }</p>
+                  <img
+                    width="100%"
+                    data-testid={ `${i}-card-img` }
+                    src={ strMealThumb }
+                    alt={ `Imagem de ${strMeal}` }
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       <FooterBar />
-    </>
+    </div>
   );
 }
 

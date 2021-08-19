@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import drinkIcon from '../../images/drinkIcon.svg';
-import exploreIcon from '../../images/exploreIcon.svg';
-import foodIcon from '../../images/mealIcon.svg';
+import drinkIcon from '../../images/drinkIcon.png';
+import exploreIcon from '../../images/exploreIcon.png';
+import foodIcon from '../../images/foodIcon.png';
 import '../../styles/footerBar.css';
 
 export default function FooterBar() {
@@ -15,6 +15,8 @@ export default function FooterBar() {
       <Link to="/bebidas">
         <img
           data-testid="drinks-bottom-btn"
+          width="50px"
+          style={ { padding: '2px' } }
           src={ drinkIcon }
           alt="ícone de bebidas"
         />
@@ -22,6 +24,8 @@ export default function FooterBar() {
       <Link to="/explorar">
         <img
           data-testid="explore-bottom-btn"
+          width="50px"
+          style={ { padding: '2px' } }
           src={ exploreIcon }
           alt="ícone de explorar - bulsola"
         />
@@ -29,6 +33,8 @@ export default function FooterBar() {
       <Link to="/comidas">
         <img
           data-testid="food-bottom-btn"
+          width="50px"
+          style={ { padding: '2px' } }
           src={ foodIcon }
           alt="ícone de comidas - garfos"
         />
