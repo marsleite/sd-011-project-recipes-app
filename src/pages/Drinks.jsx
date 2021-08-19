@@ -1,18 +1,11 @@
 import React from 'react';
 import { Layout, CocktailsList } from '../components';
-import { useTheme } from '../hooks';
+import '../styles/pages/Drinks.css';
 
 function Drinks() {
-  const { colors } = useTheme();
-  const styles = {
-    main: {
-      backgroundColor: colors.background,
-      color: colors.text400,
-    },
-  };
   return (
     <Layout title="Bebidas" search>
-      <main style={ styles.main }>
+      <main className="DRINKS">
         <CocktailsList />
       </main>
     </Layout>

@@ -9,6 +9,7 @@ function Footer() {
     <footer className="FOOTER" data-testid="footer">
       <Link to="/bebidas">
         <img
+          className="icon"
           data-testid="drinks-bottom-btn"
           alt="Drink Icon"
           src={ DrinkIcon }
@@ -16,6 +17,7 @@ function Footer() {
       </Link>
       <Link to="/explorar">
         <img
+          className="icon"
           data-testid="explore-bottom-btn"
           alt="Explore Icon"
           src={ ExploreIcon }
@@ -23,6 +25,7 @@ function Footer() {
       </Link>
       <Link to="/comidas">
         <img
+          className="icon"
           data-testid="food-bottom-btn"
           alt="Food Icon"
           src={ MealIcon }

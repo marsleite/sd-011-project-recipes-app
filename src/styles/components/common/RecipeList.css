@@ -7,6 +7,10 @@
   list-style: none;
 }
 
+.CATEGORY_LIST.v-drinks {
+  grid-template-columns: 1fr 1fr;
+}
+
 .CATEGORY_LIST .checkitem {
   display: flex;
   gap: 4px;

@@ -60,21 +60,23 @@ function CocktailsList() {
 
   return (
     <>
-      <ol>
+      <ol className="CATEGORY_LIST v-drinks">
         { categorys.slice(0, magicalNumberCategory)
           .map((category, index) => (
-            <label key={ index } htmlFor={ index }>
-              <input
-                id={ index }
-                name="categorys"
-                value={ category.strCategory }
-                checked={ selectedCategory === category.strCategory }
-                data-testid={ `${category.strCategory}-category-filter` }
-                type="checkbox"
-                onChange={ fetchCategorys }
-              />
-              {category.strCategory}
-            </label>
+            <li key={ category }>
+              <label className="checkitem" htmlFor={ index }>
+                <input
+                  id={ index }
+                  name="categorys"
+                  value={ category.strCategory }
+                  checked={ selectedCategory === category.strCategory }
+                  data-testid={ `${category.strCategory}-category-filter` }
+                  type="checkbox"
+                  onChange={ fetchCategorys }
+                />
+                {category.strCategory}
+              </label>
+            </li>
           ))}
         <label htmlFor="Filtrar todos">
           <input
@@ -89,7 +91,7 @@ function CocktailsList() {
           All
         </label>
       </ol>
-      <ol>
+      <ol className="RECIPE_LIST">
         {cocktails && cocktails.length === 1 && <Redirect
           to={
             `/bebidas/${cocktails[0].idDrink}`
@@ -100,18 +102,20 @@ function CocktailsList() {
             key={ drinks.idDrink }
             to={ `/bebidas/${drinks.idDrink}` }
           >
-            <li data-testid={ `${index}-recipe-card` }>
+            <li className="RECIPE_CARD" data-testid={ `${index}-recipe-card` }>
+              <h1
+                className="title"
+                data-testid={ `${index}-card-name` }
+              >
+                { drinks.strDrink }
+              </h1>
+
               <img
+                className="image"
                 alt={ `Foto de uma ${drinks.strDrink}` }
                 data-testid={ `${index}-card-img` }
                 src={ drinks.strDrinkThumb }
               />
-              <h3
-                data-testid={ `${index}-card-name` }
-              >
-                { drinks.strDrink }
-              </h3>
-
             </li>
           </Link>
         ))}
