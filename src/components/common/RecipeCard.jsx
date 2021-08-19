@@ -33,6 +33,7 @@ const RecipeCard = ({
   return (
     <CardGroup className="recipes-cards">
       <Card
+        className="card"
         data-testid={ `${index}${cardTestId}` }
       >
         <Link
@@ -41,8 +42,6 @@ const RecipeCard = ({
           <Card.Img
             className="img-card"
             variant="top"
-            height="200px"
-            width="200px"
             data-testid={ `${index}-card-img` }
             src={ recipeThumb }
             alt={ `${recipeName} recipe` }

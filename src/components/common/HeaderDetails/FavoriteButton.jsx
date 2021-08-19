@@ -18,7 +18,6 @@ const FavoriteButton = ({
     favoriteDrink,
     drinkOrFood,
   );
-  console.log(drinkOrFood);
 
   const history = useHistory();
   useEffect(() => {
