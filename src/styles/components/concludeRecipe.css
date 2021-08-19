@@ -6,7 +6,7 @@
   padding: 10px 15px;
   position: fixed;
   text-align: center;
-  width: 340px;
+  width: 100%;
 }
 
 .recipe-in-progress {
@@ -17,5 +17,5 @@
   padding: 10px 15px;
   position: fixed;
   text-align: center;
-  width: 340px;
+  width: 100%;
 }

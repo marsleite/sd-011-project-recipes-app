@@ -1,4 +1,5 @@
 .details-or-progress {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
+  justify-content: center;
 }

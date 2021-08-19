@@ -1,10 +1,15 @@
 .start-recipe-btn {
   background-color: #6ce34f;
-  border: none;
   bottom: 0;
-  color: black;
-  padding: 10px 15px;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
+  padding-top: 5px;
   position: fixed;
-  text-align: center;
-  width: 340px;
+  width: 100%;
+}
+
+.fart {
+  background-color: transparent;
+  border: none;
 }

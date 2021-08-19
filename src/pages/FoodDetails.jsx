@@ -29,6 +29,7 @@ const FoodDetails = (
   if (mealDetails.strInstructions === undefined) return (<span>Carregando...</span>);
   return (
     <main className="details-or-progress">
+      <h2>Detalhes da Comida</h2>
       <HeaderDetails
         thumb={ thumbDetails.strMealThumb }
         alt={ altDetails.strMeal }

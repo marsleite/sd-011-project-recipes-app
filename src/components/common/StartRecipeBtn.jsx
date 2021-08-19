@@ -23,11 +23,11 @@ const StartRecipeBtn = ({ routeInfo: { id, url } }) => {
       ? (
         <Link
           to={ choiceRoute() }
-          style={ { position: 'fixed', bottom: '0px' }
-          }
+          style={ { position: 'fixed', bottom: '0px' } }
+          className="start-recipe-btn"
         >
           <button
-            className="start-recipe-btn"
+            className="fart"
             data-testid="start-recipe-btn"
             type="button"
           >

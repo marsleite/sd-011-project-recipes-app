@@ -60,7 +60,7 @@ const DrinkRecipeProgress = ({
   const measuresAndIngredients = filterDrinkMeasuresAndIngredients(drinkDetails);
   return (
     <main className="details-or-progress">
-      <div>Tela de receita em processo de bebida</div>
+      <h2>Progresso da Bebida</h2>
       <HeaderDetails
         thumb={ thumbDrinks.strDrinkThumb }
         alt={ altDrinks.strDrink }
@@ -112,7 +112,5 @@ DrinkRecipeProgress.propTypes = {
     strIngredient15: string,
   }),
 }.isRequired;
-
-console.log(typeof DrinkRecipeProgress);
 
 export default connect(mapStateToProps)(DrinkRecipeProgress);

@@ -80,7 +80,7 @@ const FoodRecipeProgress = ({
   ));
   return (
     <main className="details-or-progress">
-      <div>Tela de receita em processo de comidas</div>
+      <h2>Progresso da Bebida</h2>
       <HeaderDetails
         thumb={ thumbDetails.strMealThumb }
         alt={ altDetails.strMeal }

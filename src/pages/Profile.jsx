@@ -26,7 +26,7 @@ const Profile = () => {
   };
 
   return (
-    <>
+    <main className="profile-page">
       <Header page="Perfil" showSearchBtn={ false } />
       <h3 className="profile-email" data-testid="profile-email">
         { userEmail }
@@ -53,7 +53,7 @@ const Profile = () => {
         </Link>
       </nav>
       <Footer />
-    </>
+    </main>
   );
 };
 

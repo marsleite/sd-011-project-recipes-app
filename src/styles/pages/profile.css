@@ -1,12 +1,27 @@
+.profile-page {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 100%;
+}
+
 .profile-email {
+  border-radius: 4px;
+  color: black;
   font-size: 25px;
+  height: 53px;
+  line-height: 53px;
+  margin: 10px 0;
+  overflow: scroll;
   text-align: center;
+  text-decoration: none;
+  width: 100%;
 }
 
 .profile-nav {
-  align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .profile-nav a {
@@ -17,7 +32,8 @@
   font-size: 25px;
   height: 53px;
   line-height: 53px;
-  margin: 10px;
+  margin: 10px 0;
+  overflow: scroll;
   text-align: center;
   text-decoration: none;
   width: 100%;
