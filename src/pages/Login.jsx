@@ -35,6 +35,7 @@ export default function Login() {
 
   return (
     <div className="loginContainer">
+      <h1 className="appalmirinha">ApPalmirinha</h1>
       <img src={trybeCook} alt="trybe_cook" />
       <form
         className="login-form"

@@ -84,21 +84,6 @@ function ReceitasEmProgresso() {
     if (inProgressIngredients) setIsLoading(false);
   }, [currentRecipe]);
 
-  // const handleShareBtn = (foodType, id) => {
-  //   const hostURL = window.location.origin;
-  //   if (foodType === 'meals') {
-  //     navigator.clipboard.writeText(`${hostURL}/comidas/${id}`);
-  //   }
-  //   if (foodType === 'cocktails') {
-  //     navigator.clipboard.writeText(`${hostURL}/bebidas/${id}`);
-  //   }
-  //   return <LinkCopy />;
-  // };
-
-  // const handleLinkMessage = () => {
-  //   setLinkCopy(true);
-  // };
-
   const handleDoneRecipe = (recipe) => {
     addDoneRecipeInLocalStorage(recipe);
     return history.push('/receitas-feitas');

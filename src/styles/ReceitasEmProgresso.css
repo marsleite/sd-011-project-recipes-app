@@ -62,3 +62,8 @@
 .progress-instructions {
   margin-bottom: 80px;
 }
+
+.share-btn img {
+  width: 30px !important;
+  height: 30px !important;
+}
