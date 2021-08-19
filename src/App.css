@@ -29,8 +29,8 @@
 
 .details-page {
   color: #464646;
-  height: 100vh;
-  width: 100vw;
+  margin: 60px auto;
+  width: 90vw;
 }
 
 .buttons {
@@ -88,4 +88,35 @@
   padding: 15px;
   position: fixed;
   width: 100%;
+}
+
+.receitas-btn {
+  background-color: #791515;
+  color: #f1ecec;
+  margin: 5px;
+  padding: 15px;
+}
+
+.component-render-itens {
+  align-items: center;
+  background-color: #f3efef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
+
+.inProgressRecipes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 10px;
+  text-align: center;
+}
+
+.recipe-category {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }

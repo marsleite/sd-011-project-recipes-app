@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Clipboard from '../components/Clipboard';
 import { searchDrinkById } from '../services/RequestDrinks';
+import Clipboard from '../components/Clipboard';
 import '../styles/drink.css';
 
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInput, setChangeInput] = useState(false);
-  const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
     async function getDetailsById() {
@@ -17,41 +16,54 @@ function RecipeProgressDrink(props) {
       setInitialItemApi(itemsDrink);
     }
     getDetailsById();
-  }, []);
+  }, [id]);
 
-  function handleClick({ value }) {
-    if (!changeInput) {
-      setClicked(value);
-      localStorage.setItem('inProgressRecipes', JSON.stringify(value));
-    } else {
-      setClicked(0);
-      localStorage.removeItem('inProgressRecipes');
+  function storageCheck() {
+    let verifyRecipeId;
+    const storageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (storageFavorite !== null) {
+      verifyRecipeId = Object.values(storageFavorite).find(({ id: x }) => x === id);
     }
-    setChangeInput((state) => !state);
+    return verifyRecipeId;
   }
 
-  function renderIngredient(drink) {
+  function isChecked(numero, e) {
+    if (e.currentTarget.className !== 'checked') {
+      e.currentTarget.className = 'checked';
+    } else if (e.currentTarget.className === 'checked') {
+      e.currentTarget.className = '';
+    }
+
+    setChangeInput(() => !changeInput);
+    if (changeInput === true) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
+    } else {
+      localStorage.removeItem('inProgressRecipes');
+    }
+    console.log(numero);
+  }
+
+  function renderIngrediente(drink) {
     const array = [];
     const limitItens = 15;
-    for (let index = 1; index <= limitItens; index += 1) {
-      if (drink[`strIngredient${index}`]) {
-        const className = clicked === `${index}` ? 'checked' : '';
-        const ingredient = drink[`strIngredient${index}`];
-        const measure = drink[`strMeasure${index}`];
+    for (let numero = 1; numero <= limitItens; numero += 1) {
+      if (drink[`strIngredient${numero}`] !== null
+        && drink[`strIngredient${numero}`] !== '') {
         array.push(
-          <div key={ index }>
+          <div>
             <label
-              htmlFor={ `${index}-ingredient` }
-              data-testid={ `${index}-ingredient-step` }
-              className={ className }
+              htmlFor={ numero }
+              data-testid={ `${numero}-ingredient-step` }
+              onChange={ (e) => isChecked(`${numero - 1}-ingredient-step`, e) }
             >
               <input
                 type="checkbox"
-                id={ `${index}-ingredient` }
-                value={ index }
-                onChange={ (e) => handleClick(e.target) }
               />
-              {`${ingredient} ${measure}`}
+              { `${drink[`strIngredient${numero}`]} ` }
+              { (drink[`strMeasure${numero}`] !== null
+                && drink[`strMeasure${numero}`] !== '')
+                ? <span>{ `${drink[`strMeasure${numero}`]}` }</span>
+                : '' }
             </label>
           </div>,
         );
@@ -60,22 +72,52 @@ function RecipeProgressDrink(props) {
     return array;
   }
 
+  function recStorage() {
+    const { strDrink, strDrinkThumb, strAlcoholic, strTags } = initialItemApi[0];
+    const date = new Date();
+
+    const doneRecipetwo = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: 'Cocktail',
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+      doneDate: date,
+      tags: strTags,
+    };
+
+    storageCheck();
+
+    const done = localStorage.getItem('doneRecipes');
+    console.log(strTags);
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('doneRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('doneRecipes', stringNewArrayOfObjects);
+  }
+
   return (
     initialItemApi && initialItemApi.map((drink, index) => (
-      <div key={ index }>
+      <div key={ index } className="inProgressRecipes">
         <img
           data-testid="recipe-photo"
           src={ drink.strDrinkThumb }
           alt={ drink.strDrink }
-          width="50px"
+          width="150px"
         />
         <h2 data-testid="recipe-title">{ drink.strDrink }</h2>
         <h4 data-testid="recipe-category">
           { drink.strAlcoholic }
         </h4>
-        <div>
+        <div className="recipe-category">
           <h3>Ingredientes</h3>
-          { renderIngredient(drink) }
+          { renderIngrediente(drink) }
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
@@ -83,13 +125,16 @@ function RecipeProgressDrink(props) {
         <button
           type="button"
           data-testid="favorite-btn"
+          className="receitas-btn"
         >
           Favorite
         </button>
         <Link to="/receitas-feitas">
           <button
+            className="receitas-btn"
             type="button"
             data-testid="finish-recipe-btn"
+            onClick={ () => recStorage() }
           >
             Finalizar Receita
           </button>
@@ -105,5 +150,4 @@ RecipeProgressDrink.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-
 export default RecipeProgressDrink;

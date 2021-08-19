@@ -18,7 +18,7 @@ function CardRecipe({ item, index }) {
               data-testid={ `${index}-card-img` }
               src={ object.strMealThumb }
               alt={ `${index}-card-name` }
-              width="50px"
+              width="80px"
             />
           </div>
         </Link>
@@ -34,7 +34,7 @@ function CardRecipe({ item, index }) {
             data-testid={ `${index}-card-img` }
             src={ object.strCategoryThumb }
             alt={ `${index}-card-name` }
-            width="50px"
+            width="80px"
           />
         </>);
     }
@@ -55,7 +55,7 @@ function CardRecipe({ item, index }) {
               data-testid={ `${index}-card-img` }
               src={ object.strDrinkThumb }
               alt={ `${index}-card-name` }
-              width="50px"
+              width="80px"
             />
           </div>
         </Link>
@@ -69,7 +69,7 @@ function CardRecipe({ item, index }) {
             data-testid={ `${index}-card-img` }
             src="https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg"
             alt={ `${index}-card-name` }
-            width="50px"
+            width="80px"
           />
         </>
       );

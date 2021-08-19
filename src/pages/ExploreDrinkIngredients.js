@@ -37,7 +37,7 @@ function ExploreDrinkIngredients() {
             data-testid={ `${number}-card-img` }
             src={ `https://www.thecocktaildb.com/images/ingredients/${object.strIngredient1}-Small.png` }
             alt={ `${number}-card-name` }
-            width="50px"
+            width="80px"
           />
         </div>
       </button>

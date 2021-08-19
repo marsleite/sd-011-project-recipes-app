@@ -70,6 +70,29 @@ function DetailsDrink(props) {
     return array;
   }
 
+  function recStorage() {
+    const { strDrink, strDrinkThumb, strAlcoholic } = initialItemApi[0];
+    const doneRecipetwo = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: 'Cocktail',
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+    };
+
+    const done = localStorage.getItem('favoriteRecipes');
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('favoriteRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('favoriteRecipes', stringNewArrayOfObjects);
+  }
+
   return (
     (!initialItemApi)
       ? (<p>Loading...</p>)
@@ -79,7 +102,7 @@ function DetailsDrink(props) {
             data-testid="recipe-photo"
             src={ drink.strDrinkThumb }
             alt={ drink.strDrink }
-            width="50px"
+            width="200px"
           />
           <h2 data-testid="recipe-title">{ drink.strDrink }</h2>
           <h4 data-testid="recipe-category">
@@ -91,13 +114,12 @@ function DetailsDrink(props) {
           </div>
           <h3>Instruções</h3>
           <p data-testid="instructions">{ drink.strInstructions }</p>
-
           <Clipboard />
-
           <button
             className="buttons"
             type="button"
             data-testid="favorite-btn"
+            onClick={ () => recStorage() }
           >
             <img src={ Favorite } alt="Favorite icon" width="15px" />
           </button>

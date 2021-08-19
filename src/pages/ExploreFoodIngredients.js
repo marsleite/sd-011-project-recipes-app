@@ -37,7 +37,7 @@ function ExploreFoodIngredients() {
             data-testid={ `${number}-card-img` }
             src={ `https://www.themealdb.com/images/ingredients/${object.strIngredient}-Small.png` }
             alt={ `${number}-card-name` }
-            width="50px"
+            width="80px"
           />
         </div>
       </button>
