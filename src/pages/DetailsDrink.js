@@ -114,9 +114,7 @@ function DetailsDrink(props) {
           </div>
           <h3>Instruções</h3>
           <p data-testid="instructions">{ drink.strInstructions }</p>
-
           <Clipboard />
-
           <button
             className="buttons"
             type="button"
