@@ -49,10 +49,11 @@ export default function DoneRecipes() {
           Drinks
         </Button>
       </div>
-      <div>
+      <div className=" d-flex flex-column align-items-center px-3">
         {
-          recipes.map((element, index) => (
+          (recipes.length > 0) ? recipes.map((element, index) => (
             <DoneRecipeCard recipe={ element } key={ index } index={ index } />))
+            : <h2>Nenhuma Receita feita</h2>
         }
       </div>
 

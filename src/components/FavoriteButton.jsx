@@ -36,7 +36,7 @@ export default function FavoriteButton({ recipe, dataTestid }) {
 
   return (
     <div>
-      <TransparentButton onClick={ () => handleHeart() }>
+      <TransparentButton onClick={ () => handleHeart() } className="favoriteButton">
         <img
           src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
           alt="Favourite Button"

@@ -63,3 +63,45 @@ export const RecipeStateButton = styled.button`
   width: 100%;
   font-size: 1.2rem;
 `;
+
+export const Card = styled.div`
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #F8EDED;
+  display: flex;
+  margin: 10px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .recipe-img{
+    width: 50%;
+    min-height: 100%;
+    border-radius: 6px 0 0 6px;
+    img{
+      width: 100%;
+      border-radius: 6px 0 0 6px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .favoriteButton {
+      position: absolute;
+      padding: 5px;
+      background-color: white;
+      border-radius: 6px;
+      img {
+        width: 27px;
+      }
+    }
+  .subtitle{
+    color: #A9A9A9;
+  }
+  .content{
+    width: 50%;
+  }
+  .category {
+    background-color: ${({ type }) => (type.includes('bebida') ? '#a73d7e' : '#fcdc4d')};
+    border-radius: 6px;
+    padding: 5px;
+    margin: 2px;
+  }
+`;

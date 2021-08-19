@@ -14,10 +14,7 @@ export default function Login() {
   function verifyLogin() {
     const validEmail = /\S+@\S+\.\S+/;
     const pwLength = 6;
-    if ((password.length > pwLength) && (validEmail.test(email))) {
-      return false;
-    }
-    return true;
+    return !((password.length > pwLength) && (validEmail.test(email)));
   }
 
   function submitButton() {

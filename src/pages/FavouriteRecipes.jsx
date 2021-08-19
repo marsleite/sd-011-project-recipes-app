@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import FavoriteCard from '../components/FavoriteCard';
 
@@ -17,45 +18,40 @@ export default function FavouriteRecipes() {
       setRecipes(filterRecipes);
     }
   }, [filter]);
-  if (recipes.length === 0) {
-    return (
-      <>
-        <Header title="Receitas Favoritas" />
-        <h2> Nenhum favorito </h2>
-      </>
-    );
-  }
   return (
     <div>
       <Header title="Receitas Favoritas" />
-      Receitas Favoritas
-      <div>
-        <button
-          type="button"
+      <div className="btn-group d-flex flex-wrap mb-3">
+        <Button
+          variant="light"
+          className="border"
           data-testid="filter-by-all-btn"
           onClick={ () => setFilter('all') }
         >
           All
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="light"
+          className="border"
           data-testid="filter-by-food-btn"
           onClick={ () => setFilter('comida') }
         >
           Food
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="light"
+          className="border"
           data-testid="filter-by-drink-btn"
           onClick={ () => setFilter('bebida') }
         >
           Drinks
-        </button>
+        </Button>
       </div>
-
-      { recipes.map((element, index) => (
-        <FavoriteCard recipe={ element } index={ index } key={ index } />
-      )) }
+      <div className=" d-flex flex-column align-items-center px-3">
+        { (recipes.length > 0) ? recipes.map((element, index) => (
+          <FavoriteCard recipe={ element } index={ index } key={ index } />
+        )) : <h1>Nenhuma Favorita</h1> }
+      </div>
     </div>
   );
 }
