@@ -76,3 +76,30 @@
   overflow: scroll;
   text-align: center;
 }
+
+.recipes-card {
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: column;
+  height: 235px;
+  margin-bottom: 5px;
+  overflow-wrap: break-word;
+  text-align: center;
+  width: 200px;
+}
+
+.byLocation-card img {
+  height: 150px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  width: 200px;
+}
+
+.recipes-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
