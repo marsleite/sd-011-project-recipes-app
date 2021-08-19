@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useHistory } from 'react-router-dom';
-import useFavoriteRecipies from '../../../hooks/useFavoriteRecipies';
+import FavoriteButton from './FavoriteButton';
 import shareIcon from '../../../images/shareIcon.svg';
-import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import './HeaderDetails.css';
 
 const HeaderDetails = (
@@ -14,29 +11,11 @@ const HeaderDetails = (
     thumb,
     alt,
     category,
-    favoriteFood,
-    favoriteDrink,
     drinkOrFood,
+
   },
 ) => {
-  const { favoriteTrue, setFavoriteTrue, favoriteRecipe } = useFavoriteRecipies(
-    favoriteFood,
-    favoriteDrink,
-    drinkOrFood,
-  );
   const [menssage, setMenssage] = useState(null);
-  const history = useHistory();
-  useEffect(() => {
-    const favoritedStore = localStorage.favoriteRecipes;
-    if (favoritedStore) {
-      const saveLocalStorage = JSON.parse(favoritedStore)
-        .some((trueOrFalse) => history.location.pathname.includes(trueOrFalse.id));
-
-      if (saveLocalStorage) {
-        setFavoriteTrue(true);
-      }
-    }
-  }, [history.location.pathname, setFavoriteTrue]);
 
   const handleClipboard = () => {
     navigator.clipboard
@@ -64,6 +43,9 @@ const HeaderDetails = (
       }
       <h4 data-testid="recipe-title">{alt}</h4>
       <h6 data-testid="recipe-category">{category}</h6>
+      <FavoriteButton
+        drinkOrFood={ drinkOrFood }
+      />
       <button
         type="button"
         onClick={ () => handleClipboard() }
@@ -72,20 +54,6 @@ const HeaderDetails = (
           data-testid="share-btn"
           src={ shareIcon }
           alt="Icon to share foods"
-        />
-      </button>
-      <button
-        type="button"
-        onClick={ () => favoriteRecipe() }
-      >
-        <img
-          data-testid="favorite-btn"
-          src={
-            !favoriteTrue
-              ? whiteHeartIcon
-              : blackHeartIcon
-          }
-          alt="Icon to favorite foods"
         />
       </button>
       <span>{menssage}</span>
