@@ -25,8 +25,10 @@ function mealsAPIMocked() {
       case 'ingredient':
         return Promise.resolve(mealsByIngredient);
       case 'name':
+        if (search === 'test no result') return undefined;
         return Promise.resolve(beefMeals);
       case 'firstLetter':
+        if (search.length > 1) return 'erro';
         return Promise.resolve(meals);
       default:
         break;
@@ -69,8 +71,11 @@ function cocktailsAPIMocked() {
       case 'ingredient':
         return drinksByIngredient;
       case 'name':
+        if (search === 'test one drink') return oneDrink;
+        if (search === 'test no result') return undefined;
         return cocoaDrinks;
       case 'firstLetter':
+        if (search.length > 1) return 'erro';
         return drinks;
       default:
         break;
