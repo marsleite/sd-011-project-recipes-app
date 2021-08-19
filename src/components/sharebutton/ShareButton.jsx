@@ -23,8 +23,7 @@ export default function ShareButton() {
         <img src={ ShareIcon } alt="Botão de compartilhar" />
       </button>
       <div hidden={ isHidden }>
-        <strong>Link copiado!</strong>
-        <button type="button" onClick={ () => setIsHidden(true) }>x</button>
+        <span>Link copiado!</span>
       </div>
     </div>
   );
