@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import FavoriteRecipesFilter from '../components/FavoriteRecipesFilter';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
+import '../styles/FavoritesRecipes.css';
 
 export default function FavoriteRecipes() {
   const [recipeTypeFilter, setRecipeTypeFilter] = useState();
@@ -31,13 +32,15 @@ export default function FavoriteRecipes() {
       <FavoriteRecipesFilter
         onChange={ setRecipeTypeFilter }
       />
-      {filteredRecipes.map((recipe, index) => (<FavoriteRecipeCard
-        isFavorited
-        index={ index }
-        key={ recipe.id }
-        recipe={ recipe }
-        handleLikeButtonClick={ () => handleLikeButtonClick(recipe) }
-      />))}
+      <div className="favorites-cards">
+        {filteredRecipes.map((recipe, index) => (<FavoriteRecipeCard
+          isFavorited
+          index={ index }
+          key={ recipe.id }
+          recipe={ recipe }
+          handleLikeButtonClick={ () => handleLikeButtonClick(recipe) }
+        />))}
+      </div>
     </div>
   );
 }

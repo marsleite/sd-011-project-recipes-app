@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import '../styles/Login.css';
 
 function Login(props) {
   const [disabled, setDisabled] = useState(true);
@@ -37,34 +38,37 @@ function Login(props) {
   };
 
   return (
-    <form action="" className="center-items">
-      <input
-        value={ user.email }
-        onChange={ handleChange }
-        data-testid="email-input"
-        type="text"
-        name="email"
-        className="input-email"
-        placeholder="email"
-      />
-      <input
-        value={ user.password }
-        onChange={ handleChange }
-        data-testid="password-input"
-        type="password"
-        name="password"
-        className="input-password"
-        placeholder="password"
-      />
-      <button
-        onClick={ handleSubmit }
-        disabled={ disabled }
-        data-testid="login-submit-btn"
-        type="button"
-      >
-        Entrar
-      </button>
-    </form>
+    <main className="main-login">
+      <h2>Snack Attack</h2>
+      <form action="" className="main-login__form">
+        <input
+          value={ user.email }
+          onChange={ handleChange }
+          data-testid="email-input"
+          type="text"
+          name="email"
+          className="input-email"
+          placeholder="email"
+        />
+        <input
+          value={ user.password }
+          onChange={ handleChange }
+          data-testid="password-input"
+          type="password"
+          name="password"
+          className="input-password"
+          placeholder="password"
+        />
+        <button
+          onClick={ handleSubmit }
+          disabled={ disabled }
+          data-testid="login-submit-btn"
+          type="button"
+        >
+          Entrar
+        </button>
+      </form>
+    </main>
   );
 }
 

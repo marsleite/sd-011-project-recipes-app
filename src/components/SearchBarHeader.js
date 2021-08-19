@@ -59,7 +59,9 @@ function SearchBarHeader(props) {
   };
 
   const requestApi = () => {
+    const { setSearchBarVisible } = props;
     requestApiFoodDrink();
+    setSearchBarVisible(false);
   };
 
   const closeModal = () => {

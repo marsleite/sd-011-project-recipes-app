@@ -6,7 +6,7 @@ import '../styles/Comidas.css';
 
 function FoodCard(props) {
   const { history } = props;
-  const { foodArray } = useContext(GlobalContext);
+  const { foodArray, loading } = useContext(GlobalContext);
 
   if (foodArray && foodArray.length === 1) {
     const id = foodArray[0].idMeal;
@@ -20,7 +20,7 @@ function FoodCard(props) {
 
   return (
     <section className="card-list">
-      {foodArray ? foodArray.map((meal, index) => (
+      {foodArray && foodArray.length ? foodArray.map((meal, index) => (
         <div
           className="card"
           data-testid={ `${index}-recipe-card` }

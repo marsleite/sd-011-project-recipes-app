@@ -1,0 +1,38 @@
+body {
+  /* background:linear-gradient(
+    salmon,
+    lightpink
+  ); */
+  background-attachment: fixed;
+}
+
+.explore-drinks-container {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.explore-drinks-container a {
+  flex: 1 1 180px;
+  max-width: 240px;
+  text-align: center;
+  color: black;
+  background-color: #eee;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 100ms;
+}
+
+.explore-drinks-container a:active {
+  transform: scale(.98);
+  background-color: silver ;
+}
+
+.explore-drinks-container a:hover {
+  cursor: pointer;
+}

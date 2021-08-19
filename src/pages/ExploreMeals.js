@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LowerMenu from '../components/LowerMenu';
 import Header from '../components/Header';
+import '../styles/ExploreMeals.css';
 // import GlobalContext from '../context';
 
 export default function ExploreMeals() {
@@ -19,24 +20,26 @@ export default function ExploreMeals() {
   return (
     <div>
       <Header title="Explorar Comidas" renderButton />
-      <Link
-        data-testid="explore-by-ingredient"
-        to="/explorar/comidas/ingredientes"
-      >
-        Por Ingredientes
-      </Link>
-      <Link
-        data-testid="explore-by-area"
-        to="/explorar/comidas/area"
-      >
-        Por Local de Origem
-      </Link>
-      <Link
-        data-testid="explore-surprise"
-        to={ `/comidas/${randomMealId}` }
-      >
-        Me Surpreenda!
-      </Link>
+      <div className="explore-meals-container">
+        <Link
+          data-testid="explore-by-ingredient"
+          to="/explorar/comidas/ingredientes"
+        >
+          Por Ingredientes
+        </Link>
+        <Link
+          data-testid="explore-by-area"
+          to="/explorar/comidas/area"
+        >
+          Por Local de Origem
+        </Link>
+        <Link
+          data-testid="explore-surprise"
+          to={ `/comidas/${randomMealId}` }
+        >
+          Me Surpreenda!
+        </Link>
+      </div>
       <LowerMenu />
     </div>
   );

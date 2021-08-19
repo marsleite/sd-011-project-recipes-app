@@ -24,7 +24,7 @@ export default function DrinkCategoryButton() {
   }
 
   return (
-    <div>
+    <div className="filters-container">
       <button
         data-testid="All-category-filter"
         id="All"

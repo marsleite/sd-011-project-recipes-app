@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
-import shareIcon from '../images/shareIcon.svg';
+import share from '../images/share.png';
+import '../styles/DoneRecipes.css';
 
 export default function DoneRecipeCard({
   index,
@@ -22,7 +23,7 @@ export default function DoneRecipeCard({
   }
 
   return (
-    <div>
+    <div className="done-recipe">
       <div>
         <Link to={ url }>
           <img
@@ -33,22 +34,22 @@ export default function DoneRecipeCard({
         </Link>
       </div>
 
-      <div>
+      <div className="info-container">
         <div>
-          <h3 data-testid={ `${index}-horizontal-top-text` }>
+          <h4 data-testid={ `${index}-horizontal-top-text` }>
             {
               recipe.type === 'comida'
                 ? `${recipe.area} - ${recipe.category}`
                 : recipe.alcoholicOrNot
             }
-          </h3>
+          </h4>
           <Link to={ url }>
-            <h1
+            <h5
               className="title"
               data-testid={ `${index}-horizontal-name` }
             >
               {recipe.name}
-            </h1>
+            </h5>
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>
             { recipe.doneDate }
@@ -69,9 +70,9 @@ export default function DoneRecipeCard({
             onClick={ handleShareButtonClick }
             type="button"
             aria-label="share-icon"
-            src={ shareIcon }
+            src={ share }
           >
-            {linkCopied ? 'Link copiado!' : <img src={ shareIcon } alt="share-icon" /> }
+            {linkCopied ? 'Link copiado!' : <img src={ share } alt="share-icon" /> }
           </button>
         </div>
       </div>

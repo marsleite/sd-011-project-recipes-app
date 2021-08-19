@@ -1,0 +1,24 @@
+.done-recipes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+}
+
+.done-recipe {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 200px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  max-width: 380px;
+}
+
+.done-recipe > div a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

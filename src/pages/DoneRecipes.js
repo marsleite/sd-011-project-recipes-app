@@ -26,18 +26,20 @@ export default function DoneRecipes() {
     : doneRecipes;
 
   return (
-    <div>
+    <>
       <Header title="Receitas Feitas" renderButton />
       <FavoriteRecipesFilter
         onChange={ setRecipeTypeFilter }
       />
-      {filteredRecipes.map((recipe, index) => (<DoneRecipeCard
-        isFavorited
-        index={ index }
-        key={ recipe.id }
-        recipe={ recipe }
-        handleLikeButtonClick={ () => handleLikeButtonClick(recipe) }
-      />))}
-    </div>
+      <div className="done-recipes">
+        {filteredRecipes.map((recipe, index) => (<DoneRecipeCard
+          isFavorited
+          index={ index }
+          key={ recipe.id }
+          recipe={ recipe }
+          handleLikeButtonClick={ () => handleLikeButtonClick(recipe) }
+        />))}
+      </div>
+    </>
   );
 }

@@ -18,9 +18,9 @@ export default function IngredientsCheckbox(props) {
   function getLocalStorage() {
     const getStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     console.log(getStorage);
-    if (getStorage !== null) {
+    if (getStorage) {
       const ingredientsArray = getStorage.meals[recipeId];
-      return ingredientsArray;
+      return ingredientsArray || [];
     } return [];
   }
 

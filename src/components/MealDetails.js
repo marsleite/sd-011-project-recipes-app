@@ -137,7 +137,7 @@ function MealDetails(props) {
       </div>
       <div className="meal-name">
         <h1 className="title" data-testid="recipe-title">{strMeal}</h1>
-        <h2 data-testid="recipe-category">{strCategory}</h2>
+        <h5 data-testid="recipe-category">{strCategory}</h5>
       </div>
       <ul className="links">
         <a href="#ingredients"><li>Ingredients</li></a>

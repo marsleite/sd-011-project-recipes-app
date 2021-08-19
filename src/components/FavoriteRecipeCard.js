@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeatIcon from '../images/blackHeartIcon.svg';
+import share from '../images/share.png';
+import favoritar from '../images/favoritar.png';
+import favoritado from '../images/favoritado.png';
 import '../styles/Details.css';
 
 export default function FavoriteRecipeCard({
@@ -25,7 +25,7 @@ export default function FavoriteRecipeCard({
   }
 
   return (
-    <div>
+    <div className="favorite-card">
       <div>
         <Link to={ url }>
           <img
@@ -35,22 +35,22 @@ export default function FavoriteRecipeCard({
           />
         </Link>
       </div>
-      <div>
+      <div className="info-container">
         <div>
-          <h3 data-testid={ `${index}-horizontal-top-text` }>
+          <h4 data-testid={ `${index}-horizontal-top-text` }>
             {
               recipe.type === 'comida'
                 ? `${recipe.area} - ${recipe.category}`
                 : recipe.alcoholicOrNot
             }
-          </h3>
+          </h4>
           <Link to={ url }>
-            <h1
+            <h5
               className="title"
               data-testid={ `${index}-horizontal-name` }
             >
               {recipe.name}
-            </h1>
+            </h5>
           </Link>
         </div>
         <div className="icon-buttons">
@@ -59,21 +59,21 @@ export default function FavoriteRecipeCard({
             onClick={ handleShareButtonClick }
             type="button"
             aria-label="share-icon"
-            src={ shareIcon }
+            src={ share }
           >
-            {linkCopied ? 'Link copiado!' : <img src={ shareIcon } alt="share-icon" /> }
+            {linkCopied ? 'Link copiado!' : <img src={ share } alt="share-icon" /> }
           </button>
           <button
             data-testid={ `${index}-horizontal-favorite-btn` }
             type="button"
             aria-label="favorite-icon"
             onClick={ handleLikeButtonClick }
-            src={ isFavorited ? blackHeatIcon : whiteHeartIcon }
+            src={ isFavorited ? favoritado : favoritar }
           >
             <img
               src={ isFavorited
-                ? blackHeatIcon
-                : whiteHeartIcon }
+                ? favoritado
+                : favoritar }
               alt="favorited-icon"
             />
           </button>

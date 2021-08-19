@@ -1,0 +1,36 @@
+.links-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.links-container a {
+  flex: 1 1 180px;
+  max-width: 240px;
+  background-color: #eee;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  text-align: center;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.links-container button {
+  border: none;
+}
+
+.user-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.user-info p {
+  margin: 0;
+  text-decoration: underline;
+}

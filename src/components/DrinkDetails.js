@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 import { fetchDrinkDetailsFromCocktailsDB,
   fetchRecommendedMealsFromMealsDB } from '../services';
 import { setFavoriteDrinkInLocalStorage } from '../helpers';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeatIcon from '../images/blackHeartIcon.svg';
-import '../styles/Details.css';
+import share from '../images/share.png';
+import favoritar from '../images/favoritar.png';
+import favoritado from '../images/favoritado.png';
 import MapIngredients from './MapIngredients';
 import RecommendedMeals from './RecommendedMeals';
+import '../styles/Details.css';
 
 function DrinkDetails(props) {
   const [dataToManipulate, setDataToManipulate] = useState({});
@@ -86,26 +86,26 @@ function DrinkDetails(props) {
   }
 
   const iconsRender = () => (
-    <div className="icon-buttons">
+    <>
       <button
         data-testid="share-btn"
         onClick={ handleShareButtonClick }
         type="button"
         aria-label="share-icon"
       >
-        <img src={ shareIcon } alt="share-icon" />
+        <img src={ share } alt="share-icon" />
       </button>
       <button
         data-testid="favorite-btn"
         type="button"
         aria-label="favorite-icon"
         onClick={ handleLikeButtonClick }
-        src={ isFavorited ? blackHeatIcon : whiteHeartIcon }
+        src={ isFavorited ? favoritado : favoritar }
       >
-        {isFavorited ? <img src={ blackHeatIcon } alt="favorited-icon" />
-          : <img src={ whiteHeartIcon } alt="favorite-icon" />}
+        {isFavorited ? <img src={ favoritado } alt="favorited-icon" />
+          : <img src={ favoritar } alt="favorite-icon" />}
       </button>
-    </div>
+    </>
   );
 
   const buttonRender = () => (
@@ -125,24 +125,34 @@ function DrinkDetails(props) {
   }, []);
 
   return (
-    <section>
-      <div>
+    <section className="details-section">
+      <div className="header">
+        <Link to="/bebidas" className="home">
+          Voltar
+        </Link>
         <img data-testid="recipe-photo" src={ strDrinkThumb } alt="" />
-        <div className="recipe-title">
-          <h1 className="title" data-testid="recipe-title">{strDrink}</h1>
-          {iconsRender()}
-          {isLinkCopied && <p>Link copiado!</p>}
-        </div>
-        <h3 data-testid="recipe-category">{strAlcoholic}</h3>
-        <div>
-          <h4>Ingredients</h4>
-          <MapIngredients dataToManipulate={ dataToManipulate } />
-        </div>
-        <p data-testid="instructions">{strInstructions}</p>
-        <h2>Recomendations</h2>
-        <RecommendedMeals meals={ meals } />
-        {isVisible && buttonRender()}
+        {/* <div className="recipe-title"> */}
+        {iconsRender()}
+        {isLinkCopied && <p>Link copiado!</p>}
+        {/* </div> */}
       </div>
+      <div className="meal-name">
+        <h1 className="title" data-testid="recipe-title">{strDrink}</h1>
+        <h5 data-testid="recipe-category">{strAlcoholic}</h5>
+      </div>
+      <div id="ingredients" className="ingredients">
+        <h4>Ingredients</h4>
+        <MapIngredients dataToManipulate={ dataToManipulate } />
+      </div>
+      <div className="instructions">
+        <h4>Instructions</h4>
+        <p data-testid="instructions">{strInstructions}</p>
+      </div>
+      <div id="recommendations" className="recommendations">
+        <h4>Recommendations</h4>
+        <RecommendedMeals meals={ meals } />
+      </div>
+      {isVisible && buttonRender()}
     </section>
   );
 }

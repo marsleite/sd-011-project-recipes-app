@@ -19,6 +19,7 @@ export default function Provider({ children }) {
   const [isIngridientUsed, setIsIngridientUsed] = useState({});
 
   async function getFetchDataFromService() {
+    setLoading(true);
     const meals = await fetchDefaultFoodsFromMealsDB();
     const drinks = await fetchDefaultDrinksFromCocktailsDB();
     const mealsCategories = await fetchCategoriesFromMealsDB();
@@ -27,19 +28,25 @@ export default function Provider({ children }) {
     setDefaultDrink(drinks);
     setMealCategories(mealsCategories);
     setDrinksCategories(drinksCategories);
+    setLoading(false);
   }
 
   const getDataFromFoods = async (url, search) => {
+    setLoading(true);
     const getFoodArray = await fetchApiMeals(url, search);
     setFoodArray(getFoodArray);
+    setLoading(false);
   };
 
   const getDataFromDrinks = async (url, search) => {
+    setLoading(true);
     const getDrink = await fetchApiDrinks(url, search);
     setDrinkArray(getDrink);
+    setLoading(false);
   };
 
   async function filterMealsByCategory(category) {
+    setLoading(true);
     if (category === isFiltered || category === 'All') {
       setFoodArray(defaultFood);
       setIsFiltered('');
@@ -48,9 +55,11 @@ export default function Provider({ children }) {
       const filteredMeals = await fetchMealsByCategoryFromMealsDB(category);
       setFoodArray(filteredMeals);
     }
+    setLoading(false);
   }
 
   async function filterDrinksByCategory(category) {
+    setLoading(true);
     if (category === isFiltered || category === 'All') {
       setDrinkArray(defaultDrink);
       setIsFiltered('');
@@ -59,6 +68,7 @@ export default function Provider({ children }) {
       const filteredDrinks = await fetchDrinksByCategoryFromCocktailsDB(category);
       setDrinkArray(filteredDrinks);
     }
+    setLoading(false);
   }
 
   useEffect(() => {

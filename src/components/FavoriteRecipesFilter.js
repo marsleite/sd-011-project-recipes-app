@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function FavoriteRecipesButtons({ onChange }) {
   return (
-    <div>
+    <div className="filters-container">
       <button
         type="button"
         data-testid="filter-by-all-btn"
