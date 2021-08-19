@@ -99,7 +99,7 @@ function DrinkDetailCard() {
           title={ `Recipe ${strDrink}` }
           id="video"
         /> }
-      <div style={ { margin: '40px' } }>
+      <div style={ { margin: '40px', paddingBottom: '60px' } }>
         <Recommended value={ rec } type="drink" min={ min } />
       </div>
       <ButtonToProgress data={ drinkDetail } />
