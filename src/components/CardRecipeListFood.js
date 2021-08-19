@@ -32,12 +32,6 @@ function CardRecipeListFood() {
     loadInitialItens();
   }, []);
 
-  // function changeLocation(id) {
-  //   if (id.length === 1) {
-  //     return <Redirect to={ `comidas/${id[0].idMeal}` } />;
-  //   }
-  // }
-
   function renderItems(array) {
     const num = '52968';
 
