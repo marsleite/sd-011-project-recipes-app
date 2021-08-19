@@ -49,8 +49,7 @@ const FavoriteRecipes = () => {
   }
 
   return (
-    <div>
-      { console.log('test') }
+    <main>
       <Header page="Receitas Favoritas" />
       <button
         type="button"
@@ -76,7 +75,7 @@ const FavoriteRecipes = () => {
       >
         Drinks
       </button>
-      <div>
+      <ul>
         {filteredRecipes.map((recipe, index) => {
           const {
             image,
@@ -89,7 +88,7 @@ const FavoriteRecipes = () => {
           } = recipe;
 
           return (
-            <div key={ id }>
+            <li key={ id }>
               <Link to={ `/${type}s/${id}` }>
                 <img
                   src={ image }
@@ -126,11 +125,11 @@ const FavoriteRecipes = () => {
                   alt="Icon to favorite foods"
                 />
               </button>
-            </div>
+            </li>
           );
         })}
-      </div>
-    </div>
+      </ul>
+    </main>
   );
 };
 
