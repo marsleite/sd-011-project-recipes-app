@@ -1,82 +1,105 @@
-// import cocktailDrinks from './cocktailDrinks';
-// import drinkIngredients from './drinkIngredients';
-// import drinkCategories from './drinkCategories';
-// import oneDrink from './oneDrink';
+import cocktailDrinks from './cocktailDrinks';
+import drinkIngredients from './drinkIngredients';
+import drinkCategories from './drinkCategories';
+import oneDrink from './oneDrink';
 import drinksByIngredient from './drinksByIngredient';
 import cocoaDrinks from './cocoaDrinks';
 import drinks from './drinks';
-// import areas from './areas';
+import areas from './areas';
 import beefMeals from './beefMeals';
-// import italianMeals from './italianMeals';
-// import japaneseMeals from './japaneseMeals';
-// import mealCategories from './mealCategories';
-// import mealIngredients from './mealIngredients';
+import italianMeals from './italianMeals';
+import japaneseMeals from './japaneseMeals';
+import mealCategories from './mealCategories';
+import mealIngredients from './mealIngredients';
 import meals from './meals';
 import mealsByIngredient from './mealsByIngredient';
-// import oneMeal from './oneMeal';
+import oneMeal from './oneMeal';
+import * as mealAPI from '../../services/theMealAPI';
+import * as cocktailAPI from '../../services/theCockTailAPI';
 
 function mealsAPIMocked() {
-  jest.mock('../../services/theMealAPI', () => {
-    // const areasMocked = areas;
-    const beefMealsMocked = beefMeals;
-    // const italianMealsMocked = italianMeals;
-    // const japaneseMealsMocked = japaneseMeals;
-    // const mealCategoriesMocked = mealCategories;
-    // const mealIngredientsMocked = mealIngredients;
-    const mealsMocked = meals;
-    const mealsByIngredientMocked = mealByIngredient;
-    // const oneMealMocked = oneMeal;
-
-    const searchBarFetchMealMocked = (type) => {
+  jest
+    .spyOn(mealAPI, 'searchBarFetchMeal')
+    .mockImplementation((search, type) => {
       switch (type) {
       case 'ingredient':
-        return mealsByIngredientMocked;
+        return Promise.resolve(mealsByIngredient);
       case 'name':
-        return beefMealsMocked;
+        return Promise.resolve(beefMeals);
       case 'firstLetter':
-        return mealsMocked;
+        return Promise.resolve(meals);
       default:
         break;
       }
-    };
+    });
+  jest
+    .spyOn(mealAPI, 'getMealDetail')
+    .mockImplementation(() => Promise.resolve(oneMeal));
+  jest
+    .spyOn(mealAPI, 'getInitialMealsRecipes')
+    .mockImplementation(() => Promise.resolve(meals));
+  jest
+    .spyOn(mealAPI, 'getMealsCategoryList')
+    .mockImplementation(() => Promise.resolve(mealCategories));
+  jest
+    .spyOn(mealAPI, 'getMealsByCategory')
+    .mockImplementation(() => Promise.resolve(japaneseMeals));
+  jest
+    .spyOn(mealAPI, 'getMealRecomendations')
+    .mockImplementation(() => Promise.resolve(meals));
+  jest
+    .spyOn(mealAPI, 'getRandomMeal')
+    .mockImplementation(() => Promise.resolve(oneMeal[0].idMeal));
+  jest
+    .spyOn(mealAPI, 'getMealsIngredients')
+    .mockImplementation(() => Promise.resolve(mealIngredients));
+  jest
+    .spyOn(mealAPI, 'getMealsArea')
+    .mockImplementation(() => Promise.resolve(areas));
+  jest
+    .spyOn(mealAPI, 'getMealsByArea')
+    .mockImplementation(() => Promise.resolve(italianMeals));
+}
 
-    return {
-      searchBarFetchMeal: jest.fn((type) => searchBarFetchMealMocked(type)),
-      // getMealDetail: jest.fn(() => oneMeal),
-      // getInitialMealsRecipes: jest.fn(() => meals),
-      // getMealsCategoryList: jest.fn(() => mealCategories),
-      // getMealsByCategory: jest.fn(() => japaneseMeals),
-      // getMealRecomendations: jest.fn(() => meals),
-      // getRandomMeal: jest.fn(() => oneMeal[0].idMeal),
-      // getMealsIngredients: jest.fn(() => mealIngredients),
-      // getMealsArea: jest.fn(() => areas),
-      // getMealsByArea: jest.fn(() => italianMeals),
-    };
-  });
+function cocktailsAPIMocked() {
+  jest
+    .spyOn(cocktailAPI, 'searchBarFetchCockTail')
+    .mockImplementation((search, type) => {
+      switch (type) {
+      case 'ingredient':
+        return drinksByIngredient;
+      case 'name':
+        return cocoaDrinks;
+      case 'firstLetter':
+        return drinks;
+      default:
+        break;
+      }
+    });
+  jest
+    .spyOn(cocktailAPI, 'getDrinkDetail')
+    .mockImplementation(() => Promise.resolve(oneDrink));
+  jest
+    .spyOn(cocktailAPI, 'getInitialDrinksRecipes')
+    .mockImplementation(() => Promise.resolve(drinks));
+  jest
+    .spyOn(cocktailAPI, 'getDrinksCategoryList')
+    .mockImplementation(() => Promise.resolve(drinkCategories));
+  jest
+    .spyOn(cocktailAPI, 'getDrinksByCategory')
+    .mockImplementation(() => Promise.resolve(cocktailDrinks));
+  jest
+    .spyOn(cocktailAPI, 'getDrinkRecomendations')
+    .mockImplementation(() => Promise.resolve(drinks));
+  jest
+    .spyOn(cocktailAPI, 'getRandomDrink')
+    .mockImplementation(() => Promise.resolve(oneDrink[0].idDrink));
+  jest
+    .spyOn(cocktailAPI, 'getDrinksIngredients')
+    .mockImplementation(() => Promise.resolve(drinkIngredients));
 }
 
 export default function servicesMocked() {
-  const searchBarFetchCockTailMocked = (type) => {
-    switch (type) {
-    case 'ingredient':
-      return drinksByIngredient;
-    case 'name':
-      return cocoaDrinks;
-    case 'firstLetter':
-      return drinks;
-    default:
-      break;
-    }
-  };
-  
-  jest.mock('../../services/theCockTailAPI', () => ({
-    searchBarFetchCockTail: jest.fn((type) => searchBarFetchCockTailMocked(type)),
-    // getDrinkDetail: jest.fn(() => oneDrink),
-    // getInitialDrinksRecipes: jest.fn(() => drinks),
-    // getDrinksCategoryList: jest.fn(() => drinkCategories),
-    // getDrinksByCategory: jest.fn(() => cocktailDrinks),
-    // getDrinkRecomendations: jest.fn(() => drinks),
-    // getRandomDrink: jest.fn(() => oneDrink[0].idDrink),
-    // getDrinksIngredients: jest.fn(() => drinkIngredients),
-  }));
+  mealsAPIMocked();
+  cocktailsAPIMocked();
 }
