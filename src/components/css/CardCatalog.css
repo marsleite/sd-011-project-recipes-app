@@ -4,23 +4,23 @@
 }
 
 .Supply-Card {
-  background-color: #FC6E51;
-  border-radius: 5px 5px 5px 5px;
+  background-color: #fc6e51;
+  border-radius: 5px;
   padding-bottom: 15px;
 }
 
 .Supply-Card .supply-img {
   align-items: center;
+  border-radius: 5px 5px 0 0;
   width: 100%;
-  border-radius: 5px 5px 0px 0px;
 }
 
 .title-card {
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  top: 12px;
-  text-align: center;
-  font-size: 1.45em;
-  text-transform: uppercase;
   color: white;
+  font-family: Poppins , sans-serif;
+  font-size: 1.45em;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 12px;
 }

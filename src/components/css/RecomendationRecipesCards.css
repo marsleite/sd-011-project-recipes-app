@@ -10,10 +10,10 @@
 }
 
 .scroll-container {
-  margin-top: 10%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
-  align-items: center;
+  margin-top: 10%;
   overflow: hidden;
+  overflow-y: hidden;
 }
