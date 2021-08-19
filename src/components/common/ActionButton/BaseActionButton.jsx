@@ -16,6 +16,7 @@ function BaseActionButton({ onClick, action, reverse, index }) {
   const iconSrc = action === 'share' ? ShareIcon : getFavoriteIcon(reverse);
   return (
     <button
+      className="ACTION_BUTTON"
       data-testid={ index === null
         ? `${action}-btn`
         : `${index}-horizontal-favorite-btn` }
@@ -24,7 +25,7 @@ function BaseActionButton({ onClick, action, reverse, index }) {
       onClick={ onClick }
       src={ iconSrc }
     >
-      <img src={ iconSrc } alt={ `icon representing ${action}` } />
+      <img className="icon" src={ iconSrc } alt={ `icon representing ${action}` } />
     </button>
   );
 }

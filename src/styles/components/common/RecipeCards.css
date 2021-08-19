@@ -29,6 +29,12 @@
   gap: 8px;
 }
 
+.RECIPE_CARD_LIST .controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .RECIPE_CARD_LIST .main-infos {
   display: flex;
   justify-content: space-between;
@@ -74,11 +80,6 @@
 .RECIPE_CARD_LIST .secondary-info .done-date {
   font-size: 15px;
   font-weight: 400;
-}
-
-.RECIPE_CARD_LIST > li .icon {
-  width: 20px;
-  height: 20px;
 }
 
 .RECIPE_CARD_LIST > li .picture {

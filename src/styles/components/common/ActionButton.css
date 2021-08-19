@@ -1,0 +1,10 @@
+.ACTION_BUTTON {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.ACTION_BUTTON .icon {
+  width: 24px;
+  height: 24px;
+}
