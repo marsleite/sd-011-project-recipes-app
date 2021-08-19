@@ -14,7 +14,7 @@ export const fetchIngredients = (ingredients) => (dispatch) => {
       const response = await handleMealsResponse(meals);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };
 
 export const fetchByName = (byName) => (dispatch) => {
@@ -25,7 +25,7 @@ export const fetchByName = (byName) => (dispatch) => {
       const response = await handleMealsResponse(meals);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };
 
 export const fetchByFirstLetter = (firstLetter) => (dispatch) => {
@@ -36,7 +36,7 @@ export const fetchByFirstLetter = (firstLetter) => (dispatch) => {
       const response = await handleMealsResponse(meals);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };
 
 export const fetchDrinksIngredient = (drinksIngredient) => (dispatch) => {
@@ -47,7 +47,7 @@ export const fetchDrinksIngredient = (drinksIngredient) => (dispatch) => {
       const response = await handleDrinksResponse(drinks);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };
 
 export const fetchDrinksByName = (drinksByName) => (dispatch) => {
@@ -58,7 +58,7 @@ export const fetchDrinksByName = (drinksByName) => (dispatch) => {
       const response = await handleDrinksResponse(drinks);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };
 
 export const fetchDrinksByFirstLetter = (drinksByFirst) => (dispatch) => {
@@ -69,5 +69,5 @@ export const fetchDrinksByFirstLetter = (drinksByFirst) => (dispatch) => {
       const response = await handleDrinksResponse(drinks);
       dispatch(menuReceiveSuccess(response));
     })
-    .catch((error) => dispatch(menuReceiveFailure(error)));
+    .catch(() => dispatch(menuReceiveFailure('404')));
 };

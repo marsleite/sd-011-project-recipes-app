@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -32,13 +33,19 @@ const Drinks = ({
     dispatch(requestDrinksFilters());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (error) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      dispatch(requestDrinkMenu());
+    }
+  }, [error, dispatch]);
+
   return (
     <>
       <nav>
         <Header
           page="Bebidas"
           showSearchBtn
-          error={ error }
           recipe={ drinks }
           recipeId={ drinkId }
           redirectTo="bebidas"

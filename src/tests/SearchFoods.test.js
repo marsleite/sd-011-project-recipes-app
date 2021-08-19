@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, queryByTestId } from '@testing-library/react';
 import SearchFoods from '../pages/SearchFoods';
 
-import { renderWithRouterAndStore } from './testConfig';
+import { renderWithRouterAndStore } from './helper/testConfig';
 
 describe('Screen search foods should have Header component', () => {
   it('Should have a profile button and "Explorar Comidas" title', () => {

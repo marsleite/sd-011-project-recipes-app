@@ -34,10 +34,12 @@ const menuReducer = (state = INITIAL_STATE, action) => {
       mealId: action.menu[0].idMeal,
       drinkId: action.menu[0].idDrink,
       isLoading: false,
+      error: null,
     };
   case RECEIVE_MENU_FAILURE:
     return {
       ...state,
+      menu: [],
       error: action.error,
       isLoading: false,
     };

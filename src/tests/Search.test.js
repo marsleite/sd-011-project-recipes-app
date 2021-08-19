@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, queryByTestId } from '@testing-library/react';
 import Search from '../pages/Search';
 
-import { renderWithRouterAndStore } from './testConfig';
+import { renderWithRouterAndStore } from './helper/testConfig';
 
 describe('Should have the right icons on the search screen', () => {
   it('Should have a profile button and "Explorar" title', () => {

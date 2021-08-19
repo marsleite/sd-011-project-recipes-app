@@ -9,7 +9,7 @@ const RecipeInstructions = ({ strInstructions }) => (
       className="recipe-instructions"
       data-testid="instructions"
     >
-      {strInstructions}
+      { strInstructions }
     </p>
   </section>
 );

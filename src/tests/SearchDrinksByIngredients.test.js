@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import SearchDrinksByIngredients from '../pages/SearchFoodsByIngredients';
 
-import { renderWithRouterAndStore as renderWith } from './testConfig';
+import { renderWithRouterAndStore as renderWith } from './helper/testConfig';
 
 describe('Tests SearchFoodsByIngredients Page', () => {
   const searchDrinksByIngredientsRoute = '/explorar/bebidas';

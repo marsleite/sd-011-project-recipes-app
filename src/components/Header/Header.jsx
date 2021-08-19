@@ -11,7 +11,6 @@ import './header.css';
 const Header = ({
   page,
   showSearchBtn,
-  error,
   recipe,
   recipeId,
   redirectTo,
@@ -40,13 +39,10 @@ const Header = ({
     }
   };
 
-  if (error) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  }
-
   if (selectedRadio && recipe.length === 1) {
     return <Redirect to={ `/${redirectTo}/${recipeId}` } />;
   }
+
   return (
     <>
       <header className="header-style">

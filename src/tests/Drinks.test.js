@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import Drinks from '../pages/Drinks';
 
-import { renderWithRouterAndStore } from './testConfig';
+import { renderWithRouterAndStore } from './helper/testConfig';
 
 describe('Verify if the Header component have the atributs data-testid', () => {
   it('Have data-testid "profile-top-btn"', () => {

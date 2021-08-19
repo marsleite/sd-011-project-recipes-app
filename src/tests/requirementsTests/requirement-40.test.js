@@ -32,7 +32,7 @@ beforeEach(() => jest.clearAllMocks());
 
 describe(`40 - Implement the solution so that if the recipe has been started but not 
 finished, the button text should read "Continuar Receita"`, () => {
-  it('Check "Continuar Receita" button on a food details screen', () => {
+  it('Check "Continuar Receita" button on a food details screen', async () => {
     const inProgressRecipes = {
       meals: {
         52977: [],
@@ -41,11 +41,11 @@ finished, the button text should read "Continuar Receita"`, () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     renderWithRouterAndStore(<App />, { route: mockMealPath });
 
-    const startRecipeBtn = screen.queryByTestId('start-recipe-btn');
+    const startRecipeBtn = await screen.findByTestId('start-recipe-btn');
     expect(startRecipeBtn).toHaveTextContent('Continuar Receita');
   });
 
-  it('Check "Continuar Receita" button on a drink details screen', () => {
+  it('Check "Continuar Receita" button on a drink details screen', async () => {
     const inProgressRecipes = {
       cocktails: {
         15997: [],
@@ -54,7 +54,7 @@ finished, the button text should read "Continuar Receita"`, () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     renderWithRouterAndStore(<App />, { route: mockDrinkPath });
 
-    const startRecipeBtn = screen.queryByTestId('start-recipe-btn');
+    const startRecipeBtn = await screen.findByTestId('start-recipe-btn');
     expect(startRecipeBtn).toHaveTextContent('Continuar Receita');
   });
 });
