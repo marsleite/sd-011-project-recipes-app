@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { searchDrinkById } from '../services/RequestDrinks';
 import { searchFoodsAll } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
-import Clipboard from '../components/Clipboard';
+import ButtonShare from '../components/ButtonShare';
 
 function DetailsDrink(props) {
   const { match: { params: { id } } } = props;
@@ -91,7 +91,7 @@ function DetailsDrink(props) {
           <h3>Instruções</h3>
           <p data-testid="instructions">{ drink.strInstructions }</p>
 
-          <Clipboard />
+          <ButtonShare dataId="share-btn" />
           <button
             className="buttons"
             type="button"
