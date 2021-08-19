@@ -33,54 +33,60 @@ export default function RecipesByLocation() {
     console.log(recipesFiltered);
     const qty = 12;
     return (
-      <div>
-        <select
-          data-testid="explore-by-area-dropdown"
-          onChange={ (event) => filterDropDown(event) }
-        >
-          { location
-            .map((recipe, index) => (
-              <option
-                data-testid={ `${recipe}-option` }
-                key={ index }
-              >
-                { recipe }
-              </option>
-            )) }
-          <option data-testid="All-option">All</option>
-        </select>
-        { recipesFiltered ? recipesFiltered
-          .slice(0, qty)
-          .map((recipe, index) => (
-            <Link to={ `/comidas/${recipe.idMeal}` } key={ index }>
-              <button
-                key={ index }
-                data-testid={ `${index}-recipe-card` }
-                type="button"
-              >
-                <img
-                  data-testid={ `${index}-card-img` }
-                  src={ recipe.strMealThumb }
-                  alt={ recipe.strArea }
-                  className="cardImage"
-                />
-                <p
-                  data-testid={ `${index}-card-name` }
+      <main>
+        <div>
+          <select
+            data-testid="explore-by-area-dropdown"
+            onChange={ (event) => filterDropDown(event) }
+          >
+            { location
+              .map((recipe, index) => (
+                <option
+                  data-testid={ `${recipe}-option` }
+                  key={ index }
                 >
-                  { recipe.strMeal }
-                </p>
-              </button>
-            </Link>
-          )) : 'loading...'}
-      </div>
+                  { recipe }
+                </option>
+              )) }
+            <option data-testid="All-option">All</option>
+          </select>
+        </div>
+        <br />
+        <div className="recipes-container">
+          { recipesFiltered ? recipesFiltered
+            .slice(0, qty)
+            .map((recipe, index) => (
+              <Link to={ `/comidas/${recipe.idMeal}` } key={ index }>
+                <button
+                  className="recipes-card"
+                  key={ index }
+                  data-testid={ `${index}-recipe-card` }
+                  type="button"
+                >
+                  <img
+                    data-testid={ `${index}-card-img` }
+                    src={ recipe.strMealThumb }
+                    alt={ recipe.strArea }
+                    className="cardImage"
+                  />
+                  <h5
+                    data-testid={ `${index}-card-name` }
+                  >
+                    { recipe.strMeal }
+                  </h5>
+                </button>
+              </Link>
+            )) : ''}
+        </div>
+      </main>
     );
   }
 
   return (
     <main>
       <Header haveSearchBtn title="Explorar Origem" />
-      <Footer />
       {location ? renderIngredientsCard() : 'loading...'}
+      <Footer />
     </main>
   );
 }
