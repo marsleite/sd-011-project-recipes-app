@@ -9,20 +9,6 @@ function NavCategories({ origin }) {
   const [category, setCategory] = useState([]);
   const { setFiltered, setByCategory } = RequestHook();
 
-  useEffect(() => {
-    function loadCategories() {
-      let array;
-      if (origin === 'Food') {
-        array = ['All', 'Beef', 'Breakfast', 'Chicken', 'Dessert', 'Goat'];
-      } else if (origin === 'Drink') {
-        array = ['All', 'Ordinary Drink', 'Cocktail',
-          'Milk / Float / Shake', 'Other/Unknown', 'Cocoa'];
-      }
-      setCategory(array);
-    }
-    loadCategories();
-  }, []);
-
   async function searchByCategory(text) {
     let items;
     if (origin === 'Food') {
@@ -55,6 +41,20 @@ function NavCategories({ origin }) {
     }
   }
 
+  useEffect(() => {
+    function loadCategories() {
+      let array;
+      if (origin === 'Food') {
+        array = ['All', 'Beef', 'Breakfast', 'Chicken', 'Dessert', 'Goat'];
+      } else if (origin === 'Drink') {
+        array = ['All', 'Ordinary Drink', 'Cocktail',
+          'Milk / Float / Shake', 'Other/Unknown', 'Cocoa'];
+      }
+      setCategory(array);
+    }
+    loadCategories();
+  }, []);
+
   return (
     <div>
       { category.map((item, index) => (
@@ -67,7 +67,7 @@ function NavCategories({ origin }) {
         >
           { item }
         </button>
-      ))}
+      )) }
     </div>
   );
 }

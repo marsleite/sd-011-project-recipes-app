@@ -37,7 +37,7 @@ function DetailsDrink(props) {
           className="recomendation-button"
           hidden={ number > 1 }
         >
-          <p data-testid={ `${number}-recomendation-title` }>{object.strMeal}</p>
+          <p data-testid={ `${number}-recomendation-title` }>{ object.strMeal }</p>
           <img
             src={ object.strMealThumb }
             alt={ `${number}-card-name` }
@@ -94,6 +94,7 @@ function DetailsDrink(props) {
           <p data-testid="instructions">{ drink.strInstructions }</p>
 
           <Clipboard />
+
           <button
             className="buttons"
             type="button"
