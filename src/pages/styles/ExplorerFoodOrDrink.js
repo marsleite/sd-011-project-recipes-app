@@ -6,7 +6,7 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 70vh;
+  min-height: 73vh;
 `;
 
 export const Button = styled.button`

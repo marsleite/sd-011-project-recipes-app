@@ -1,5 +1,5 @@
 .header-container {
-  background: white;
+  background: #ffc729;
   color: black;
   font-size: 30px;
   padding: 15px;
@@ -9,8 +9,8 @@
 .header {
   display: flex;
   flex-wrap: wrap;
-  font-family: Times , serif;
-  justify-content: space-between;
+  font-family: Poppins , sans-serif;
+  justify-content: space-evenly;
 }
 
 .search-bar {

@@ -1,7 +1,7 @@
 .perfil-page {
   display: flex;
   flex-direction: column;
-  height: 640px;
+  height: 100vh;
   text-align: center;
   width: 360px;
 }
@@ -18,11 +18,11 @@
   border-radius: 5px;
   color: rgba(0, 0, 0, 0.8);
   font-family: Poppins , sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   height: 60px;
   letter-spacing: 0.05em;
-  margin: 10px 0;
+  margin: 80px 0;
   margin-left: 18px;
   padding: 10px 0;
   width: 90%;
@@ -38,7 +38,7 @@
   font-weight: 700;
   height: 60px;
   letter-spacing: 0.05em;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 10px 0;
   width: 80%;
 }
@@ -53,7 +53,7 @@
   font-weight: 700;
   height: 60px;
   letter-spacing: 0.05em;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 10px 0;
   width: 80%;
 }
@@ -68,13 +68,13 @@
   font-weight: 700;
   height: 60px;
   letter-spacing: 0.05em;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 10px 0;
   width: 80%;
 }
 
 .logo-image {
-  margin-left: 100px;
+  margin: 20px 0 0 100px;
   padding: 10px;
   width: 40%;
 }

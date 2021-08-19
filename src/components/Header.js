@@ -6,6 +6,10 @@ import searchIcon from '../images/searchIcon.svg';
 import './css/Header.css';
 import SearchBar from './SearchBar';
 
+import {
+  Button,
+} from './styles/FooterAndHeader';
+
 function Header({ props: { title, enableSearchButton, enableProfileButton } }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
@@ -15,28 +19,30 @@ function Header({ props: { title, enableSearchButton, enableProfileButton } }) {
         {enableProfileButton
           && (
             <Link to="/perfil">
-              <button
+              <Button
+                small
                 type="button"
                 data-testid="profile-top-btn"
                 id="profileIcon"
                 src={ profileIcon }
               >
                 <img src={ profileIcon } alt="profile" />
-              </button>
+              </Button>
             </Link>)}
 
         <h1 data-testid="page-title">{title}</h1>
 
         {enableSearchButton
           && (
-            <button
+            <Button
+              small
               type="button"
               data-testid="search-top-btn"
               src={ searchIcon }
               onClick={ () => setShowSearchBar(!showSearchBar) }
             >
               <img src={ searchIcon } alt="Lens" />
-            </button>)}
+            </Button>)}
         {showSearchBar && (<SearchBar title={ title } />)}
       </header>
     </div>

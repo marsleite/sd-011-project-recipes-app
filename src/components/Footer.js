@@ -5,29 +5,35 @@ import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import './css/Footer.css';
 
+import {
+  FooterContainer,
+  Button,
+  Icon,
+} from './styles/FooterAndHeader';
+
 function Footer() {
   return (
-    <footer className="footer" data-testid="footer">
+    <FooterContainer className="footer" data-testid="footer">
       <Link to="/bebidas">
-        <button type="button" src={ drinkIcon } data-testid="drinks-bottom-btn">
-          <img src={ drinkIcon } alt="Drink" />
-        </button>
+        <Button type="button" src={ drinkIcon } data-testid="drinks-bottom-btn">
+          <Icon src={ drinkIcon } alt="Drink" />
+        </Button>
       </Link>
       <Link to="/explorar">
-        <button type="button" src={ exploreIcon } data-testid="explore-bottom-btn">
-          <img src={ exploreIcon } alt="Explorar" />
-        </button>
+        <Button type="button" src={ exploreIcon } data-testid="explore-bottom-btn">
+          <Icon src={ exploreIcon } alt="Explorar" />
+        </Button>
       </Link>
       <Link to="/comidas">
-        <button
+        <Button
           type="button"
           src={ mealIcon }
           data-testid="food-bottom-btn"
         >
-          <img src={ mealIcon } alt="Comidas" />
-        </button>
+          <Icon src={ mealIcon } alt="Comidas" />
+        </Button>
       </Link>
-    </footer>
+    </FooterContainer>
   );
 }
 

@@ -89,6 +89,7 @@ export const CardFoodTitle = styled.h2`
   position: relative;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   top: 60px;
+  right: 40px;
   transition: 0.1s;
   z-index: 98;
   ${CardContainer}:hover & {
@@ -109,6 +110,7 @@ export const CardFoodTitleBordered = styled.h2`
   -webkit-text-stroke-color: rgba(44, 44, 44, 08);
   -webkit-text-stroke-width: 2px;
   top: 60px;
+  right: 40px;
   transition: 0.1s;
   z-index: 99;
   ${CardContainer}:hover & {
@@ -125,7 +127,7 @@ export const CardDrinkTitle = styled.h2`
   line-height: 72px;
   margin: 40px 0 0 40px;
   position: relative;
-  right: 10px;
+  right: 30px;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   top: 60px;
   transition: 0.1s;
@@ -144,7 +146,7 @@ export const CardDrinkTitleBordered = styled.h2`
   line-height: 72px;
   margin: -72px 0 -35px 40px;
   position: relative;
-  right: 10px;
+  right: 30px;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   -webkit-text-stroke-color: rgba(44, 44, 44, 08);
   -webkit-text-stroke-width: 2px;

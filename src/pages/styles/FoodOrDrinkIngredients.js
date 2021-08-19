@@ -4,12 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 360px;
+  height: 100% + 100vh;
 `;
 
 export const CardIngredient = styled.div`
   background: #f7f7ff;
   border-radius: 5px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.50);
   height: 200px;
   margin: 15px;
   width: 150px;
