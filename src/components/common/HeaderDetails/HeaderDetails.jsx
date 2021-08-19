@@ -1,97 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useHistory } from 'react-router-dom';
-import useFavoriteRecipies from '../../../hooks/useFavoriteRecipies';
-import shareIcon from '../../../images/shareIcon.svg';
-import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import './HeaderDetails.css';
+import ShareButton from './ShareButton';
+import FavoriteButton from './FavoriteButton';
 
 const HeaderDetails = (
   {
     thumb,
     alt,
     category,
-    favoriteFood,
-    favoriteDrink,
     drinkOrFood,
+    removeUrl,
   },
-) => {
-  const { favoriteTrue, setFavoriteTrue, favoriteRecipe } = useFavoriteRecipies(
-    favoriteFood,
-    favoriteDrink,
-    drinkOrFood,
-  );
-  const [menssage, setMenssage] = useState(null);
-  const history = useHistory();
-  useEffect(() => {
-    const favoritedStore = localStorage.favoriteRecipes;
-    if (favoritedStore) {
-      const saveLocalStorage = JSON.parse(favoritedStore)
-        .some((trueOrFalse) => history.location.pathname.includes(trueOrFalse.id));
-
-      if (saveLocalStorage) {
-        setFavoriteTrue(true);
-      }
+) => (
+  <header>
+    {
+      thumb
+        ? (
+          <img
+            className="thumbMeal-style"
+            src={ thumb }
+            alt={ `showing ${alt} product` }
+            data-testid="recipe-photo"
+          />
+        )
+        : <h1>Carregando</h1>
     }
-  }, [history.location.pathname, setFavoriteTrue]);
-
-  const handleClipboard = () => {
-    navigator.clipboard
-      .writeText(window.location.href.split('/in-progress')[0]);
-    setMenssage('Link copiado!');
-    const time = 3000;
-    setTimeout(() => {
-      setMenssage(null);
-    }, time);
-  };
-
-  return (
-    <header>
-      {
-        thumb
-          ? (
-            <img
-              className="thumbMeal-style"
-              src={ thumb }
-              alt={ `showing ${alt} product` }
-              data-testid="recipe-photo"
-            />
-          )
-          : <h1>Carregando</h1>
-      }
-      <h4 data-testid="recipe-title">{alt}</h4>
-      <h6 data-testid="recipe-category">{category}</h6>
-      <button
-        type="button"
-        onClick={ () => handleClipboard() }
-      >
-        <img
-          data-testid="share-btn"
-          src={ shareIcon }
-          alt="Icon to share foods"
-        />
-      </button>
-      <button
-        type="button"
-        onClick={ () => favoriteRecipe() }
-      >
-        <img
-          data-testid="favorite-btn"
-          src={
-            !favoriteTrue
-              ? whiteHeartIcon
-              : blackHeartIcon
-          }
-          alt="Icon to favorite foods"
-        />
-      </button>
-      <span>{menssage}</span>
-    </header>
-  );
-};
+    <h4 data-testid="recipe-title">{alt}</h4>
+    <h6 data-testid="recipe-category">{category}</h6>
+    <FavoriteButton drinkOrFood={ drinkOrFood } />
+    <ShareButton removeUrl={ removeUrl } />
+  </header>
+);
 
 const mapStateToProps = (state) => ({
   favoriteFood: state.recipeDetailsReducer.meal,
