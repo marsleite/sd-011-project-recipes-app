@@ -44,7 +44,7 @@ class Comidas extends Component {
       ...allCategories.map((item, index) => (
         <label
           className="switch"
-          key={ index }
+          key={ `${item}${index}` }
           htmlFor="id"
         >
           <input
@@ -72,7 +72,7 @@ class Comidas extends Component {
     }
     const recipes = !isRecipeFilter ? allRecipesSlice : recipesByIngredient;
     return recipes.map((item, index) => (
-      <Link to={ `/comidas/${item.idMeal}` } key={ index }>
+      <Link to={ `/comidas/${item.idMeal}` } key={ `${item}${index}` }>
         <div
           className="card-item"
           data-testid={ `${index}-recipe-card` }
