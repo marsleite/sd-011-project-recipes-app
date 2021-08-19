@@ -87,6 +87,7 @@ const FoodRecipeProgress = ({
         title={ altDetails.strMeal }
         category={ categoryDetails.strCategory }
         drinkOrFood="comida"
+        removeUrl="/in-progress"
       />
       <IngredientsListWithCheckbox
         id={ mealDetails.idMeal }

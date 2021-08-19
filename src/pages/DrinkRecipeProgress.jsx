@@ -67,6 +67,7 @@ const DrinkRecipeProgress = ({
         title={ altDrinks.strDrink }
         category={ categoryDetails.strAlcoholic }
         drinkOrFood="bebida"
+        removeUrl="/in-progress"
       />
       <IngredientsListWithCheckbox
         id={ drinkDetails.idDrink }

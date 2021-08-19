@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import FavoriteButton from './FavoriteButton';
-import shareIcon from '../../../images/shareIcon.svg';
 import './HeaderDetails.css';
+import ShareButton from './ShareButton';
+import FavoriteButton from './FavoriteButton';
 
 const HeaderDetails = (
   {
@@ -12,54 +12,28 @@ const HeaderDetails = (
     alt,
     category,
     drinkOrFood,
-
+    removeUrl,
   },
-) => {
-  const [menssage, setMenssage] = useState(null);
-
-  const handleClipboard = () => {
-    navigator.clipboard
-      .writeText(window.location.href.split('/in-progress')[0]);
-    setMenssage('Link copiado!');
-    const time = 3000;
-    setTimeout(() => {
-      setMenssage(null);
-    }, time);
-  };
-
-  return (
-    <header>
-      {
-        thumb
-          ? (
-            <img
-              className="thumbMeal-style"
-              src={ thumb }
-              alt={ `showing ${alt} product` }
-              data-testid="recipe-photo"
-            />
-          )
-          : <h1>Carregando</h1>
-      }
-      <h4 data-testid="recipe-title">{alt}</h4>
-      <h6 data-testid="recipe-category">{category}</h6>
-      <FavoriteButton
-        drinkOrFood={ drinkOrFood }
-      />
-      <button
-        type="button"
-        onClick={ () => handleClipboard() }
-      >
-        <img
-          data-testid="share-btn"
-          src={ shareIcon }
-          alt="Icon to share foods"
-        />
-      </button>
-      <span>{menssage}</span>
-    </header>
-  );
-};
+) => (
+  <header>
+    {
+      thumb
+        ? (
+          <img
+            className="thumbMeal-style"
+            src={ thumb }
+            alt={ `showing ${alt} product` }
+            data-testid="recipe-photo"
+          />
+        )
+        : <h1>Carregando</h1>
+    }
+    <h4 data-testid="recipe-title">{alt}</h4>
+    <h6 data-testid="recipe-category">{category}</h6>
+    <FavoriteButton drinkOrFood={ drinkOrFood } />
+    <ShareButton removeUrl={ removeUrl } />
+  </header>
+);
 
 const mapStateToProps = (state) => ({
   favoriteFood: state.recipeDetailsReducer.meal,
