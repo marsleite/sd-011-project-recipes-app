@@ -78,7 +78,6 @@ function RecipeProgressDrink(props) {
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
-        <Clipboard />
         <button
           type="button"
           data-testid="favorite-btn"
