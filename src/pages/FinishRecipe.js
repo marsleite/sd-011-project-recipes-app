@@ -7,41 +7,8 @@ function FinishRecipe() {
   // vai precisar de uma função que vai puxar os dados do localstorage
   // esta função vai puxar e setar o state- doneRecipe
 
-  const lStorage = [{
-    id: 'id - da - receit',
-    type: 'comida',
-    area: 'area',
-    category: 'categoria',
-    alcoholicOrNot: 'alcoholic',
-    name: 'nome - da -receita',
-    image: 'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg',
-    doneDate: 'quando - a - receita - foi  concluida',
-    tags: 'array - de - tags - da - recita - ou - array - vazio',
-  },
-  {
-    id: 'id - da - receita',
-    type: 'bebida',
-    area: 'area - da - receita - ou - texto - vazio',
-    category: 'categoria - da - receita - ou - texto - vazio',
-    alcoholicOrNot: 'alcoholic - ou - non - alcoholic - ou - texto - vazio',
-    name: 'nome - da - receita',
-    image: 'https://www.thecocktaildb.com/images/media/drink/apneom1504370294.jpg',
-    doneDate: 'quando - a - receita - foi - concluida',
-    tags: 'array - de - tags - da - receita - ou - array - vazio',
-  },
-  {
-    id: 'id - da - receita',
-    type: 'bebida',
-    area: 'area - da - receita - ou - texto - vazio',
-    category: 'categoria - da - receita - ou - texto - vazio',
-    alcoholicOrNot: 'alcoholic - ou - non - alcoholic - ou - texto - vazio',
-    name: 'nome - da - receita',
-    image: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
-    doneDate: 'quando - a - receita - foi - concluida',
-    tags: 'array - de - tags - da - receita - ou - array - vazio',
-  }];
 
-  const [doneRecipe, setDoneRecipe] = useState(lStorage);
+  const [doneRecipe, setDoneRecipe] = useState([]);
   const [allDoneRecepies, setAllRecepies] = useState();
 
   function getStorage() {
@@ -69,7 +36,7 @@ function FinishRecipe() {
       setDoneRecipe(allDoneRecepies);
       break;
     default:
-      setDoneRecipe(lStorage);
+      setDoneRecipe(allDoneRecepies);
       break;
     }
   }

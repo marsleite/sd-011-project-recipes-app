@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import { searchId } from '../services/RequestDrinks';
 import '../styles/drink.css';
 // import Clipboard from '../components/Clipboard';
@@ -9,7 +10,6 @@ function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInput, setChangeInput] = useState(true);
-  const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
 
   useEffect(() => {
     async function getDetailsById() {
@@ -20,17 +20,31 @@ function RecipeProgressDrink(props) {
     getDetailsById();
   }, [id]);
 
-  function isChecked(numero) {
+  function storageCheck() {
+    let verifyRecipeId;
+    const storageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (storageFavorite !== null) {
+      verifyRecipeId = object.values(storageFavorite).find(({ id: x }) => x === id);
+    }
+    return verifyRecipeId;
+  }
+
+  function isChecked(numero, e) {
+    if (e.currentTarget.className !== 'checked') {
+      e.currentTarget.className = 'checked';
+    } else if (e.currentTarget.className === 'checked') {
+      e.currentTarget.className = '';
+    }
+
     setChangeInput(() => !changeInput);
     if (changeInput === true) {
-      setchangeInputDrinkChecked('checked');
       localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
     } else {
-      setchangeInputDrinkChecked('');
       localStorage.removeItem('inProgressRecipes');
     }
     console.log(numero);
   }
+
 
   function renderIngrediente(drink) {
     const array = [];
@@ -43,8 +57,7 @@ function RecipeProgressDrink(props) {
             <label
               htmlFor={ numero }
               data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isChecked(`${numero - 1}-ingredient-step`) }
-              className={ changeInputDrinkChecked }
+              onChange={ (e) => isChecked(`${numero - 1}-ingredient-step`, e) }
             >
               <input
                 type="checkbox"
@@ -61,6 +74,36 @@ function RecipeProgressDrink(props) {
       }
     }
     return array;
+  }
+
+  function recStorage() {
+    const { strDrink, strDrinkThumb, strAlcoholic, strTags } = initialItemApi[0];
+    const date = new Date();
+
+    const doneRecipetwo = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: 'Cocktail',
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+      doneDate: date,
+      tags: strTags,
+    };
+
+    storageCheck();
+
+    const done = localStorage.getItem('doneRecipes');
+    console.log(strTags);
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('doneRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('doneRecipes', stringNewArrayOfObjects);
   }
 
   return (
@@ -94,12 +137,16 @@ function RecipeProgressDrink(props) {
         >
           Favorite
         </button>
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-        >
-          Finalizar Receita
-        </button>
+        <Link to="/receitas-feitas">
+
+          <button
+            type="button"
+            data-testid="finish-recipe-btn"
+            onClick={ () => recStorage() }
+          >
+            Finalizar Receita
+          </button>
+        </Link>
       </div>
     )));
 }
