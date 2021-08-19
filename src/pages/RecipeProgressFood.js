@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import Clipboard from '../components/Clipboard';
 import { searchById } from '../services/RequestFood';
 import '../styles/drink.css';
@@ -59,7 +59,7 @@ function RecipeProgressFood(props) {
     const array = [];
     const limitItens = 15;
 
-    for (let numero = 1;numero <= limitItens;numero += 1) {
+    for (let numero = 1; numero <= limitItens; numero += 1) {
       if (food[`strIngredient${numero}`] !== null
         && food[`strIngredient${numero}`] !== '') {
         array.push(
