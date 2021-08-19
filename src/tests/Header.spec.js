@@ -8,14 +8,15 @@ window.MutationObserver = MutationObserver;
 const PROFILE_TOP_BTN = 'profile-top-btn';
 const SEARCH_TOP_BTN = 'search-top-btn';
 const SEARCH_INPUT = 'search-input';
+const PAGE_TITLE = 'page-title';
 
-describe('Testando Componente Header', () => {
+describe('1 - Testando Links do Header', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
   });
 
-  it('1 - Testando link para perfil', () => {
+  it('Testando link para perfil', () => {
     const {
       getByTestId,
       pathname,
@@ -26,10 +27,9 @@ describe('Testando Componente Header', () => {
     expect(pathname()).toBe('/perfil');
   });
 
-  it('2 - Testando botão para search bar', async () => {
+  it('Testando botão para search bar', async () => {
     const {
       getByTestId,
-      pathname
     } = renderWithRouterAndBothContext('/comidas');
     await waitFor(() => {
       const searchButton = getByTestId(SEARCH_TOP_BTN);
@@ -38,5 +38,42 @@ describe('Testando Componente Header', () => {
     });
     const searchInput = getByTestId(SEARCH_INPUT);
     expect(searchInput).toBeInTheDocument();
+  });
+});
+
+describe('2 - Testando títulos do Header', () => {
+  beforeEach(() => {
+    clearAndSetLsTests();
+    servicesMocked();
+  });
+
+  it('Testando título Bebidas', async () => {
+    const {
+      getByTestId,
+    } = renderWithRouterAndBothContext('/bebidas');
+    await waitFor(() => {
+      const title = getByTestId(PAGE_TITLE);
+      expect(title).toHaveTextContent(/bebidas/i);
+    });
+  });
+
+  it('Testando título Explorar', async () => {
+    const {
+      getByTestId,
+    } = renderWithRouterAndBothContext('/explorar');
+    await waitFor(() => {
+      const title = getByTestId(PAGE_TITLE);
+      expect(title).toHaveTextContent(/explorar/i);
+    });
+  });
+
+  it('Testando título Receitas Favoritas', async () => {
+    const {
+      getByTestId,
+    } = renderWithRouterAndBothContext('/receitas-favoritas');
+    await waitFor(() => {
+      const title = getByTestId(PAGE_TITLE);
+      expect(title).toHaveTextContent(/receitas favoritas/i);
+    });
   });
 });

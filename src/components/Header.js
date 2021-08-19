@@ -69,7 +69,6 @@ function Header({ title, isButtonVisible }) {
         <h3 data-testid="page-title">{ title }</h3>
         { searchButton() }
       </div>
-
       { searchBarShow ? <SearchBar /> : null }
     </header>
   );
