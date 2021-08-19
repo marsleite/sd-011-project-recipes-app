@@ -22,8 +22,7 @@ function TopHeaderBar(props) {
       setSearchBar(false);
     }
   }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(validToggle, [pathname]);
+  useEffect(validToggle, [pathname, setSearchBar]);
 
   return (
     <div className="top-header-bar">
