@@ -18,9 +18,11 @@ function CardRecipeListFood() {
   async function loadInitialItens() {
     let request;
     if (ingredient !== '') {
+      console.log('ing dif vazio', ingredient);
       request = await searchByIngredient(ingredient);
       setInitialItens(request);
     } else {
+      console.log('vazio', ingredient);
       request = await searchFoodsAll();
       setInitialItens(request);
     }
@@ -38,7 +40,13 @@ function CardRecipeListFood() {
 
   function renderItems(array) {
     const num = '52968';
-    if (!array) return;
+
+    if (!array) {
+      array = initialItens;
+      array.slice(0, MAX_RESULT).map((item, index) => (
+        <CardRecipe key={ index } item={ item } index={ index } />));
+    }
+
     if (array.length === 1 && array[0].idMeal !== num) {
       return <Redirect to={ `/comidas/${array[0].idMeal}` } />;
     }
