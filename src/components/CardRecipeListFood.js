@@ -33,7 +33,6 @@ function CardRecipeListFood() {
 
   function renderItems(array) {
     const num = '52968';
-
     if (!array) {
       array = initialItens;
       array.slice(0, MAX_RESULT).map((item, index) => (
