@@ -70,29 +70,6 @@ function CardCatalog() {
       </Container>);
   }
 
-  // function renderDrinksCards() {
-  //   return catalogLimited.map((drink, index) => (
-  //     <Link
-  //       key={ index }
-  //       to={ `/bebidas/${drink.idDrink}` }
-  //     >
-  //       <div data-testid={ `${index}-recipe-card` } className="supply-card">
-  //         <div
-  //           data-testid={ `${index}-card-name` }
-  //         >
-  //           <h1>{drink.strDrink}</h1>
-  //         </div>
-  //         <img
-  //           className="supply-img"
-  //           src={ drink.strDrinkThumb }
-  //           alt={ drink.strDrink }
-  //           data-testid={ `${index}-card-img` }
-  //         />
-  //       </div>
-  //     </Link>
-  //   ));
-  // }
-
   useEffect(() => () => setCatalog(''), [setCatalog]);
 
   return (
