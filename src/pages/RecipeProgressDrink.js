@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import Clipboard from '../components/Clipboard';
 import { searchDrinkById } from '../services/RequestDrinks';
 import '../styles/drink.css';
@@ -9,55 +9,110 @@ function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInput, setChangeInput] = useState(false);
-  const [clicked, setClicked] = useState(0);
+  // const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
     async function getDetailsById() {
-      const itemsDrink = await searchDrinkById(id);
+      const itemsDrink = await searchId(id);
       setInitialItemApi(itemsDrink);
     }
     getDetailsById();
-  }, []);
+  }, [id]);
 
-  function handleClick({ value }) {
-    if (!changeInput) {
-      setClicked(value);
-      localStorage.setItem('inProgressRecipes', JSON.stringify(value));
-    } else {
-      setClicked(0);
-      localStorage.removeItem('inProgressRecipes');
+  // function handleClick({ value }) {
+  //   if (!changeInput) {
+  //     setClicked(value);
+  //     localStorage.setItem('inProgressRecipes', JSON.stringify(value));
+  //   } else {
+  //     setClicked(0);
+  //     localStorage.removeItem('inProgressRecipes');
+  //   }
+  //   setChangeInput((state) => !state);
+  // }
+
+  function storageCheck() {
+    let verifyRecipeId;
+    const storageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (storageFavorite !== null) {
+      verifyRecipeId = object.values(storageFavorite).find(({ id: x }) => x === id);
     }
-    setChangeInput((state) => !state);
+    return verifyRecipeId;
   }
 
-  function renderIngredient(drink) {
+  function isChecked(numero, e) {
+    if (e.currentTarget.className !== 'checked') {
+      e.currentTarget.className = 'checked';
+    } else if (e.currentTarget.className === 'checked') {
+      e.currentTarget.className = '';
+    }
+
+    setChangeInput(() => !changeInput);
+    if (changeInput === true) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
+    } else {
+      localStorage.removeItem('inProgressRecipes');
+    }
+    console.log(numero);
+  }
+
+  function renderIngrediente(drink) {
     const array = [];
     const limitItens = 15;
-    for (let index = 1; index <= limitItens; index += 1) {
-      if (drink[`strIngredient${index}`]) {
-        const className = clicked === `${index}` ? 'checked' : '';
-        const ingredient = drink[`strIngredient${index}`];
-        const measure = drink[`strMeasure${index}`];
+    for (let numero = 1;numero <= limitItens;numero += 1) {
+      if (drink[`strIngredient${numero}`] !== null
+        && drink[`strIngredient${numero}`] !== '') {
         array.push(
-          <div key={ index }>
+          <div>
             <label
-              htmlFor={ `${index}-ingredient` }
-              data-testid={ `${index}-ingredient-step` }
-              className={ className }
+              htmlFor={ numero }
+              data-testid={ `${numero}-ingredient-step` }
+              onChange={ (e) => isChecked(`${numero - 1}-ingredient-step`, e) }
             >
               <input
                 type="checkbox"
-                id={ `${index}-ingredient` }
-                value={ index }
-                onChange={ (e) => handleClick(e.target) }
+                data-testid={ `${numero}-ingredient-step` }
               />
-              {`${ingredient} ${measure}`}
+              { `${drink[`strIngredient${numero}`]} ` }
+              { (drink[`strMeasure${numero}`] !== null
+                && drink[`strMeasure${numero}`] !== '')
+                ? <span>{ `${drink[`strMeasure${numero}`]}` }</span>
+                : '' }
             </label>
           </div>,
         );
       }
     }
     return array;
+  }
+
+  function recStorage() {
+    const { strDrink, strDrinkThumb, strAlcoholic, strTags } = initialItemApi[0];
+    const date = new Date();
+
+    const doneRecipetwo = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: 'Cocktail',
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+      doneDate: date,
+      tags: strTags,
+    };
+
+    storageCheck();
+
+    const done = localStorage.getItem('doneRecipes');
+    console.log(strTags);
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('doneRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('doneRecipes', stringNewArrayOfObjects);
   }
 
   return (
@@ -90,6 +145,7 @@ function RecipeProgressDrink(props) {
           <button
             type="button"
             data-testid="finish-recipe-btn"
+            onClick={ () => recStorage() }
           >
             Finalizar Receita
           </button>
@@ -105,5 +161,4 @@ RecipeProgressDrink.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-
 export default RecipeProgressDrink;
