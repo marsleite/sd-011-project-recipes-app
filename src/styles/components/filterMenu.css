@@ -16,8 +16,7 @@
   line-height: 32px;
   margin: 5px;
   outline: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: scroll;
   white-space: nowrap;
   width: 105px;
 }
