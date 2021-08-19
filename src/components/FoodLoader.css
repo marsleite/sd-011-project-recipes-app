@@ -21,11 +21,11 @@
 }
 
 .box {
+  align-self: center;
   border-radius: 50%;
-  display: block;
+  display: flex;
   height: 200px;
-  margin: auto;
-  margin-top: calc(50% + 50px);
+  justify-self: center;
   position: relative;
   width: 200px;
 }
