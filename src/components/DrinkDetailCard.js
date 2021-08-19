@@ -37,9 +37,7 @@ function DrinkDetailCard() {
   }, [path]);
 
   const {
-    // idDrink,
     strAlcoholic,
-    strCategory,
     strInstructions,
     strDrink,
     strDrinkThumb,
