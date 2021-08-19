@@ -26,7 +26,6 @@ const DoneRecipes = () => {
         setFilteredRecipes(filteredDrink);
         break;
       }
-
       default:
         setFilteredRecipes(doneRecipes);
       }
