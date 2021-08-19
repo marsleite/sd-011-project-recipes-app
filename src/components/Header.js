@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
+import chef from '../images/chef1.png';
 import './css/Header.css';
 import SearchBar from './SearchBar';
+import search from '../images/search.png';
+import 'animate.css';
 
 import {
   Button,
@@ -12,10 +13,11 @@ import {
 
 function Header({ props: { title, enableSearchButton, enableProfileButton } }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
-
+  let classN = 'header';
+  if (title === '') classN = 'header1';
   return (
     <div className="header-container">
-      <header className="header">
+      <header className={ classN }>
         {enableProfileButton
           && (
             <Link to="/perfil">
@@ -24,13 +26,18 @@ function Header({ props: { title, enableSearchButton, enableProfileButton } }) {
                 type="button"
                 data-testid="profile-top-btn"
                 id="profileIcon"
-                src={ profileIcon }
+                src={ chef }
               >
-                <img src={ profileIcon } alt="profile" />
+                <img src={ chef } alt="profile" />
               </Button>
             </Link>)}
 
-        <h1 data-testid="page-title">{title}</h1>
+        <h1
+          className="animate__animated animate__swing"
+          data-testid="page-title"
+        >
+          {title}
+        </h1>
 
         {enableSearchButton
           && (
@@ -38,10 +45,10 @@ function Header({ props: { title, enableSearchButton, enableProfileButton } }) {
               small
               type="button"
               data-testid="search-top-btn"
-              src={ searchIcon }
+              src={ search }
               onClick={ () => setShowSearchBar(!showSearchBar) }
             >
-              <img src={ searchIcon } alt="Lens" />
+              <img src={ search } alt="Lens" />
             </Button>)}
         {showSearchBar && (<SearchBar title={ title } />)}
       </header>

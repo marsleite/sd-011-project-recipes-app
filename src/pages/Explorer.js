@@ -24,6 +24,7 @@ import {
 
 function Explorer() {
   const headerProps = {
+    title: '',
     enableSearchButton: false,
     enableProfileButton: true,
   };

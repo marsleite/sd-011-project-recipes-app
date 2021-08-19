@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
+import Loader from 'react-loader-spinner';
 import shareIcon from '../images/shareIcon.svg';
 import DrinkFavoriteButton from '../components/DrinkFavoriteButton';
 import CheckboxDrink from '../components/CheckboxDrink';
 // import '../components/css/RecipeDetails.css';
 import './css/RecipeDetails.css';
+import './css/Foods.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 function RecipeDrinkInProgress({ match, location }) {
   const [recipe, setRecipe] = useState('');
@@ -115,7 +118,15 @@ function RecipeDrinkInProgress({ match, location }) {
 
   return (
     <div>
-      {!recipe ? <div>Loading...</div> : renderDrinkDetails()}
+      {!recipe ? <div className="loader">
+        <Loader
+          type="ThreeDots"
+          color="#FFC729"
+          heigh={ 100 }
+          width={ 100 }
+          timeout={ 3000 }
+        />
+      </div> : renderDrinkDetails()}
     </div>
   );
 }

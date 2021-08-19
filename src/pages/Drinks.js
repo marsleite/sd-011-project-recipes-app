@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CardCatalog from '../components/CardCatalog';
 import GlobalContext from '../context/GlobalContext';
 import ButtonsCategories from '../components/ButtonsCategories';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import './css/Foods.css';
 
 function Drinks({ match: { params } }) {
   const headerProps = {
@@ -33,7 +36,15 @@ function Drinks({ match: { params } }) {
       <Header props={ headerProps } />
       { !searchURL.includes('filter')
       && <ButtonsCategories categoryName={ headerProps.title } /> }
-      {!catalog ? <div>Loading...</div> : <CardCatalog />}
+      {!catalog ? <div className="loader">
+        <Loader
+          type="ThreeDots"
+          color="#FFC729"
+          heigh={ 100 }
+          width={ 100 }
+          timeout={ 3000 }
+        />
+                  </div> : <CardCatalog />}
       <Footer />
     </div>
   );
