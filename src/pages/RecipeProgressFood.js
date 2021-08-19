@@ -124,27 +124,34 @@ function RecipeProgressFood(props) {
 
   return (
     initialItemApi && initialItemApi.map((meal, index) => (
-      <div key={ index }>
+      <div key={ index } className="inProgressRecipes">
         <img
           data-testid="recipe-photo"
           src={ meal.strMealThumb }
           alt={ meal.strMeal }
-          width="50px"
+          width="150px"
         />
         <h2 data-testid="recipe-title">{ meal.strMeal }</h2>
         <h4 data-testid="recipe-category">
           { meal.strCategory }
         </h4>
-        <div>
+        <div className="recipe-category">
           <h3>Ingredientes</h3>
           { renderIngrediente(meal) }
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ meal.strInstructions }</p>
         <Clipboard />
-        <button type="button" data-testid="favorite-btn">Favorite</button>
+        <button
+          type="button"
+          data-testid="favorite-btn"
+          className="receitas-btn"
+        >
+          Favorite
+        </button>
         <Link to="/receitas-feitas">
           <button
+            className="receitas-btn"
             type="button"
             data-testid="finish-recipe-btn"
             onClick={ () => recStorage() }

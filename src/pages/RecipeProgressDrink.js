@@ -105,18 +105,18 @@ function RecipeProgressDrink(props) {
 
   return (
     initialItemApi && initialItemApi.map((drink, index) => (
-      <div key={ index }>
+      <div key={ index } className="inProgressRecipes">
         <img
           data-testid="recipe-photo"
           src={ drink.strDrinkThumb }
           alt={ drink.strDrink }
-          width="50px"
+          width="150px"
         />
         <h2 data-testid="recipe-title">{ drink.strDrink }</h2>
         <h4 data-testid="recipe-category">
           { drink.strAlcoholic }
         </h4>
-        <div>
+        <div className="recipe-category">
           <h3>Ingredientes</h3>
           { renderIngrediente(drink) }
         </div>
@@ -126,11 +126,13 @@ function RecipeProgressDrink(props) {
         <button
           type="button"
           data-testid="favorite-btn"
+          className="receitas-btn"
         >
           Favorite
         </button>
         <Link to="/receitas-feitas">
           <button
+            className="receitas-btn"
             type="button"
             data-testid="finish-recipe-btn"
             onClick={ () => recStorage() }

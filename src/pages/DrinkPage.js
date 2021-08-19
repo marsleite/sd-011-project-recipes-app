@@ -6,7 +6,7 @@ import NavCategories from '../components/NavCategories';
 
 function drinkPage() {
   return (
-    <div>
+    <div className="component-render-itens">
       <HeaderDrink title="Bebidas" search />
       <NavCategories origin="Drink" />
       <CardRecipeListDrink origin="Drink" />

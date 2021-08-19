@@ -51,7 +51,7 @@ function DetailsDrink(props) {
     const array = [];
     const limitItens = 15;
 
-    for (let numero = 1; numero <= limitItens; numero += 1) {
+    for (let numero = 1;numero <= limitItens;numero += 1) {
       if (drink[`strIngredient${numero}`] !== null
         && drink[`strIngredient${numero}`] !== '') {
         array.push(
@@ -102,7 +102,7 @@ function DetailsDrink(props) {
             data-testid="recipe-photo"
             src={ drink.strDrinkThumb }
             alt={ drink.strDrink }
-            width="50px"
+            width="200px"
           />
           <h2 data-testid="recipe-title">{ drink.strDrink }</h2>
           <h4 data-testid="recipe-category">

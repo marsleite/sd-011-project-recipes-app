@@ -6,7 +6,7 @@ import NavCategories from '../components/NavCategories';
 
 function foodPage() {
   return (
-    <div>
+    <div className="component-render-itens">
       <HeaderFood title="Comidas" search />
       <NavCategories origin="Food" />
       <CardRecipeListFood origin="Food" />
