@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../css/RecipeInProgress.css';
 import { useHistory } from 'react-router';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import RecipeAppContext from '../context/RecipeAppContext';
 
 const copy = require('clipboard-copy');
 
@@ -17,6 +18,9 @@ function RenderDrinkProgress({ strDrinkThumb, strDrink, strCategory,
   numberIngredients, setStatusEndRecipeButton, hasChecked, strAlcoholic }) {
   const [click, setClick] = useState(false);
   const history = useHistory();
+  const {
+    setFilteredRecipesDone,
+  } = useContext(RecipeAppContext);
 
   useEffect(() => {
     if (hasChecked) {
@@ -109,6 +113,28 @@ function RenderDrinkProgress({ strDrinkThumb, strDrink, strCategory,
     );
   }
 
+  function saveRecipeDoneInLocalStorage() {
+    const currentLocalStorage = JSON.parse(localStorage.getItem('doneRecipes')) || []; // pego o LocalStorage atual
+    const newRecipeDone = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: strCategory,
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+      doneDate: '18/08/2021',
+      tags: [],
+    };
+    const newRecipesDone = [
+      ...currentLocalStorage,
+      newRecipeDone,
+    ];
+    localStorage.setItem('doneRecipes', JSON.stringify(newRecipesDone));
+    setFilteredRecipesDone(newRecipesDone);
+    return history.push('/receitas-feitas');
+  }
+
   return (
     <div>
       <img
@@ -153,7 +179,7 @@ function RenderDrinkProgress({ strDrinkThumb, strDrink, strCategory,
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ statusEndRecipeButton }
-        onClick={ () => history.push('/receitas-feitas') }
+        onClick={ () => saveRecipeDoneInLocalStorage() }
       >
         Finalizar Receita
       </button>

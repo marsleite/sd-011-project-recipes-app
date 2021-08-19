@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../css/RecipeInProgress.css';
 import { useHistory } from 'react-router';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import RecipeAppContext from '../context/RecipeAppContext';
 
 const copy = require('clipboard-copy');
 
@@ -14,9 +15,12 @@ function RenderFoodProgress({ strMealThumb, strMeal, strCategory,
   favoriteIcon, setFavoriteIcon, setHasChecked,
   setStatusIngredients, setClassNameIngredients,
   setCountCheckIngredList, countCheckIngredList,
-  numberIngredients, setStatusEndRecipeButton, hasChecked }) {
+  numberIngredients, setStatusEndRecipeButton, hasChecked, strTags }) {
   const [click, setClick] = useState(false);
   const history = useHistory();
+  const {
+    setFilteredRecipesDone,
+  } = useContext(RecipeAppContext);
 
   useEffect(() => {
     if (hasChecked) {
@@ -109,6 +113,29 @@ function RenderFoodProgress({ strMealThumb, strMeal, strCategory,
     );
   }
 
+  function saveRecipeDoneInLocalStorage() {
+    const currentLocalStorage = JSON.parse(localStorage.getItem('doneRecipes')) || []; // pego o LocalStorage atual
+    const arrayTags = strTags.split(',');
+    const newRecipeDone = {
+      id,
+      type: 'comida',
+      area: strArea,
+      category: strCategory,
+      alcoholicOrNot: '',
+      name: strMeal,
+      image: strMealThumb,
+      doneDate: '18/08/2021',
+      tags: arrayTags,
+    };
+    const newRecipesDone = [
+      ...currentLocalStorage,
+      newRecipeDone,
+    ];
+    localStorage.setItem('doneRecipes', JSON.stringify(newRecipesDone));
+    setFilteredRecipesDone(newRecipesDone);
+    return history.push('/receitas-feitas');
+  }
+
   return (
     <div>
       <img
@@ -153,7 +180,7 @@ function RenderFoodProgress({ strMealThumb, strMeal, strCategory,
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ statusEndRecipeButton }
-        onClick={ () => history.push('/receitas-feitas') }
+        onClick={ () => saveRecipeDoneInLocalStorage() }
       >
         Finalizar Receita
       </button>
@@ -182,6 +209,7 @@ RenderFoodProgress.propTypes = {
   numberIngredients: PropTypes.number.isRequired,
   setStatusEndRecipeButton: PropTypes.func.isRequired,
   hasChecked: PropTypes.bool.isRequired,
+  strTags: PropTypes.string.isRequired,
 };
 
 export default RenderFoodProgress;

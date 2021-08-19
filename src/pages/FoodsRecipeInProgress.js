@@ -101,6 +101,7 @@ function FoodsRecipeInProgress({ match: { params: { id } } }) {
           numberIngredients={ numberIngredients }
           setStatusEndRecipeButton={ setStatusEndRecipeButton }
           hasChecked={ hasChecked }
+          strTags={ mealInProgress.strTags }
         />
       </div>
     );
