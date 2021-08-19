@@ -59,79 +59,84 @@ function FoodProgress() {
 
   return (
     <Layout title="App de Receitas" noFooter noHeader>
-      <main>
+      <main className="RECIPE_DETAILS">
         { !recipe ? renderNoRecipeMessage()
           : (
             <>
-              <section>
+              <header className="header">
+                <div className="info">
+                  <h1 className="title" data-testid="recipe-title">{ recipe.strMeal }</h1>
+                  <h2 className="category" data-testid="recipe-category">{ recipe.strCategory }</h2>
+                </div>
+                <div className="actions">
+                  <ShareButton id={ id } type="comida" />
+                  <FavoriteButton recipe={ recipe } />
+                </div>
+              </header>
+              <section className="picture-container">
                 <img
                   src={ recipe.strMealThumb }
                   alt={ recipe.strMeal }
                   data-testid="recipe-photo"
                 />
               </section>
-              <section>
-                <div>
-                  <h1 data-testid="recipe-title">{ recipe.strMeal }</h1>
-                  <h2 data-testid="recipe-category">{ recipe.strCategory }</h2>
-                </div>
-                <div>
-                  <ShareButton id={ id } type="comida" />
-                  <FavoriteButton recipe={ recipe } />
-                </div>
-              </section>
-              <section>
-                <h1>Ingredientes</h1>
+              <section className="section">
+                <h1 className="title">Ingredientes</h1>
 
-                <ol>
-                  { ingredients.map((key) => {
-                    const index = parseInt(key.replace('strIngredient', ''), 10);
-                    return (
-                      <li
-                        key={ index }
-                        data-testid={ `${index - 1}-ingredient-step` }
-                      >
-                        <label
-                          htmlFor={ `${index}-ingredient-checkbox` }
+                <div className="container">
+                  <ol className="ingredients">
+                    { ingredients.map((key) => {
+                      const index = parseInt(key.replace('strIngredient', ''), 10);
+                      return (
+                        <li
+                          key={ index }
+                          data-testid={ `${index - 1}-ingredient-step` }
                         >
-                          <input
-                            type="checkbox"
-                            id={ `${index}-ingredient-checkbox` }
-                            checked={ usedIngredients
-                              .indexOf(recipe[key]) !== NOT_FOUND_INDEX }
-                            onChange={ () => {
-                              const newUsedIngredients = [...usedIngredients];
-                              if (newUsedIngredients
-                                .indexOf(recipe[key]) === NOT_FOUND_INDEX) {
-                                newUsedIngredients.push(recipe[key]);
-                              } else {
-                                newUsedIngredients
-                                  .splice(newUsedIngredients.indexOf(recipe[key]), 1);
-                              }
-                              setUsedIngredients(newUsedIngredients);
-                              updateInProgressRecipe(
-                                'meals',
-                                { id, usedIngredients: newUsedIngredients },
-                              );
-                            } }
-                          />
-                          <span>{ recipe[key] }</span>
-                          <span> - </span>
-                          <span>{ recipe[`strMeasure${index}`] }</span>
-                        </label>
-                      </li>
-                    );
-                  }) }
-                </ol>
+                          <label
+                            className="label"
+                            htmlFor={ `${index}-ingredient-checkbox` }
+                          >
+                            <input
+                              type="checkbox"
+                              id={ `${index}-ingredient-checkbox` }
+                              checked={ usedIngredients
+                                .indexOf(recipe[key]) !== NOT_FOUND_INDEX }
+                              onChange={ () => {
+                                const newUsedIngredients = [...usedIngredients];
+                                if (newUsedIngredients
+                                  .indexOf(recipe[key]) === NOT_FOUND_INDEX) {
+                                  newUsedIngredients.push(recipe[key]);
+                                } else {
+                                  newUsedIngredients
+                                    .splice(newUsedIngredients.indexOf(recipe[key]), 1);
+                                }
+                                setUsedIngredients(newUsedIngredients);
+                                updateInProgressRecipe(
+                                  'meals',
+                                  { id, usedIngredients: newUsedIngredients },
+                                );
+                              } }
+                            />
+                            <span>{ recipe[key] }</span>
+                            <span> - </span>
+                            <span>{ recipe[`strMeasure${index}`] }</span>
+                          </label>
+                        </li>
+                      );
+                    }) }
+                  </ol>
+                </div>
               </section>
 
-              <section>
-                <h1>Instruções</h1>
+              <section className="section">
+                <h1 className="title">Instructions</h1>
 
-                <p data-testid="instructions">{ recipe.strInstructions }</p>
+                <div className="container">
+                  <p data-testid="instructions">{ recipe.strInstructions }</p>
+                </div>
               </section>
 
-              <section>
+              <section className="video-container">
                 <iframe
                   data-testid="video"
                   width="560"
@@ -144,8 +149,9 @@ function FoodProgress() {
                 />
               </section>
 
-              <section>
+              <section className="action-section">
                 <button
+                  className="action-button"
                   type="button"
                   data-testid="finish-recipe-btn"
                   onClick={ () => {

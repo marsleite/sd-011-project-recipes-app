@@ -1,6 +1,8 @@
 .RECIPE_DETAILS {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 21px;
   padding-bottom: 24px;
 }
@@ -11,6 +13,7 @@
   padding: 12px 8px;
   justify-content: space-between;
   align-items: flex-end;
+  width: 100%;
 }
 
 .RECIPE_DETAILS .header .actions {
@@ -50,6 +53,7 @@
   flex-direction: column;
   background-color: var(--color-primary);
   padding: 16px 10px;
+  width: 100%;
 }
 
 .RECIPE_DETAILS .section .title {
@@ -63,6 +67,11 @@
   padding: 14px 18px;
   border-radius: 4px;
   box-shadow: var(--drop-shadow) inset;
+}
+
+.RECIPE_DETAILS .ingredients .label {
+  display: flex;
+  gap: 8px;
 }
 
 .RECIPE_DETAILS .instructions {
