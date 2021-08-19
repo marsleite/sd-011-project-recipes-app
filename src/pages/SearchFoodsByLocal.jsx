@@ -19,7 +19,7 @@ const SearchFoodsByLocal = ({ dispatch, areas, menu }) => {
     } else {
       dispatch(requestMealsByArea(currentOption));
     }
-  }, []);
+  }, [currentOption, dispatch]);
 
   useEffect(() => {
     dispatch(requestMealsAreas());
@@ -31,31 +31,31 @@ const SearchFoodsByLocal = ({ dispatch, areas, menu }) => {
         page="Explorar Origem"
         showSearchBtn
       />
-      <main className="foods-page">
-        <nav>
-          <select
-            data-testid="explore-by-area-dropdown"
-            onChange={ ({ target: { value } }) => setCurrentOption(value) }
+      <nav>
+        <select
+          data-testid="explore-by-area-dropdown"
+          onChange={ ({ target: { value } }) => setCurrentOption(value) }
+        >
+          <option
+            data-testid="All-option"
+            value="All-option"
           >
-            <option
-              data-testid="All-option"
-              value="All-option"
-            >
-              All
-            </option>
-            {
-              areas.map((area, index) => (
-                <option
-                  data-testid={ `${area}-option` }
-                  valu={ area }
-                  key={ index }
-                >
-                  { area }
-                </option>
-              ))
-            }
-          </select>
-        </nav>
+            All
+          </option>
+          {
+            areas.map((area, index) => (
+              <option
+                data-testid={ `${area}-option` }
+                valu={ area }
+                key={ index }
+              >
+                { area }
+              </option>
+            ))
+          }
+        </select>
+      </nav>
+      <main className="foods-page">
         {
           menu.map(({ idMeal, strMeal, strMealThumb }, index) => (
             <RecipeCard

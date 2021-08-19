@@ -28,7 +28,6 @@ const DrinkDetails = (
   if (drinkDetails.strInstructions === undefined) return (<span>Carregando...</span>);
   return (
     <main className="details-or-progress">
-      <h2>Detalhes da Bebida</h2>
       <HeaderDetails
         thumb={ thumbDrinks.strDrinkThumb }
         alt={ altDrinks.strDrink }

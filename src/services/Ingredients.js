@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 function Ingredients({ ingredients }) {
-  const allIngredients = [
+  const oldIngredients = [
     `${ingredients.strMeasure1} - ${ingredients.strIngredient1}`,
     `${ingredients.strMeasure2} - ${ingredients.strIngredient2}`,
     `${ingredients.strMeasure3} - ${ingredients.strIngredient3}`,
@@ -24,7 +24,10 @@ function Ingredients({ ingredients }) {
     `${ingredients.strMeasure18} - ${ingredients.strIngredient18}`,
     `${ingredients.strMeasure19} - ${ingredients.strIngredient19}`,
     `${ingredients.strMeasure20} - ${ingredients.strIngredient20}`,
-  ].filter((teste) => teste !== '  - ');
+  ];
+  const allIngredients = oldIngredients.filter((ingredient) => (
+    !ingredient.startsWith(' ') && !ingredient.startsWith('null')
+  ));
 
   return (
     <ul>

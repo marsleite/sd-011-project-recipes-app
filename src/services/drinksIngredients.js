@@ -1,64 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import filterDrinkMeasuresAndIngredients from
+  '../helpers/filterDrinkMeasuresAndIngredients';
 
 function drinksIngredients({ drinkDetails }) {
-  const oldIngredients = [
-    drinkDetails.strIngredient1,
-    drinkDetails.strIngredient2,
-    drinkDetails.strIngredient3,
-    drinkDetails.strIngredient4,
-    drinkDetails.strIngredient5,
-    drinkDetails.strIngredient6,
-    drinkDetails.strIngredient7,
-    drinkDetails.strIngredient8,
-    drinkDetails.strIngredient9,
-    drinkDetails.strIngredient10,
-    drinkDetails.strIngredient11,
-    drinkDetails.strIngredient12,
-    drinkDetails.strIngredient13,
-    drinkDetails.strIngredient14,
-    drinkDetails.strIngredient15,
-  ];
-
-  const oldMeasures = [
-    drinkDetails.strMeasure1,
-    drinkDetails.strMeasure2,
-    drinkDetails.strMeasure3,
-    drinkDetails.strMeasure4,
-    drinkDetails.strMeasure5,
-    drinkDetails.strMeasure6,
-    drinkDetails.strMeasure7,
-    drinkDetails.strMeasure8,
-    drinkDetails.strMeasure9,
-    drinkDetails.strMeasure10,
-    drinkDetails.strMeasure11,
-    drinkDetails.strMeasure12,
-    drinkDetails.strMeasure13,
-    drinkDetails.strMeasure14,
-    drinkDetails.strMeasure15,
-  ];
-
-  const newIngredients = oldIngredients.filter((ingredient) => ingredient !== null);
-
+  const measuresAndIngredients = filterDrinkMeasuresAndIngredients(drinkDetails);
   return (
     <ul>
       {
         drinkDetails
-          ? newIngredients.map((element, index) => {
-            if (oldMeasures[index] === undefined) return null;
-            return (
-              <li
-                key={ index }
-                data-testid={ `${index}-ingredient-name-and-measure` }
-              >
-                {
-                  (oldMeasures[index])
-                    ? `${oldMeasures[index]} - ${element}`
-                    : element
-                }
-              </li>);
-          })
+          ? measuresAndIngredients.map((element, index) => (
+            <li
+              key={ index }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
+              {
+                element
+              }
+            </li>
+          ))
           : <h1>Carregando</h1>
       }
 
