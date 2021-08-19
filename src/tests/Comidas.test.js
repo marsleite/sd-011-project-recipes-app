@@ -7,8 +7,8 @@ const mealsAmount = 12; // no magic numbers
 const breakfastIdTest = 'Breakfast-category-filter';
 const buttonIdTest = 'All-category-filter';
 
-describe('tests meal page ', () => {
-  test('tests route', async () => {
+describe('testa se a página de comidas é renderizada', () => {
+  test('testa a rota da página de comidas', async () => {
     const { history, getByTestId } = renderWithRouterAndRedux(<Comidas />);
     history.push('/comidas');
 
@@ -19,7 +19,7 @@ describe('tests meal page ', () => {
     expect(path).toBe('/comidas');
   });
 
-  test('tests meal cards quantity', async () => {
+  test('testa a quantidade dos cards de comida', async () => {
     const {
       history, findByText, findAllByTestId } = renderWithRouterAndRedux(<Comidas />);
     history.push('/comidas');
@@ -35,7 +35,7 @@ describe('tests meal page ', () => {
     });
   });
 
-  test('tests filter by categories buttons render', async () => {
+  test('testa se os filtros da página de comidas são renderizados', async () => {
     const { history, findByTestId } = renderWithRouterAndRedux(<Comidas />);
     history.push('/comidas');
 
@@ -58,7 +58,7 @@ describe('tests meal page ', () => {
     expect(btnBeef).toBeInTheDocument('Beef-category-filter');
   });
 
-  test('tests clicking on a category button', async () => {
+  test('testa o click em um botão da categoria', async () => {
     const { history, findByTestId, findByText } = renderWithRouterAndRedux(<Comidas />);
     history.push('/comidas');
 

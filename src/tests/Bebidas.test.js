@@ -7,8 +7,8 @@ const drinksAmount = 12;
 const btnDrinkId = 'Ordinary Drink-category-filter';
 const btnAll = 'All-category-filter';
 
-describe('tests drinks page ', () => {
-  test('tests route', async () => {
+describe('testa a página de bebidas ', () => {
+  test('testa a rota', async () => {
     const { history, getByTestId } = renderWithRouterAndRedux(<Bebidas />);
     history.push('/bebidas');
     const allButton = await getByTestId(btnAll);
@@ -18,7 +18,7 @@ describe('tests drinks page ', () => {
     expect(path).toBe('/bebidas');
   });
 
-  test('tests drink cards quantity', async () => {
+  test('testa a quantidade de cards de bebidas', async () => {
     const {
       history, findByText, findAllByTestId } = renderWithRouterAndRedux(<Bebidas />);
     history.push('/bebidas');
@@ -34,7 +34,7 @@ describe('tests drinks page ', () => {
     });
   });
 
-  test('tests filter by categories buttons render', async () => {
+  test('testa se os filtros de categorias de bebidas são renderizados', async () => {
     const { history, findByTestId } = renderWithRouterAndRedux(<Bebidas />);
     history.push('/bebidas');
 
@@ -57,7 +57,7 @@ describe('tests drinks page ', () => {
     expect(btnCocoa).toBeInTheDocument('Cocoa-category-filter');
   });
 
-  test('tests clicking on a category button', async () => {
+  test('testa o click em um botão da categoria', async () => {
     const { history, findByTestId, findByText } = renderWithRouterAndRedux(<Bebidas />);
     history.push('/bebidas');
 

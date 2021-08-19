@@ -7,17 +7,17 @@ const emailTest = 'email-input';
 const passwordTest = 'password-input';
 const loginBtnTest = 'login-submit-btn';
 
-describe('1 -test if all login elements are in the login screen', () => {
+describe('testa se os elementos da página de Login são renderizados', () => {
   afterAll(() => done());
 
-  it('test if app screen is "/"', () => {
+  it('testa se a rota está correta', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     let { pathname } = history.location;
     pathname = history.location.pathname;
     expect(pathname).toBe('/');
   });
 
-  it('test if email input is shown and works', () => {
+  it('testa se o input de email é renderizado e funciona', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const email = getByTestId(emailTest);
     expect(email).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe('1 -test if all login elements are in the login screen', () => {
     expect(email).toHaveValue('betrybe@trybe.com');
   });
 
-  it('test if password input is shown and works', () => {
+  it('testa se o input da senha é renderizado e funciona', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const password = getByTestId(passwordTest);
     expect(password).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('1 -test if all login elements are in the login screen', () => {
     expect(password).toHaveValue('p4ssw0rd');
   });
 
-  it('test if login button is shown and its disable', () => {
+  it('testa se o botão de Login é renderizado e se está desabilitado', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const buttonLogin = getByTestId(loginBtnTest);
     expect(buttonLogin).toBeInTheDocument();
@@ -41,10 +41,11 @@ describe('1 -test if all login elements are in the login screen', () => {
   });
 });
 
-describe('2 -test if button is disable/enable', () => {
+describe('testa se o botão habilita/desabilita', () => {
   afterAll(() => done());
 
-  it('test if with wrong email and correct password button remains disable', () => {
+  it('testa se com o email errado e a senha correta,'
+  + 'o botão permanece desabilitado', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const email = getByTestId(emailTest);
     const password = getByTestId(passwordTest);
@@ -54,7 +55,8 @@ describe('2 -test if button is disable/enable', () => {
     expect(buttonLogin).toBeDisabled();
   });
 
-  it('test if with correct email and wrong password button remains disable', () => {
+  it('testa se com o email correto e a senha errada,'
+  + 'o botão permanece desabilitado', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const email = getByTestId(emailTest);
     const password = getByTestId(passwordTest);
@@ -64,7 +66,7 @@ describe('2 -test if button is disable/enable', () => {
     expect(buttonLogin).toBeDisabled();
   });
 
-  it('test if with correct email and password button will be enabled', () => {
+  it('testa se com o email e a senha corretas, o botão é habilitado', () => {
     const { getByTestId } = renderWithRouterAndRedux(<App />);
     const emailInput = getByTestId(emailTest);
     const passwordInput = getByTestId(passwordTest);
@@ -75,11 +77,11 @@ describe('2 -test if button is disable/enable', () => {
   });
 });
 
-describe('3 - test if when button is clicked it will redirect'
-+ 'to "/comidas" and save things to localStorage', () => {
+describe('testa se quando o botão é clicado, redireciona para página de'
++ 'comidas e salva as informações no localStorage', () => {
   afterAll(() => done());
 
-  it('test if button fully works', () => {
+  it('testa se o botão de Login funciona quando clicado', () => {
     const { getByTestId, history } = renderWithRouterAndRedux(<App />);
     let { pathname } = history.location;
     const email = getByTestId(emailTest);
