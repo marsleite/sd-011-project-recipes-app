@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import HeaderFood from '../components/HeaderFood';
-<<<<<<< HEAD
-import Clipboard2 from '../components/Clipboard2';
-=======
 import MadeFoodRecipeCard from '../components/MadeFoodRecipeCard';
 import MadeDrinksRecipeCard from '../components/MadeDrinksRecipeCard';
 
@@ -85,15 +82,10 @@ function FinishRecipe() {
       setAllRecepies(storage);
     }
   }, []);
->>>>>>> c0343020fead05bab4a23900eb134f2e06d3a7f3
 
   return (
     <div>
       <HeaderFood title="Receitas Feitas" search={ false } />
-<<<<<<< HEAD
-      Receitas feitas
-      <Clipboard2 />
-=======
       <section>
         <button
           type="button"
@@ -130,7 +122,6 @@ function FinishRecipe() {
             : <MadeDrinksRecipeCard recipe={ recipe } index={ index } />
         )) }
       </div>
->>>>>>> c0343020fead05bab4a23900eb134f2e06d3a7f3
     </div>
   );
 }
