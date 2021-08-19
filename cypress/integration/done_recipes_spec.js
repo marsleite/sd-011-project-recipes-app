@@ -18,7 +18,7 @@ describe('Done recipes screen', () => {
       type: 'bebida',
       area: '',
       category: 'Cocktail',
-      alcoholicOrNot: 'Alcoholic',
+      alcoholicOrNot:  'Alcoholic',
       name: 'Aquamarine',
       image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       doneDate: '23/06/2020',
@@ -91,7 +91,7 @@ describe('Done recipes screen', () => {
     });
   });
 
-  describe.only('57 - Desenvolva a solução de maneira que o botão de compartilhar deve copiar a URL da tela de detalhes da receita para o clipboard', () => {
+  describe('57 - Desenvolva a solução de maneira que o botão de compartilhar deve copiar a URL da tela de detalhes da receita para o clipboard', () => {
     it('Ao clicar no botão de compartilhar deve aparecer a mensagem "Link copiado!"', () => {
       cy.get('[data-testid="0-horizontal-share-btn"]').click();
 

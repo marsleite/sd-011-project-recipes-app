@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderFood from '../components/HeaderFood';
-import CardRecipeListFood from '../components/CardRecipeListFood';
+import CardRecipeList from '../components/CardRecipeList';
 import Footer from '../components/Footer';
 import NavCategories from '../components/NavCategories';
 
@@ -9,7 +9,7 @@ function foodPage() {
     <div>
       <HeaderFood title="Comidas" search />
       <NavCategories origin="Food" />
-      <CardRecipeListFood origin="Food" />
+      <CardRecipeList origin="Food" />
       <Footer />
     </div>
   );
