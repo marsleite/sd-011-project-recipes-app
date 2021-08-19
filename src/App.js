@@ -9,7 +9,7 @@ import Routes from './Routes';
 
 const options = {
   position: positions.BOTTOM_CENTER,
-  timeout: 1250,
+  timeout: 3000,
   offset: '30px',
   transition: transitions.SCALE,
 };

@@ -40,6 +40,8 @@ export default function SearchIngredients({ type }) {
           backgroundColor: (type === 'drink') ? '#a73d7e' : '#fcdc4d',
           color: 'black',
           transition: 'background-color 0.25s',
+          width: '46%',
+          margin: '2%',
         } }
         onClick={ () => searchIngredient(ingredient) }
       >
@@ -59,7 +61,7 @@ export default function SearchIngredients({ type }) {
   return (
     <div>
       <Header title="Explorar Ingredientes" type={ type } />
-      <div className=" d-flex flex-column align-items-center px-3">
+      <div className=" d-flex px-3 flex-wrap">
         { ingredients.slice(0, twelve).map(mapFunction) }
       </div>
       <Footer drink={ type === 'drink' } />
