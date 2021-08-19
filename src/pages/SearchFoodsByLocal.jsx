@@ -31,7 +31,7 @@ const SearchFoodsByLocal = ({ dispatch, areas, menu }) => {
         page="Explorar Origem"
         showSearchBtn
       />
-      <main>
+      <main className="foods-page">
         <nav>
           <select
             data-testid="explore-by-area-dropdown"

@@ -38,7 +38,7 @@ const SearchFoodsByIngredients = ({
         page="Explorar Ingredientes"
         showSearchBtn={ false }
       />
-      <main>
+      <main className="foods-page">
         {
           (loading)
             ? <div>Loading...</div>
