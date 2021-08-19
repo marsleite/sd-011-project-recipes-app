@@ -1,23 +1,26 @@
 .RecipeConcludedContainer {
-  background-color: pink;
-  border-radius: 0 30px  30px 0;
-  box-shadow: 1px 2px 5px 1px black;
+  background-color: white;
+  border-radius: 30px;
   display: flex;
   height: 170px;
-  margin-top: 10px;
+  margin-left: 15px;
+  margin-top: 20px;
+  overflow: hidden;
   width: 330px;
 }
 
 .RecipeConcludedContainer img {
-  background-color: wheat;
-  height: 170px;
-  width: 160px;
+  border-radius: 20px;
+  height: 80%;
+  margin-left: 20px;
+  margin-top: 16px;
 }
 
 .RecipeInfoConcluded {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10px;
   position: relative;
 }
 
@@ -33,32 +36,49 @@
 
 .tagContainer {
   align-items: center;
-  background-color: slateblue;
   display: flex;
-  height: 200px;
+  height: 25px;
   width: 100%;
 }
 
 .tagName {
   color: red;
   font-size: 16px;
-  margin-left: 15px;
+  margin-right: 5px;
+  margin-top: 15px;
 }
 
 .shareBTN {
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
-  border: none;
   border-radius: 0 18px 0 0;
-  height: 35px;
+  border: none;
+  height: 20px;
   position: absolute;
   right: 5px;
   top: 2px;
-  width: 40px;
+  width: 20px;
 }
 
 .shareBTN img {
   height: 20px;
   width: 20px;
+}
+
+.share-done-btn button {
+  align-items: center;
+  background-size: contain;
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
+}
+
+.share-done-btn button img {
+  background-color: transparent;
+  border-radius: 0;
+  margin: 0;
 }

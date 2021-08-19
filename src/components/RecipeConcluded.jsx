@@ -66,10 +66,12 @@ function RecipeConcluded({ recipe, index }) {
               </p>))
           }
         </div>
-        <ButtonShare
-          recipe={ { recipeType, recipeId } }
-          index={ index }
-        />
+        <div className="share-done-btn">
+          <ButtonShare
+            recipe={ { recipeType, recipeId } }
+            index={ index }
+          />
+        </div>
       </div>
     </div>
   );

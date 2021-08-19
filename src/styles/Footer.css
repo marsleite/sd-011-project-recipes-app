@@ -28,7 +28,7 @@
 }
 
 .selectedLink{
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 20px;
   display: flex;
   height: 40px;
@@ -38,8 +38,7 @@
 }
 
 .selection {
-  /* background-color: red; */
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 20px;
   height: 40px;
   position: absolute;

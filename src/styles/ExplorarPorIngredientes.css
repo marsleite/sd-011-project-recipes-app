@@ -5,7 +5,6 @@
 
 .container-card-ingredients {
   align-items: center;
-  /* background-color: black; */
   background-color: #f6f6f6;
   display: flex;
   flex-flow: row wrap;

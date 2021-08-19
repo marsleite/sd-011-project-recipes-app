@@ -1,8 +1,7 @@
 .loading {
-  /* background-color: tomato; */
+  animation: infinite load 1s;
   margin: 0 auto;
   width: 180px;
-  animation: infinite load 1s;
 }
 
 @keyframes load {

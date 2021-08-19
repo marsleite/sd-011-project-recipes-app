@@ -1,10 +1,9 @@
 .TypeOfRecipesConcludedsContainer {
-  background: #0fa36b;
+  background: #f6f6f6;
   box-sizing: border-box;
   display: flex;
-  height: 50px;
+  height: 72px;
   justify-content: space-evenly;
-  margin-bottom: 5px;
   width: 100%;
 }
 
@@ -15,23 +14,24 @@
 }
 
 .bn39 {
-  background-image: linear-gradient(135deg, #008aff, #86d472);
-  border-radius: 6px;
-  box-sizing: border-box;
-  color: white;
-  display: block;
-  font-size: 1.4em;
-  font-weight: 600;
-  height: 50px;
-  padding: 4px;
-  position: relative;
-  text-decoration: none;
-  width: 7em;
-  z-index: 2;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+  height: 35px;
+  margin: 20px 10px;
+  outline: none !important;
+  padding-top: 3px;
+  transition: ease 0.2s;
+  width: 90px;
+  z-index: 1;
 }
 
 
 .bn39:hover {
+  background-image: linear-gradient(200deg, rgb(119, 216, 179), #0fa36b) !important;
   color: white;
 }
 

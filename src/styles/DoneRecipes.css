@@ -1,11 +1,8 @@
 .DoneRecipesContainer {
-  align-items: center;
-  background: white;
-  border: 1px solid black;
+  background: #f6f6f6;
   border-top: none;
-  display: flex;
   flex-direction: column;
-  height: calc(100% - 108px);
-  justify-content: center;
+  height: 510px;
+  overflow: hidden;
   width: 100%;
 }

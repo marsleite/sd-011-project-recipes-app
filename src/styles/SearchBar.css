@@ -1,7 +1,7 @@
 .searchBar-container {
   /* transform: translateX(360px); */
-  animation-fill-mode: forwards;
   animation: normal bar 0.2s;
+  animation-fill-mode: forwards;
   background-color: #0fa36b;
   border-radius: 20px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.555);
@@ -34,7 +34,6 @@
 }
 
 .search-input {
-  /* background-color: blue; */
   border-radius: 20px;
   border: none;
   height: 40px;
@@ -43,7 +42,6 @@
 }
 
 .search-input::placeholder {
-  /* background-color: blue; */
   font-size: 13px;
   font-weight: 700;
 }
@@ -53,6 +51,6 @@
     transform: translateX(360px);
   }
   to {
-    transform: translateX(10PX);
+    transform: translateX(10px);
   }
 }

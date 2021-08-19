@@ -1,5 +1,5 @@
 .header {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   position: relative;
   z-index: 3;
 }
@@ -17,8 +17,6 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
-  /* background-color: turquoise; */
-
 }
 
 .container-buttons {
@@ -49,7 +47,6 @@
   font-weight: 700;
   line-height: 35.16px;
   margin-top: 10px;
-  /* background-color: navy; */
   max-width: 110px;
 }
 
@@ -59,34 +56,33 @@
   font-weight: 700;
   line-height: 23px;
   margin-top: 10px;
-  /* background-color: navy; */
   max-width: 110px;
 }
 
 .profile-icon-bg {
+  align-items: center;
   background-color: white;
   border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.199) 0 5px 20px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
 }
 
 .search-icon-bg {
-  background-color: #0fa36b;
-  box-shadow: #0fa36a62 0 0 10px;
-  border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #0fa36b;
+  border-radius: 100%;
+  box-shadow: #0fa36a62 0 0 10px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
 }
 
 .search-icon-bg-t {
   background-color: transparent;
-  width: 40px;
   height: 40px;
+  width: 40px;
 }

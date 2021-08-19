@@ -41,7 +41,7 @@ function FavoriteRecipes({ filterBy }) {
     <div className="FavoriteRecipesContainer">
       {
         isEmpty
-          ? <Loading />
+          ? <div className="f-loading"><Loading /></div>
           : favoriteRecipes.map(
             (recipe, index) => (
               <FavoriteRecipeCard

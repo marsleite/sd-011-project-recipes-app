@@ -6,14 +6,14 @@
   font-weight: 700;
   position: absolute;
   text-shadow: 3px 0 0 #0fa36b, -3px 0 0 #0fa36b, 0 3px 0 #0fa36b, 0 -3px 0 #0fa36b, 2px 2px #0fa36b, -2px -2px 0 #0fa36b, 2px -2px 0 #0fa36b, -2px 2px 0 #0fa36b;
-  transform: translateY(-2px);
   top: 160px;
+  transform: translateY(-2px);
   z-index: 10;
 }
 
 @keyframes title {
   from {
-    transform: translateY(-240px);
+    transform: translateY(640px);
   }
 
   to {
@@ -57,15 +57,14 @@
 }
 
 .login-form {
-  align-items:center;
   animation: normal login 1s;
   animation-fill-mode: forwards;  
+  align-items:center;
   background-color: white;
   border-radius: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
   height: 70%;
-  /* transform: translateY(640px); */
   transition: ease 0.2s;
   width: 100%;
   z-index: 15;
