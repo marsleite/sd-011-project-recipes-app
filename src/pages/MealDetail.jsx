@@ -7,6 +7,8 @@ import FavoriteButton from '../components/favoritebutton/FavoriteButton';
 import
 DrinkRecommendedRecipes from '../components/recommendedrecipes/DrinkRecommendedRecipes';
 
+import './styles/MealDetail.css';
+
 export default function MealDetail() {
   const params = useParams();
   const { id } = params;
@@ -65,7 +67,13 @@ export default function MealDetail() {
       <p data-testid="instructions">{strInstructions}</p>
       <RecipeVideo strYoutube={ strYoutube } />
       <DrinkRecommendedRecipes />
-      <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
+      <button
+        type="button"
+        data-testid="start-recipe-btn"
+        className="startRecipeButton"
+      >
+        Iniciar receita
+      </button>
     </div>
   );
 }
