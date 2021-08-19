@@ -27,7 +27,7 @@ export default function CarrouselFoods() {
           <div data-testid={ `${i}-recomendation-card` } key={ `${strMeal} ${i}` }>
             <h3 data-testid={ `${i}-recomendation-title` }>{strMeal}</h3>
             <img
-              className="img-recomendation"
+              className="img-recomendation mr-3"
               src={ strMealThumb }
               alt={ `Imagem de ${strMealThumb}` }
             />

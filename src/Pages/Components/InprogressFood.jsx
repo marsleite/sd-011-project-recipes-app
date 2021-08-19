@@ -7,6 +7,7 @@ import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
 import setDoneRecipes from '../../Helpers/setDoneRecipes';
 import createDoneRecipes from '../../Helpers/createDoneRecipes';
+import '../../styles/inProgressFood.css';
 
 function InProgressFood() {
   const { id } = useParams();
@@ -87,17 +88,19 @@ function InProgressFood() {
   const { meals: anyFood } = itemDetail;
 
   return anyFood !== null && (
-    <div>
-      <h1 data-testid="recipe-title">{anyFood[0].strMeal}</h1>
+    <div className="d-flex flex-column container pb-3">
+      <h1 className="align-self-center" data-testid="recipe-title">{anyFood[0].strMeal}</h1>
       <img
-        width="350"
+        width="100%"
         src={ anyFood[0].strMealThumb }
         alt={ `Foto da comida chamada ${anyFood[0].strMeal}` }
         data-testid="recipe-photo"
       />
-      <FavoriteButton currentItem={ anyFood[0] } typeOf="Meal" />
-      <ShareButton />
-      <p data-testid="recipe-category">{anyFood[0].strCategory}</p>
+      <div>
+        <FavoriteButton currentItem={ anyFood[0] } typeOf="Meal" />
+        <ShareButton />
+      </div>
+      <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{anyFood[0].strCategory}</p>
       <section>
         <h2>Ingredientes</h2>
         <div className="steps-inputs">
@@ -110,6 +113,7 @@ function InProgressFood() {
               <input
                 id={ ingredient }
                 type="checkbox"
+                className="mr-1"
                 onChange={ () => handleCheckBox(ingredient) }
                 checked={ usedIngredients.includes(ingredient) }
               />
@@ -126,6 +130,7 @@ function InProgressFood() {
         <button
           data-testid="finish-recipe-btn"
           type="button"
+          className="finish-recipe-button"
           disabled={ showFinish }
           onClick={ () => setDoneRecipes(id, anyFood[0], 'foods') }
         >

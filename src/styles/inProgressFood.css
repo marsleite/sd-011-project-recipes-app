@@ -1,12 +1,8 @@
-th {
-  font-weight: normal;
+a{
+  align-self: center;
 }
 
-p {
-  text-align: justify;
-}
-
-.start-recipe-button {
+.finish-recipe-button {  
   padding:0.3em 1.2em;  ;
   margin:0 0.1em 0.1em 0;
   border:1px solid rgba(255,255,255,0);
@@ -14,4 +10,9 @@ p {
   text-decoration:none;    
   color:black;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);  
+}
+
+button {
+  border-radius: 50%;
+  padding: 3px;   
 }

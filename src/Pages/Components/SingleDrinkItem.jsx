@@ -4,6 +4,7 @@ import { manageDetailAPI } from '../../Helpers/convertUrlToID';
 import CarrouselFoods from './CarrouselFoods';
 import FavoriteButton from './FavoriteButton';
 import ShareButton from './ShareButton';
+import '../../styles/singleFood.css';
 
 function SingleFoodItem() {
   const { id } = useParams();
@@ -52,7 +53,7 @@ function SingleFoodItem() {
   const { drinks } = itemDetail;
 
   return itemDetail.drinks !== null && (
-    <div className="d-flex flex-column container">
+    <div className="d-flex flex-column container pb-4">
       <h1 className="align-self-center" data-testid="recipe-title">{drinks[0].strDrink}</h1>
       <img
         width="100%"
@@ -64,8 +65,11 @@ function SingleFoodItem() {
         <FavoriteButton currentItem={ drinks[0] } typeOf="Drink" />
         <ShareButton />
       </div>
-      <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{drinks[0].strAlcoholic}</p>
-      <p data-testid="recipe-category">{drinks[0].strCategory}</p>
+      <div className="row px-3">
+        <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{drinks[0].strAlcoholic}</p>
+        <p>{' - '}</p>
+        <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{drinks[0].strCategory}</p>
+      </div>
       <section>
         <h2>Ingredientes</h2>
         <table>

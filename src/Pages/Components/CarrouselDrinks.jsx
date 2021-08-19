@@ -27,7 +27,7 @@ export default function CarrouselDrinks() {
           <div data-testid={ `${i}-recomendation-card` } key={ `${strDrink} ${i}` }>
             <h3 data-testid={ `${i}-recomendation-title` }>{strDrink}</h3>
             <img
-              className="img-recomendation"
+              className="img-recomendation mr-3"
               src={ strDrinkThumb }
               alt={ `Imagem de ${strDrinkThumb}` }
             />

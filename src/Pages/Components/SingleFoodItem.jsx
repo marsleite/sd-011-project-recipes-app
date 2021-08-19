@@ -55,7 +55,7 @@ function SingleFoodItem() {
 
   const { meals } = itemDetail;
   return itemDetail.meals !== null && (
-    <div className="d-flex flex-column container">
+    <div className="d-flex flex-column container pb-4">
       <h1 className="align-self-center" data-testid="recipe-title">{meals[0].strMeal}</h1>
       <img
         width="100%"

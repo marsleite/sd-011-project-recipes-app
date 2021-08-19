@@ -7,6 +7,7 @@ import FavoriteButton from './FavoriteButton';
 import { manageDetailAPI } from '../../Helpers/convertUrlToID';
 import setDoneRecipes from '../../Helpers/setDoneRecipes';
 import createDoneRecipes from '../../Helpers/createDoneRecipes';
+import '../../styles/inProgressFood.css';
 
 function InProgressDrink() {
   const { id } = useParams();
@@ -87,17 +88,19 @@ function InProgressDrink() {
 
   const { drinks } = itemDetail;
   return itemDetail.drinks !== null && (
-    <div>
-      <h1 data-testid="recipe-title">{drinks[0].strDrink}</h1>
+    <div className="d-flex flex-column container pb-4">
+      <h1 className="align-self-center" data-testid="recipe-title">{drinks[0].strDrink}</h1>
       <img
-        width="350"
+        width="100%"
         src={ drinks[0].strDrinkThumb }
         alt={ `Foto da bebida chamada ${drinks[0].strDrink}` }
         data-testid="recipe-photo"
       />
-      <FavoriteButton currentItem={ drinks[0] } typeOf="Drink" />
-      <ShareButton />
-      <p data-testid="recipe-category">{drinks[0].strCategory}</p>
+      <div>
+        <FavoriteButton currentItem={ drinks[0] } typeOf="Drink" />
+        <ShareButton />
+      </div>
+      <p style={ { fontWeight: 'bold' } } data-testid="recipe-category">{drinks[0].strCategory}</p>
       <section>
         <h2>Ingredientes</h2>
         <div className="steps-inputs">
@@ -110,6 +113,7 @@ function InProgressDrink() {
               <input
                 type="checkbox"
                 id={ ingredient }
+                className="mr-1"
                 onChange={ () => handleCheckBox(ingredient) }
                 checked={ usedIngredients.includes(ingredient) }
               />
@@ -126,6 +130,7 @@ function InProgressDrink() {
         <button
           data-testid="finish-recipe-btn"
           type="button"
+          className="finish-recipe-button"
           disabled={ showFinish }
           onClick={ () => setDoneRecipes(id, drinks[0], 'drinks') }
         >
