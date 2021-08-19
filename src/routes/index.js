@@ -39,7 +39,6 @@ class Routes extends React.Component {
         />
         <Route exact path="/explorar/comidas/area" component={ ExploreLocation } />
         <Route exact path="/explorar/Bebidas/area" component={ NotFound } />
-        <Route path="*" component={ NotFound } />
         <Route exact path="/perfil" component={ Profile } />
         <Route exact path="/receitas-feitas" component={ RecipesDone } />
         <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
