@@ -1,57 +1,57 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import Clipboard from '../components/Clipboard';
 import { searchById } from '../services/RequestFood';
 import '../styles/drink.css';
 
 function RecipeProgressFood(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
-  const [changeInputFood, setChangeInputFood] = useState(false);
-  const [changeInputFoodChecked, setchangeInputFoodChecked] = useState('');
+  const [changeInput, setChangeInput] = useState(false);
+  const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
     async function getDetailsById() {
       const itemsFood = await searchById(id);
       setInitialItemApi(itemsFood);
     }
-
     getDetailsById();
   }, [id]);
 
-  function isCheckedFood(numero) {
-    setChangeInputFood(() => !changeInputFood);
-    if (changeInputFood === false) {
-      setchangeInputFoodChecked('checked');
-      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
+  function handleClick({ value }) {
+    if (!changeInput) {
+      setClicked(value);
+      localStorage.setItem('inProgressRecipes', JSON.stringify(value));
     } else {
-      setchangeInputFoodChecked('');
+      setClicked(0);
       localStorage.removeItem('inProgressRecipes');
     }
+    setChangeInput((state) => !state);
   }
 
-  function renderIngrediente(food) {
+  function renderIngredient(drink) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1; numero <= limitItens; numero += 1) {
-      if (food[`strIngredient${numero}`] !== null
-        && food[`strIngredient${numero}`] !== '') {
+    for (let index = 1; index <= limitItens; index += 1) {
+      if (drink[`strIngredient${index}`]) {
+        const className = clicked === `${index}` ? 'checked' : '';
+        const ingredient = drink[`strIngredient${index}`];
+        const measure = drink[`strMeasure${index}`];
         array.push(
-          <div>
+          <div key={ index }>
             <label
-              htmlFor={ numero }
-              data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isCheckedFood(`${numero - 1}-ingredient-step`) }
-              className={ changeInputFoodChecked }
+              htmlFor={ `${index}-ingredient` }
+              data-testid={ `${index}-ingredient-step` }
+              className={ className }
             >
               <input
                 type="checkbox"
+                id={ `${index}-ingredient` }
+                value={ index }
+                onChange={ (e) => handleClick(e.target) }
               />
-              { `${food[`strIngredient${numero}`]} ` }
-              { (food[`strMeasure${numero}`] !== null
-              && food[`strMeasure${numero}`] !== '')
-                ? <span>{ `${food[`strMeasure${numero}`]}` }</span>
-                : '' }
+              {`${ingredient} ${measure}`}
             </label>
           </div>,
         );
@@ -75,18 +75,20 @@ function RecipeProgressFood(props) {
         </h4>
         <div>
           <h3>Ingredientes</h3>
-          { renderIngrediente(meal) }
+          { renderIngredient(meal) }
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ meal.strInstructions }</p>
-        <button type="button" data-testid="share-btn">Share</button>
+        <Clipboard />
         <button type="button" data-testid="favorite-btn">Favorite</button>
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-        >
-          Finalizar Receita
-        </button>
+        <Link to="/receitas-feitas">
+          <button
+            type="button"
+            data-testid="finish-recipe-btn"
+          >
+            Finalizar Receita
+          </button>
+        </Link>
       </div>
     )));
 }

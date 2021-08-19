@@ -11,7 +11,7 @@ function Clipboard() {
         data-testid="share-btn"
         onClick={ () => {
           setCopied(true);
-          navigator.clipboard.writeText(window.location.href);
+          navigator.clipboard.writeText(window.location);
         } }
       >
         <img src={ Shareicon } alt="Share icon" width="15px" />
