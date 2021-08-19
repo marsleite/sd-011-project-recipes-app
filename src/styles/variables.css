@@ -1,0 +1,7 @@
+:root {
+  --color-background: rgb(255, 250, 205);
+  --color-primary: rgb(255, 113, 113);
+  --color-text: #000;
+  --color-text-muted: rgb(129, 126, 126);
+  --color-border: var(--color-text);
+}
