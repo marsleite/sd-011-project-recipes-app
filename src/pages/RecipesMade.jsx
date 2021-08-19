@@ -95,7 +95,7 @@ function RecipesMade() {
                 />
               </section>
               <section className="picture-container">
-                <Link to={ `${recipes.type}s/${recipes.id}` }>
+                <Link to={ `${recipes.type === 'meals' ? 'comidas' : 'bebidas'}/${recipes.id}` }>
                   <img
                     className="picture"
                     alt={ recipes.name }

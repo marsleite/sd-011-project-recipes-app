@@ -1,0 +1,6 @@
+.FAVORITE_RECIPES {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  gap: 30px;
+}
