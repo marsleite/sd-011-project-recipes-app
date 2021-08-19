@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router';
 import loading from '../images/loading.gif';
 
+import '../styles/pages/Details.css';
+
 import { Layout, ShareButton, FavoriteButton } from '../components';
 
 import { useLocalStorage } from '../hooks';
@@ -62,78 +64,63 @@ function FoodDetails() {
 
   const renderNoDrinksMessage = () => renderLoadingOrError(drinksError, drinksLoading);
 
-  const styles = {
-    drinkRecommendationList: {
-      display: 'flex',
-      gap: '32px',
-      overflowX: 'auto',
-      width: '460px',
-      height: '260px',
-      listStyle: 'none',
-    },
-    drinksRecommendationCard: {
-      width: '200px',
-      flexShrink: '0',
-    },
-    drinksRecommendationImage: {
-      display: 'block',
-      width: '100%',
-    },
-  };
-
   return (
     <Layout title="App de Receitas" noFooter noHeader>
-      <main>
+      <main className="RECIPE_DETAILS">
         { !recipe ? renderNoRecipeMessage()
           : (
             <>
-              <section>
+              <header className="header">
+                <div className="info">
+                  <h1 className="title" data-testid="recipe-title">{ recipe.strMeal }</h1>
+                  <h2 className="category" data-testid="recipe-category">{ recipe.strCategory }</h2>
+                </div>
+                <div className="actions">
+                  <ShareButton id={ id } type="comida" />
+                  <FavoriteButton recipe={ recipe } />
+                </div>
+              </header>
+              <section className="picture-container">
                 <img
                   src={ recipe.strMealThumb }
                   alt={ recipe.strMeal }
                   data-testid="recipe-photo"
                 />
               </section>
-              <section>
-                <div>
-                  <h1 data-testid="recipe-title">{ recipe.strMeal }</h1>
-                  <h2 data-testid="recipe-category">{ recipe.strCategory }</h2>
+              <section className="section">
+                <h1 className="title">Ingredients</h1>
+
+                <div className="container">
+                  <ol className="ingredients">
+                    { Object.keys(recipe)
+                      .filter((key) => /strIngredient/i.test(key))
+                      .filter((key) => recipe[key] !== '')
+                      .map((key) => {
+                        const index = parseInt(key.replace('strIngredient', ''), 10);
+                        return (
+                          <li
+                            key={ index }
+                            data-testid={ `${index - 1}-ingredient-name-and-measure` }
+                          >
+                            <span>{ recipe[key] }</span>
+                            <span> - </span>
+                            <span>{ recipe[`strMeasure${index}`] }</span>
+                          </li>
+                        );
+                      }) }
+                  </ol>
                 </div>
-                <div>
-                  <ShareButton id={ id } type="comida" />
-                  <FavoriteButton recipe={ recipe } />
+              </section>
+
+              <section className="section">
+                <h1 className="title">Instructions</h1>
+
+                <div className="container">
+                  <p className="instructions" data-testid="instructions">{ recipe.strInstructions }</p>
                 </div>
               </section>
-              <section>
-                <h1>Ingredientes</h1>
 
-                <ol>
-                  { Object.keys(recipe)
-                    .filter((key) => /strIngredient/i.test(key))
-                    .filter((key) => recipe[key] !== '')
-                    .map((key) => {
-                      const index = parseInt(key.replace('strIngredient', ''), 10);
-                      return (
-                        <li
-                          key={ index }
-                          data-testid={ `${index - 1}-ingredient-name-and-measure` }
-                        >
-                          <span>{ recipe[key] }</span>
-                          <span> - </span>
-                          <span>{ recipe[`strMeasure${index}`] }</span>
-                        </li>
-                      );
-                    }) }
-                </ol>
-              </section>
-
-              <section>
-                <h1>Instruções</h1>
-
-                <p data-testid="instructions">{ recipe.strInstructions }</p>
-              </section>
-
-              <section>
+              <section className="video-container">
                 <iframe
                   data-testid="video"
                   width="560"
@@ -146,19 +133,7 @@ function FoodDetails() {
                 />
               </section>
 
-              { !isDone && (
-                <button
-                  type="button"
-                  data-testid="start-recipe-btn"
-                  onClick={ () => {
-                    history.push(`/comidas/${id}/in-progress`);
-                  } }
-                  style={ { position: 'fixed', bottom: '0', height: '300px' } }
-                >
-                  { isInProgress ? <>Continuar Receita</> : <>Iniciar Receita</> }
-                </button>)}
-
-              <section>
+              {/* <section className="r">
                 <h1>Recomendações de bebida</h1>
 
                 { renderNoDrinksMessage() || (
@@ -183,7 +158,21 @@ function FoodDetails() {
                     )) }
                   </ol>
                 ) }
-              </section>
+              </section> */}
+
+              { !isDone && (
+                <section className="action-section">
+                  <button
+                    className="action-button"
+                    type="button"
+                    data-testid="start-recipe-btn"
+                    onClick={ () => {
+                      history.push(`/comidas/${id}/in-progress`);
+                    } }
+                  >
+                    { isInProgress ? <>Continuar Receita</> : <>Iniciar Receita</> }
+                  </button>
+                </section>)}
             </>
           ) }
       </main>
