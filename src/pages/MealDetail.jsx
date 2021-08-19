@@ -2,28 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import RecipeVideo from '../components/recipevideo/RecipeVideo';
-import RecommendedRecipes from '../components/recommendedrecipes/RecommendedRecipes';
 import ShareButton from '../components/sharebutton/ShareButton';
 import FavoriteButton from '../components/favoritebutton/FavoriteButton';
+import
+DrinkRecommendedRecipes from '../components/recommendedrecipes/DrinkRecommendedRecipes';
 
 export default function MealDetail() {
   const params = useParams();
+  const { id } = params;
 
   const [recipe, setRecipe] = useState({});
-  const [recommended, setRecommended] = useState([]);
 
   useEffect(() => {
     (async function fetchApiById() {
-      const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`;
+      const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
       const request = await fetch(url);
       const data = await request.json();
       setRecipe(data.meals[0]);
-    }());
-    (async function fetchCategory() {
-      const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${recipe.strCategory}`;
-      const request = await fetch(url);
-      const data = await request.json();
-      setRecommended(data.meals);
     }());
   }, []);
 
@@ -69,18 +64,7 @@ export default function MealDetail() {
       }
       <p data-testid="instructions">{strInstructions}</p>
       <RecipeVideo strYoutube={ strYoutube } />
-      {
-        recommended
-        && recommended.map((element, index) => (
-          <RecommendedRecipes
-            key={ index }
-            title={ element.strMeal }
-            imagePath={ element.strMealThumb }
-            id={ element.idMeal }
-            index={ index }
-          />
-        ))
-      }
+      <DrinkRecommendedRecipes />
       <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
     </div>
   );

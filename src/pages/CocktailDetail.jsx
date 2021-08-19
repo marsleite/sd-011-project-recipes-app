@@ -2,29 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import RecipeVideo from '../components/recipevideo/RecipeVideo';
-import RecommendedRecipes from '../components/recommendedrecipes/RecommendedRecipes';
 import ShareButton from '../components/sharebutton/ShareButton';
 import FavoriteButton from '../components/favoritebutton/FavoriteButton';
+import
+MealRecommendedRecipes from '../components/recommendedrecipes/MealRecommendedRecipes';
 
 export default function MealDetail() {
   const params = useParams();
-
+  const { id } = params;
   const [recipe, setRecipe] = useState({});
-  const [recommended, setRecommended] = useState([]);
 
   useEffect(() => {
     (async function fetchApiById() {
-      const { id } = params;
       const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
       const request = await fetch(url);
       const data = await request.json();
       setRecipe(data.drinks[0]);
-    }());
-    (async function fetchCategory() {
-      const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${recipe.strCategory}`;
-      const request = await fetch(url);
-      const data = await request.json();
-      setRecommended(data.drinks);
     }());
   }, []);
 
@@ -50,7 +43,7 @@ export default function MealDetail() {
     strDrinkThumb,
     strYoutube,
     strInstructions,
-    strCategory,
+    strAlcoholic,
   } = recipe;
 
   return (
@@ -59,7 +52,7 @@ export default function MealDetail() {
       <h2 data-testid="recipe-title">{strDrink}</h2>
       <ShareButton />
       <FavoriteButton />
-      <p data-testid="recipe-category">{strCategory}</p>
+      <p data-testid="recipe-category">{ strAlcoholic }</p>
       {
         newIngredientsArray
         && newIngredientsArray.map((ingredient, index) => (
@@ -70,18 +63,7 @@ export default function MealDetail() {
       }
       <p data-testid="instructions">{strInstructions}</p>
       <RecipeVideo strYoutube={ strYoutube } />
-      {
-        recommended
-        && recommended.map((element, index) => (
-          <RecommendedRecipes
-            key={ index }
-            title={ element.strDrink }
-            imagePath={ element.strDrinkThumb }
-            id={ element.idDrink }
-            index={ index }
-          />
-        ))
-      }
+      <MealRecommendedRecipes />
       <button type="button" data-testid="start-recipe-btn">Iniciar receita</button>
     </div>
   );
