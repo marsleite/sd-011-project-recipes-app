@@ -62,9 +62,9 @@ const receiveOptionsSuccess = (data) => ({
   data,
 });
 
-const receiveOptionsFailure = () => ({
+const receiveOptionsFailure = (error) => ({
   type: RECEIVE_OPTIONS_FAILURE,
-  error: '404',
+  error,
 });
 
 export const requestMealsOptions = () => (dispatch) => {
@@ -75,7 +75,7 @@ export const requestMealsOptions = () => (dispatch) => {
         const response = handleMealsIngredients(meals);
         dispatch(receiveOptionsSuccess(response));
       })
-      .catch(() => dispatch(receiveOptionsFailure()))
+      .catch(() => dispatch(receiveOptionsFailure('400')))
   );
 };
 
@@ -87,7 +87,7 @@ export const requestDrinksOptions = () => (dispatch) => {
         const response = handleDrinksIngredients(drinks);
         dispatch(receiveOptionsSuccess(response));
       })
-      .catch(() => dispatch(receiveOptionsFailure()))
+      .catch(() => dispatch(receiveOptionsFailure('400')))
   );
 };
 
@@ -104,9 +104,9 @@ const receiveMealsAreasSuccess = (areas) => ({
   areas,
 });
 
-const receiveMealsAreasFailure = () => ({
+const receiveMealsAreasFailure = (error) => ({
   type: RECEIVE_MEALS_AREAS_FAILURE,
-  error: '404',
+  error,
 });
 
 export const requestMealsAreas = () => (dispatch) => {
@@ -117,6 +117,6 @@ export const requestMealsAreas = () => (dispatch) => {
         const response = meals.map(({ strArea }) => strArea);
         dispatch(receiveMealsAreasSuccess(response));
       })
-      .catch(() => dispatch(receiveMealsAreasFailure()))
+      .catch(() => dispatch(receiveMealsAreasFailure('400')))
   );
 };

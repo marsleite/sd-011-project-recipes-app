@@ -2,7 +2,7 @@ import React from 'react';
 import { queryByTestId, screen } from '@testing-library/react';
 import SearchFoodsByLocal from '../pages/SearchFoodsByLocal';
 
-import { renderWithRouterAndStore } from './testConfig';
+import { renderWithRouterAndStore } from './helper/testConfig';
 
 describe('Should have the right icon in the screen search foods by local', () => {
   it('Should have the profile, search buttons and title', () => {

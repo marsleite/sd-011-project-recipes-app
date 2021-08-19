@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import useRecipeStatus from '../../hooks/useRecipeStatus';
 import '../../styles/components/startRecipeBtn.css';
+import useRecipeStatus from '../../hooks/useRecipeStatus';
 
 const StartRecipeBtn = ({ routeInfo: { id, url } }) => {
   const { recipeProgress, showBtn } = useRecipeStatus(id, url);
@@ -23,6 +23,8 @@ const StartRecipeBtn = ({ routeInfo: { id, url } }) => {
       ? (
         <Link
           to={ choiceRoute() }
+          style={ { position: 'fixed', bottom: '0px' }
+          }
         >
           <button
             className="start-recipe-btn"

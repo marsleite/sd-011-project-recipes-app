@@ -2,7 +2,7 @@ import React from 'react';
 import { queryByTestId } from '@testing-library/react';
 import CompletedRecipes from '../pages/CompletedRecipes';
 
-import { renderWithRouterAndStore } from './testConfig';
+import { renderWithRouterAndStore } from './helper/testConfig';
 
 describe('The screen CompletedRecipes should have right icon from the Header', () => {
   it('Should have the profile button and title', () => {
