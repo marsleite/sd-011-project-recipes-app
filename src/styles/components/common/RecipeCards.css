@@ -1,0 +1,88 @@
+.RECIPE_CARD_FILTERS {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.RECIPE_CARD_FILTERS .button {
+  background-color: var(--color-primary);
+  font-size: 18px;
+  width: 84px;
+  padding: 8px 0;
+  border: none;
+  box-shadow: var(--drop-shadow);
+  border-radius: 4px;
+}
+
+.RECIPE_CARD_LIST {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.RECIPE_CARD_LIST > li {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 8px;
+  background-color: var(--color-primary);
+  gap: 8px;
+}
+
+.RECIPE_CARD_LIST .main-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RECIPE_CARD_LIST .main-infos .title {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.RECIPE_CARD_LIST .main-infos .category {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.RECIPE_CARD_LIST .picture-container {
+  background-color: var(--color-background);
+  box-shadow: var(--drop-shadow) inset;
+  border-radius: 4px;
+  padding: 16px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+}
+
+.RECIPE_CARD_LIST .secondary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.RECIPE_CARD_LIST .secondary-info .tags {
+  list-style: none;
+}
+
+.RECIPE_CARD_LIST .secondary-info .tag {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.RECIPE_CARD_LIST .secondary-info .done-date {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.RECIPE_CARD_LIST > li .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.RECIPE_CARD_LIST > li .picture {
+  width: 188px;
+  height: 128px;
+  object-fit: cover;
+}

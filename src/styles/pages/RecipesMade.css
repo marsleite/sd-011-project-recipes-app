@@ -1,0 +1,6 @@
+.RECIPES_MADE {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  gap: 30px;
+}
