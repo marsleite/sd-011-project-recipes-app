@@ -58,7 +58,6 @@ function RecipeProgressDrink(props) {
             >
               <input
                 type="checkbox"
-                data-testid={ `${numero}-ingredient-step` }
               />
               { `${drink[`strIngredient${numero}`]} ` }
               { (drink[`strMeasure${numero}`] !== null

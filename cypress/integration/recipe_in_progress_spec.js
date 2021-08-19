@@ -6,7 +6,7 @@ afterEach(() => {
   });
 });
 
-describe('47 - Desenvolva a tela de maneira que contenha uma imagem da receita, seu titulo, sua categoria (ou se a bebida é alcoólica ou não) uma lista de ingredientes com suas respectivas quantidade e suas instruções', () => {
+describe.only('47 - Desenvolva a tela de maneira que contenha uma imagem da receita, seu titulo, sua categoria (ou se a bebida é alcoólica ou não) uma lista de ingredientes com suas respectivas quantidade e suas instruções', () => {
   it('verifica elementos de uma receita de comida', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
@@ -395,7 +395,7 @@ describe('51 - Desenvolva a lógica de favoritar e compartilhar, a lógica da te
           type: 'bebida',
           area: '',
           category: 'Cocktail',
-          alcoholicOrNot:  'Alcoholic',
+          alcoholicOrNot: 'Alcoholic',
           name: 'Aquamarine',
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         },
@@ -463,7 +463,7 @@ describe('52 - Implemente a solução de maneira que o botão de finalizar recei
   });
 });
 
-describe.only('53 - Redirecione a pessoa usuária após clicar no botão "Finalizar receita", para a página de receitas feitas, cuja rota deve ser `/receitas-feitas`', () => {
+describe('53 - Redirecione a pessoa usuária após clicar no botão "Finalizar receita", para a página de receitas feitas, cuja rota deve ser `/receitas-feitas`', () => {
   it('redireciona após concluir uma receita de comida', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
