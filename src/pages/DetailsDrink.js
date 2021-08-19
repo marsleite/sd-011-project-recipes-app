@@ -5,6 +5,7 @@ import { searchDrinkById } from '../services/RequestDrinks';
 import { searchFoodsAll } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
 import Clipboard from '../components/Clipboard';
+import Favorite from '../images/blackHeartIcon.svg';
 
 function DetailsDrink(props) {
   const { match: { params: { id } } } = props;
@@ -98,7 +99,7 @@ function DetailsDrink(props) {
             type="button"
             data-testid="favorite-btn"
           >
-            Favorite
+            <img src={ Favorite } alt="Favorite icon" width="15px" />
           </button>
           <div className="recomendation-card">
             {
