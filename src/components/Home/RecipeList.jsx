@@ -23,6 +23,7 @@ function RecipeList() {
   if (onLoading) {
     return (
       <img
+        className="LOAD_SPINNER"
         src={ loading }
         alt="carregando"
         width="100px"
@@ -59,28 +60,31 @@ function RecipeList() {
   };
   return (
     <>
-      <ol>
+      <ol className="CATEGORY_LIST">
         { categorys.slice(0, magicalNumberCategory)
           .map((category, index) => (
-            <label
-              key={ index }
-              htmlFor={ `Filtrar por igrediente ${category.strCategory}` }
-            >
-              <input
-                id={ index }
-                data-testid={ `${category.strCategory}-category-filter` }
-                name="categorys"
-                checked={ selectedCategory === category.strCategory }
-                onChange={ fetchCategorys }
-                value={ category.strCategory }
-                type="checkbox"
-              />
-              {category.strCategory}
-            </label>
+            <li key={ category }>
+              <label
+                className="checkitem"
+                key={ index }
+                htmlFor={ `category-filter-${category.strCategory}` }
+              >
+                <input
+                  id={ `category-filter-${category.strCategory}` }
+                  data-testid={ `${category.strCategory}-category-filter` }
+                  name="categorys"
+                  checked={ selectedCategory === category.strCategory }
+                  onChange={ fetchCategorys }
+                  value={ category.strCategory }
+                  type="checkbox"
+                />
+                {category.strCategory}
+              </label>
+            </li>
           ))}
-        <label htmlFor="Filtrar todos">
+        <label htmlFor="category-filter-all">
           <input
-            id="All"
+            id="category-filter-all"
             checked={ selectedCategory === 'allcategorys' }
             data-testid="All-category-filter"
             name="categorys"
@@ -91,25 +95,26 @@ function RecipeList() {
           All
         </label>
       </ol>
-      <ol>
+      <ol className="RECIPE_LIST">
         {recipes && recipes.slice(0, magicalNumberRecipes)
           .map((meals, index) => (
             <Link
               to={ `/comidas/${meals.idMeal}` }
               key={ meals.idMeal }
             >
-              <li data-testid={ `${index}-recipe-card` }>
+              <li className="RECIPE_CARD" data-testid={ `${index}-recipe-card` }>
+                <h1
+                  className="title"
+                  data-testid={ `${index}-card-name` }
+                >
+                  { meals.strMeal }
+                </h1>
                 <img
+                  className="image"
                   alt={ `Foto de uma ${meals.strMeal}` }
                   data-testid={ `${index}-card-img` }
                   src={ meals.strMealThumb }
                 />
-                <h3
-                  data-testid={ `${index}-card-name` }
-                >
-                  { meals.strMeal }
-                </h3>
-
               </li>
             </Link>))}
       </ol>

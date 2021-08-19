@@ -1,0 +1,48 @@
+.CATEGORY_LIST {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: var(--color-primary);
+  padding: 3px 12px;
+  list-style: none;
+}
+
+.CATEGORY_LIST .checkitem {
+  display: flex;
+  gap: 4px;
+}
+
+.RECIPE_LIST {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  column-gap: 8px;
+  row-gap: 16px;
+}
+
+.RECIPE_LIST a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.RECIPE_CARD {
+  width: 145px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+  box-shadow: 0 4px 4px 0 rgba(0,  0, 0, 0.25) inset;
+}
+
+.RECIPE_CARD .image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.RECIPE_CARD .title {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 4px;
+}
