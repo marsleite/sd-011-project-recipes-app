@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { searchDrinkById } from '../services/RequestDrinks';
 import '../styles/drink.css';
@@ -6,53 +7,50 @@ import '../styles/drink.css';
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
-  const [changeInput, setChangeInput] = useState(true);
-  const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
-
-  async function getDetailsById() {
-    const itemsDrink = await searchDrinkById(id);
-    setInitialItemApi(itemsDrink);
-  }
+  const [changeInput, setChangeInput] = useState(false);
+  const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchDrinkById(id);
+      setInitialItemApi(itemsDrink);
+    }
     getDetailsById();
   }, []);
 
-  function isChecked(numero) {
-    setChangeInput(() => !changeInput);
-    if (changeInput === true) {
-      setchangeInputDrinkChecked('checked');
-      localStorage.setItem('inProgressRecipes', JSON.stringify(numero));
+  function handleClick({ value }) {
+    if (!changeInput) {
+      setClicked(value);
+      localStorage.setItem('inProgressRecipes', JSON.stringify(value));
     } else {
-      setchangeInputDrinkChecked('');
+      setClicked(0);
       localStorage.removeItem('inProgressRecipes');
     }
-    console.log(numero);
+    setChangeInput((state) => !state);
   }
 
-  function renderIngrediente(drink) {
+  function renderIngredient(drink) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1; numero <= limitItens; numero += 1) {
-      if (drink[`strIngredient${numero}`] !== null
-      && drink[`strIngredient${numero}`] !== '') {
+    for (let index = 1; index <= limitItens; index += 1) {
+      if (drink[`strIngredient${index}`]) {
+        const className = clicked === `${index}` ? 'checked' : '';
+        const ingredient = drink[`strIngredient${index}`];
+        const measure = drink[`strMeasure${index}`];
         array.push(
-          <div>
+          <div key={ index }>
             <label
-              htmlFor={ numero }
-              data-testid={ `${numero}-ingredient-step` }
-              onChange={ () => isChecked(`${numero - 1}-ingredient-step`) }
-              className={ changeInputDrinkChecked }
+              htmlFor={ `${index}-ingredient` }
+              data-testid={ `${index}-ingredient-step` }
+              className={ className }
             >
               <input
                 type="checkbox"
-                data-testid={ `${numero}-ingredient-step` }
+                id={ `${index}-ingredient` }
+                value={ index }
+                onChange={ (e) => handleClick(e.target) }
               />
-              { `${drink[`strIngredient${numero}`]} ` }
-              { (drink[`strMeasure${numero}`] !== null
-              && drink[`strMeasure${numero}`] !== '')
-                ? <span>{ `${drink[`strMeasure${numero}`]}` }</span>
-                : '' }
+              {`${ingredient} ${measure}`}
             </label>
           </div>,
         );
@@ -76,28 +74,25 @@ function RecipeProgressDrink(props) {
         </h4>
         <div>
           <h3>Ingredientes</h3>
-          { renderIngrediente(drink) }
+          { renderIngredient(drink) }
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
-        <button
-          type="button"
-          data-testid="share-btn"
-        >
-          Share
-        </button>
+        <Clipboard />
         <button
           type="button"
           data-testid="favorite-btn"
         >
           Favorite
         </button>
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-        >
-          Finalizar Receita
-        </button>
+        <Link to="/receitas-feitas">
+          <button
+            type="button"
+            data-testid="finish-recipe-btn"
+          >
+            Finalizar Receita
+          </button>
+        </Link>
       </div>
     )));
 }

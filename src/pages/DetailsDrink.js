@@ -12,20 +12,18 @@ function DetailsDrink(props) {
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
 
-  async function getDetailsById() {
-    const itemsDrink = await searchDrinkById(id);
-    setInitialItemApi(itemsDrink);
-  }
-
-  async function getAllCategories() {
-    const items = await searchFoodsAll();
-    setInitialItens(items);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchDrinkById(id);
+      setInitialItemApi(itemsDrink);
+    }
+    async function getAllCategories() {
+      const items = await searchFoodsAll();
+      setInitialItens(items);
+    }
     getDetailsById();
     getAllCategories();
-  }, []);
+  }, [id]);
 
   function renderCard(object, number) {
     return (
@@ -37,7 +35,7 @@ function DetailsDrink(props) {
           className="recomendation-button"
           hidden={ number > 1 }
         >
-          <p data-testid={ `${number}-recomendation-title` }>{object.strMeal}</p>
+          <p data-testid={ `${number}-recomendation-title` }>{ object.strMeal }</p>
           <img
             src={ object.strMealThumb }
             alt={ `${number}-card-name` }
@@ -94,6 +92,7 @@ function DetailsDrink(props) {
           <p data-testid="instructions">{ drink.strInstructions }</p>
 
           <Clipboard />
+
           <button
             className="buttons"
             type="button"
@@ -108,13 +107,15 @@ function DetailsDrink(props) {
                 .map((drinkRecomend, indexRec) => renderCard(drinkRecomend, indexRec))
             }
           </div>
-          <button
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-            type="button"
-          >
-            Iniciar Receita
-          </button>
+          <Link to={ `/bebidas/${drink.idDrink}/in-progress` }>
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+            >
+              Iniciar Receita
+            </button>
+          </Link>
         </div>
       ))
   );

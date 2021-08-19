@@ -13,20 +13,18 @@ function DetailsFood(props) {
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
 
-  async function getDetailsById() {
-    const itemsFood = await searchById(id);
-    setInitialItemApi(itemsFood);
-  }
-
-  async function getAllCategories() {
-    const items = await searchDrinksAll();
-    setInitialItens(items);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsFood = await searchById(id);
+      setInitialItemApi(itemsFood);
+    }
+    async function getAllCategories() {
+      const items = await searchDrinksAll();
+      setInitialItens(items);
+    }
     getDetailsById();
     getAllCategories();
-  }, []);
+  }, [id]);
 
   function renderIngredient(food) {
     const array = [];
@@ -119,13 +117,15 @@ function DetailsFood(props) {
                 .map((foodRecomend, indexRec) => renderCard(foodRecomend, indexRec))
             }
           </div>
-          <button
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-            type="button"
-          >
-            Iniciar Receita
-          </button>
+          <Link to={ `/comidas/${meal.idMeal}/in-progress` }>
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+            >
+              Iniciar Receita
+            </button>
+          </Link>
         </div>
       ))
   );
