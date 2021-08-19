@@ -34,7 +34,7 @@ const checkFirstTwelveRecipes = (recipes, meal = true) => {
   cy.get('[data-testid="12-card-name"]').should('not.exist');
 };
 
-describe.only('25 - Implemente os elementos da tela principal de receitas respeitando os atributos descritos no protótipo', () => {
+describe('25 - Implemente os elementos da tela principal de receitas respeitando os atributos descritos no protótipo', () => {
   it('A tela tem os data-testids de todos os 12 cards da tela de comidas', () => {
     cy.visit('http://localhost:3000/comidas', {
       onBeforeLoad(win) {
@@ -324,7 +324,7 @@ describe('31 - Desenvolva o filtro de categorias com a opção de filtrar por to
     checkFirstTwelveRecipes(mealsMock.meals);
   });
 
-  it.skip('Caso as receitas sejam de bebida deve existir a opção de filtrar por todas as categorias', () => {
+  it('Caso as receitas sejam de bebida deve existir a opção de filtrar por todas as categorias', () => {
     cy.visit('http://localhost:3000/bebidas', {
       onBeforeLoad(win) {
         win.fetch = fetchMock;

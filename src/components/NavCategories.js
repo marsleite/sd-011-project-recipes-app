@@ -64,7 +64,7 @@ function NavCategories({ origin }) {
         >
           { item }
         </button>
-      ))}
+      )) }
     </div>
   );
 }

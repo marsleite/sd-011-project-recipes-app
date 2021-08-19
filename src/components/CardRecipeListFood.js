@@ -19,32 +19,37 @@ function CardRecipeListFood() {
     let request;
     if (ingredient !== '') {
       request = await searchByIngredient(ingredient);
+      setInitialItens(request);
     } else {
       request = await searchFoodsAll();
+      setInitialItens(request);
     }
-    setInitialItens(request);
   }
 
   useEffect(() => {
     loadInitialItens();
   }, []);
 
+  // function changeLocation(id) {
+  //   if (id.length === 1) {
+  //     return <Redirect to={ `comidas/${id[0].idMeal}` } />;
+  //   }
+  // }
+
   function renderItems(array) {
+    const num = '52968';
+    if (!array) return;
+    if (array.length === 1 && array[0].idMeal !== num) {
+      return <Redirect to={ `/comidas/${array[0].idMeal}` } />;
+    }
     return (
       array.slice(0, MAX_RESULT).map((item, index) => (
         <CardRecipe key={ index } item={ item } index={ index } />))
     );
   }
 
-  function changeLocation(id) {
-    if (id.length === 1) {
-      return <Redirect to={ `comidas/${id[0].idMeal}` } />;
-    }
-  }
-
   return (
     <div>
-      { filtered.length === 1 && changeLocation(filtered) }
       { !(byCategory || byFilter) ? renderItems(initialItens) : renderItems(filtered) }
     </div>
   );
