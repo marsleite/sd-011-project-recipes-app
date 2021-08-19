@@ -83,7 +83,11 @@ function RecipeDrinkDetails({ match, location }) {
                 type="button"
                 data-testid="share-btn"
               >
-                <img src={ shareIcon } alt="shareIcon" />
+                <img
+                  className="btn-logo"
+                  src={ shareIcon }
+                  alt="shareIcon"
+                />
               </button>
               {!hidden && <div>Link copiado!</div>}
               <DrinkFavoriteButton recipe={ recipe.drinks[0] } />

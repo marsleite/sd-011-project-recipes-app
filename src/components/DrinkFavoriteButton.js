@@ -64,6 +64,7 @@ function DrinkFavoriteButton({ recipe }) {
       } }
     >
       <img
+        className="btn-logo"
         src={ btnIsFavorited ? blackHeartIcon : whiteHeartIcon }
         alt="whiteHeartIcon"
       />

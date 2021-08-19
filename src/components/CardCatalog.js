@@ -50,7 +50,7 @@ function CardCatalog() {
           catalogLimited.map((drink, index) => (
             <CardIngredient key={ index }>
               <Link
-                to={ `/comidas/${drink.idDrink}` }
+                to={ `/bebidas/${drink.idDrink}` }
               >
                 <div data-testid={ `${index}-recipe-card` } className="Supply-Card">
                   <img
