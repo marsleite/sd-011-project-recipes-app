@@ -6,6 +6,7 @@ import { searchById } from '../services/RequestFood';
 import { searchDrinksAll } from '../services/RequestDrinks';
 import { RequestHook } from '../Context/RequestHook';
 import Clipboard from '../components/Clipboard';
+import Favorite from '../images/blackHeartIcon.svg';
 
 function DetailsFood(props) {
   const { match: { params: { id } } } = props;
@@ -132,7 +133,7 @@ function DetailsFood(props) {
             data-testid="favorite-btn"
             onClick={ () => recStorage() }
           >
-            Favorite
+            <img src={ Favorite } alt="Favorite icon" width="15px" />
           </button>
           <div className="recomendation-card">
             {
