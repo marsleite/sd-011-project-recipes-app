@@ -1,74 +1,82 @@
 .perfil-page {
   display: flex;
   flex-direction: column;
+  height: 640px;
   text-align: center;
   width: 360px;
-  height: 640px;
-  }
+}
 
 /* .link-btn {
   display: flex;
   flex-direction: column;
   background-color: black;
-  
 } */
 
 .header-email {
-  font-size: x-large;
-  /* margin-top: 40px; */
-  border: solid 1px black;
-  color: black;
+  background-color: #c5c5c5;
+  border: none;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins , sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  height: 60px;
+  letter-spacing: 0.05em;
+  margin: 10px 0;
+  margin-left: 18px;
+  padding: 10px 0;
+  width: 90%;
 }
 
 .btn-done-recipes {
-  background-color: #FFC729;
-  font-family: 'Poppins', sans-serif;
-  width: 80%;
-  height: 60px;
+  background-color: #ffc729;
   border: none;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins , sans-serif;
   font-size: 20px;
   font-weight: 700;
+  height: 60px;
   letter-spacing: 0.05em;
-  color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  margin: 10px 0px;
-  padding: 10px 0px;
+  margin: 10px 0;
+  padding: 10px 0;
+  width: 80%;
 }
 
 .btn-favorite-recipes {
-  background-color: #A0D468;
-  font-family: 'Poppins', sans-serif;
-  width: 80%;
-  height: 60px;
+  background-color: #a0d468;
   border: none;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins , sans-serif;
   font-size: 20px;
   font-weight: 700;
+  height: 60px;
   letter-spacing: 0.05em;
-  color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  margin: 10px 0px;
-  padding: 10px 0px;
+  margin: 10px 0;
+  padding: 10px 0;
+  width: 80%;
 }
 
 .btn-exit {
-  background-color: #FC6E51;
-  font-family: 'Poppins', sans-serif;
-  width: 80%;
-  height: 60px;
+  background-color: #fc6e51;
   border: none;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins , sans-serif;
   font-size: 20px;
   font-weight: 700;
+  height: 60px;
   letter-spacing: 0.05em;
-  color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  margin: 10px 0px;
-  padding: 10px 0px;
+  margin: 10px 0;
+  padding: 10px 0;
+  width: 80%;
 }
 
 .logo-image {
-  width: 40%;
+  margin-left: 100px;
   padding: 10px;
-  /* margin-left: 100px; */
+  width: 40%;
 }
 
 /* FFC729

@@ -2,39 +2,39 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 360px;
   flex-wrap: wrap;
+  width: 360px;
 `;
 
 export const CardIngredient = styled.div`
-  margin: 15px;
-  height: 200px;
-  width: 150px;
-  background: #F7F7FF;
-  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.25);
+  background: #f7f7ff;
   border-radius: 5px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.25);
+  height: 200px;
+  margin: 15px;
+  width: 150px;
 `;
 
 export const SVG = styled.svg`
+  border-radius: 0 5px 5px;
   position: relative;
   top: 110px;
-  border-radius: 0 5px 5px;
 `;
 
 export const Image = styled.img`
+  bottom: 80px;
+  left: 5px;
   position: relative;
   width: 140px;
-  left: 5px;
-  bottom: 80px;
 `;
 
 export const TitleIngredient = styled.h1`
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  z-index: 99;
   bottom: ${(props) => (props['font-size'] === 'regular' ? '80px' : '78px')};
-  text-align: center;
-  font-size: ${(props) => (props['font-size'] === 'regular' ? '1.45em' : '1.2em')};
-  text-transform: uppercase;
   color: white;
+  font-family: Poppins , sans-serif;
+  font-size: ${(props) => (props['font-size'] === 'regular' ? '1.45em' : '1.2em')};
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 99;
 `;

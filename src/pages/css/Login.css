@@ -7,7 +7,7 @@
 }
 
 .login-page .container {
-  font-family: Verdana , Tahoma , sans-serif;
+  font-family: Poppins , sans-serif;
   padding: 16px;
 }
 
@@ -19,6 +19,7 @@
 .login-page .container .title {
   color: white;
   font-size: 40px;
+  font-weight: 600;
   letter-spacing: 1px;
   margin: 0 auto;
   text-align: center;

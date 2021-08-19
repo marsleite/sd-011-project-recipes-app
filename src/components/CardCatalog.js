@@ -44,27 +44,54 @@ function CardCatalog() {
   }
 
   function renderDrinksCards() {
-    return catalogLimited.map((drink, index) => (
-      <Link
-        key={ index }
-        to={ `/bebidas/${drink.idDrink}` }
-      >
-        <div data-testid={ `${index}-recipe-card` } className="supply-card">
-          <div
-            data-testid={ `${index}-card-name` }
-          >
-            <h1>{drink.strDrink}</h1>
-          </div>
-          <img
-            className="supply-img"
-            src={ drink.strDrinkThumb }
-            alt={ drink.strDrink }
-            data-testid={ `${index}-card-img` }
-          />
-        </div>
-      </Link>
-    ));
+    return (
+      <Container>
+        {
+          catalogLimited.map((drink, index) => (
+            <CardIngredient key={ index }>
+              <Link
+                to={ `/comidas/${drink.idDrink}` }
+              >
+                <div data-testid={ `${index}-recipe-card` } className="Supply-Card">
+                  <img
+                    className="supply-img"
+                    src={ drink.strDrinkThumb }
+                    alt={ drink.strDrink }
+                    data-testid={ `${index}-card-img` }
+                  />
+                  <div className="div-title" data-testid={ `${index}-card-name` }>
+                    <h1 className="title-card">{drink.strDrink}</h1>
+                  </div>
+                </div>
+              </Link>
+            </CardIngredient>
+          ))
+        }
+      </Container>);
   }
+
+  // function renderDrinksCards() {
+  //   return catalogLimited.map((drink, index) => (
+  //     <Link
+  //       key={ index }
+  //       to={ `/bebidas/${drink.idDrink}` }
+  //     >
+  //       <div data-testid={ `${index}-recipe-card` } className="supply-card">
+  //         <div
+  //           data-testid={ `${index}-card-name` }
+  //         >
+  //           <h1>{drink.strDrink}</h1>
+  //         </div>
+  //         <img
+  //           className="supply-img"
+  //           src={ drink.strDrinkThumb }
+  //           alt={ drink.strDrink }
+  //           data-testid={ `${index}-card-img` }
+  //         />
+  //       </div>
+  //     </Link>
+  //   ));
+  // }
 
   useEffect(() => () => setCatalog(''), [setCatalog]);
 

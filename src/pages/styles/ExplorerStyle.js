@@ -1,158 +1,158 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 40px;
-  line-height: 72px;
+  left: 10px;
   letter-spacing: 0.1em;
-  text-align: center;
+  line-height: 72px;
   margin: 20px 0;
   position: relative;
-  left: 10px;
-  `;
+  text-align: center;
+`;
 
 export const Yellow = styled.span`
+  color: #ffc729;
   font-size: 65px;
-  color: #FFC729;
 `;
 
 export const Green = styled.span`
+  color: #a0d468;
   font-size: 65px;
-  color: #A0D468;
 `;
 
 export const Red = styled.span`
+  color: #fc6e51;
   font-size: 65px;
-  color: #FC6E51;
 `;
 
 export const CardContainer = styled.div`
-  width: 340px;
-  height: 220px;
-  margin: 10px 25px 40px 25px;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 220px;
+  margin: 10px 25px 40px;
+  width: 340px;
 `;
 
 export const CardBox = styled.div`
-  width: ${(props) => (props.food ? '280px' : '280px')};
-  height: 100px; 
   background: rgba(223, 178, 139, 0.85);
   background: ${(props) => (
     props.food ? '#FC6E51' : '#FFC729'
   )};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 25px;
-  position: relative;
-  top: 70px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 100px;
   left: 55px;
   left: ${(props) => (props.food ? '55px' : '20px')};
+  position: relative;
+  top: 70px;
+  width: ${(props) => (props.food ? '280px' : '280px')};
 `;
 
 export const ImageFood = styled.img`
-  height: 170px;
   align-self: center;
-  position: relative;
   bottom: 75px;
-  z-index: 98;
+  height: 170px;
+  position: relative;
   text-shadow: 2px 2px 2px black;
+  z-index: 98;
 `;
 
 export const ImageDrink = styled.img`
-  height: 230px;
   align-self: center;
-  position: relative;
   bottom: 125px;
+  height: 230px;
   left: 170px;
-  z-index: 98;
+  position: relative;
   text-shadow: 2px 2px 2px black;
+  z-index: 98;
 `;
 
 export const ImageShadow = styled.div`
-  width: 125px;
-  height: 20px;
   border-radius: 40px;
-  box-shadow: 0 25px 25px rgba(0,0,0,0.90);
-  position: relative;
   bottom: 115px;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.9);
+  height: 20px;
   left: 30px;
+  position: relative;
+  width: 125px;
   z-index: 97;
 `;
 
 export const CardFoodTitle = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 72px;
-  line-height: 72px;
-  letter-spacing: 0.1em;
-  margin: 40px 0 0 100px;
   color: rgba(44, 44, 44, 08);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins , sans-serif;
+  font-size: 72px;
+  letter-spacing: 0.1em;
+  line-height: 72px;
+  margin: 40px 0 0 100px;
   position: relative;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   top: 60px;
+  transition: 0.1s;
   z-index: 98;
   ${CardContainer}:hover & {
-    transition: 0.15s;
     transform: scale(1.2, 1.2) translate(-20px);
+    transition: 0.15s;
   }
-  transition: 0.07s;
 `;
 
 export const CardFoodTitleBordered = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 72px;
-  line-height: 72px;
-  letter-spacing: 0.1em;
   color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: rgba(44, 44, 44, 08);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  margin:-72px 0 -35px 100px;
-  z-index: 99;
-  top: 60px;
+  font-family: Poppins , sans-serif;
+  font-size: 72px;
+  letter-spacing: 0.1em;
+  line-height: 72px;
+  margin: -72px 0 -35px 100px;
   position: relative;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke-color: rgba(44, 44, 44, 08);
+  -webkit-text-stroke-width: 2px;
+  top: 60px;
+  transition: 0.1s;
+  z-index: 99;
   ${CardContainer}:hover & {
-    transition: 0.15s;
     transform: scale(1.2, 1.2) translate(-20px);
+    transition: 0.15s;
   }
-  transition: 0.07s;
 `;
 
 export const CardDrinkTitle = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 72px;
-  line-height: 72px;
-  letter-spacing: 0.1em;
-  margin: 40px 0 0 40px;
   color: rgba(44, 44, 44, 08);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins , sans-serif;
+  font-size: 72px;
+  letter-spacing: 0.1em;
+  line-height: 72px;
+  margin: 40px 0 0 40px;
   position: relative;
-  top: 60px;
   right: 10px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  top: 60px;
+  transition: 0.1s;
   z-index: 98;
   ${CardContainer}:hover & {
-    transition: 0.15s;
     transform: scale(1.2, 1.2) translate(20px);
+    transition: 0.15s;
   }
-  transition: 0.07s;
 `;
 
 export const CardDrinkTitleBordered = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 72px;
-  line-height: 72px;
-  letter-spacing: 0.1em;
   color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: rgba(44, 44, 44, 08);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  font-family: Poppins , sans-serif;
+  font-size: 72px;
+  letter-spacing: 0.1em;
+  line-height: 72px;
   margin: -72px 0 -35px 40px;
-  z-index: 99;
-  top: 60px;
-  right: 10px;
   position: relative;
+  right: 10px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke-color: rgba(44, 44, 44, 08);
+  -webkit-text-stroke-width: 2px;
+  top: 60px;
+  transition: 0.1s;
+  z-index: 99;
   ${CardContainer}:hover & {
-    transition: 0.15s;
     transform: scale(1.2, 1.2) translate(20px);
+    transition: 0.15s;
   }
-  transition: 0.07s;
 `;
