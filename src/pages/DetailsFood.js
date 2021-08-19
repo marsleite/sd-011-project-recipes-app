@@ -69,6 +69,29 @@ function DetailsFood(props) {
     );
   }
 
+  function recStorage() {
+    const { strMeal, strCategory, strArea, strMealThumb } = initialItemApi[0];
+    const doneRecipetwo = {
+      id,
+      type: 'comida',
+      area: strArea,
+      category: strCategory,
+      alcoholicOrNot: '',
+      name: strMeal,
+      image: strMealThumb,
+    };
+
+    const done = localStorage.getItem('favoriteRecipes');
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('favoriteRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('favoriteRecipes', stringNewArrayOfObjects);
+  }
+
   return (
     (!initialItemApi)
       ? (<p>Loading...</p>)
@@ -107,6 +130,7 @@ function DetailsFood(props) {
             className="buttons"
             type="button"
             data-testid="favorite-btn"
+            onClick={ () => recStorage() }
           >
             Favorite
           </button>

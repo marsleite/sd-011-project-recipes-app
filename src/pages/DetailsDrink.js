@@ -69,6 +69,29 @@ function DetailsDrink(props) {
     return array;
   }
 
+  function recStorage() {
+    const { strDrink, strDrinkThumb, strAlcoholic } = initialItemApi[0];
+    const doneRecipetwo = {
+      id,
+      type: 'bebida',
+      area: '',
+      category: 'Cocktail',
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+    };
+
+    const done = localStorage.getItem('favoriteRecipes');
+    const doneRecipes = JSON.parse(done);
+    if (doneRecipes === null) {
+      const doneRecipetwoString = JSON.stringify([doneRecipetwo]);
+      return localStorage.setItem('favoriteRecipes', doneRecipetwoString);
+    }
+    const allInfo = [...doneRecipes, doneRecipetwo];
+    const stringNewArrayOfObjects = JSON.stringify(allInfo);
+    return localStorage.setItem('favoriteRecipes', stringNewArrayOfObjects);
+  }
+
   return (
     (!initialItemApi)
       ? (<p>Loading...</p>)
@@ -97,6 +120,7 @@ function DetailsDrink(props) {
             className="buttons"
             type="button"
             data-testid="favorite-btn"
+            onClick={ () => recStorage() }
           >
             Favorite
           </button>
