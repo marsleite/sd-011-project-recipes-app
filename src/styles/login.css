@@ -36,7 +36,7 @@
   margin: 0 0 10px;
   outline: none;
   text-align: center;
-  width: 70vw;
+  width: 270px;
 }
 
 .email::placeholder, .password::placeholder {

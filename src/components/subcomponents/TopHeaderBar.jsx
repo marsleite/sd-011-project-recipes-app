@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'react-dom';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import headerBarByPathname from '../../helpers/headerBarByPathname';
+import arrowLeft from '../../images/arrowLeft.svg';
 import '../../styles/TopHeaderBar.css';
 
 function TopHeaderBar(props) {
   const history = useHistory();
-  const { location: { pathname } } = history;
+  const { pathname } = useLocation();
   const [pageTitle, searchButton] = headerBarByPathname(pathname);
   const { toggleSearchBar: { searchBar, setSearchBar } } = props;
-  const { toggleDropDown: { dropDown, setDropDown } } = props;
 
   function validToggle() {
-    if (pathname.includes('area')) {
-      setDropDown(!dropDown);
-    } else {
-      setSearchBar(!searchBar);
+    if (pathname.includes('/bebidas') || pathname.includes('/comidas')) {
+      setSearchBar(false);
+    }
+    if (pathname.includes('/explorar') || pathname.includes('/perfil')
+    || pathname.includes('/receitas')) {
+      setSearchBar(false);
     }
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(validToggle, [pathname]);
 
   return (
     <div className="top-header-bar">
+      <button
+        className="btn-return"
+        onClick={ () => { window.history.back(); } }
+        type="button"
+      >
+        <img
+          className="altSvg"
+          data-testid="explore-bottom-btn"
+          alt="Explorer"
+          src={ arrowLeft }
+          width="30px"
+        />
+      </button>
+      <h5 className="pageTitle" data-testid="page-title">
+        {pageTitle}
+      </h5>
       <button
         type="button"
         data-testid="profile-top-btn"
@@ -33,20 +53,18 @@ function TopHeaderBar(props) {
       >
         <img className="altSvg" src={ profileIcon } alt="Ir para perfil" />
       </button>
-      <h5 data-testid="page-title">
-        {pageTitle}
-      </h5>
       { searchButton
         ? (
           <button
             type="button"
             data-testid="search-top-btn"
-            onClick={ () => validToggle() }
+            onClick={ () => validToggle && setSearchBar(!searchBar) }
             src={ searchIcon }
           >
             <img className="altSvg" src={ searchIcon } alt="Abrir busca" />
           </button>) : null}
     </div>
+
   );
 }
 

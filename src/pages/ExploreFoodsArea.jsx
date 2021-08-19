@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
 import DropdownAreas from '../components/subcomponents/DropdownAreas';
-import RecipesContext from '../context/RecipesContext';
 import { exploreFoodsByArea, exploreArea, fetchFoods } from '../services/API';
 import '../styles/Explore.css';
 
@@ -12,8 +11,6 @@ function ExploreFoodsArea() {
   const [totalAreas, setTotalAreas] = useState([]);
   const [areaToRender, setAreaToRender] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const { dropDown } = useContext(RecipesContext);
 
   const MAX = 12;
   useEffect(() => {
@@ -44,8 +41,7 @@ function ExploreFoodsArea() {
   return (
     <>
       <Header />
-      {!dropDown ? null
-        : <DropdownAreas fetchAreas={ fetchAreasToFilter } totalAreas={ totalAreas } />}
+      <DropdownAreas fetchAreas={ fetchAreasToFilter } totalAreas={ totalAreas } />
       <section className="recipes-container">
         {loading ? <ReactBootStrap.Spinner animation="border" />
           : areaToRender.map((food, index) => (
@@ -58,7 +54,7 @@ function ExploreFoodsArea() {
                 <img
                   data-testid={ `${index}-card-img` }
                   src={ food.strMealThumb }
-                  alt={ food.strMeal }
+                  alt={ food.strMealThumb }
                   width="200px"
                 />
                 <p

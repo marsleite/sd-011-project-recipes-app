@@ -12,6 +12,7 @@
 }
 
 .explore p {
+  color: rgb(54, 211, 14);
   display: flex;
   font-size: 1.5rem;
   font-weight: 900;

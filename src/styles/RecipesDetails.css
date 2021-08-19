@@ -23,7 +23,7 @@
 .share-heart {
   filter: invert(100%);
   padding: 5px;
-  width: 90px;
+  width: 100px;
 }
 
 .header-buttons {
@@ -46,6 +46,7 @@
   color: rgb(54, 211, 14);
   font-size: 0.8 rem;
   font-weight: 900;
+  max-width: 300px;
 }
 
 .details-header :nth-child( 2 ) {
@@ -113,14 +114,8 @@
 }
 
 .btn-return {
-  align-items: center;
   background-color: rgb(54, 211, 14);
-  border: #ffc107;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  height: 35px;
-  justify-content: space-evenly;
+  border: none;
   opacity: 0.9;
   outline: none;
   width: 50px;
@@ -208,6 +203,8 @@
 
 .titles {
   color: white;
+  display: flex;
+  flex-direction: column;
   font-size: 1.3rem;
   font-weight: 900;
   justify-content: center;
@@ -246,3 +243,4 @@
 .ingredients-container input {
   margin: 5px;
 }
+

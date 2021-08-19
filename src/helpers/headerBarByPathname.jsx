@@ -1,9 +1,9 @@
 function headerBarByPathname(pathname) {
   switch (pathname) {
   case '/comidas':
-    return ['Comidas', true];
+    return ['', true];
   case '/bebidas':
-    return ['Bebidas', true];
+    return ['', true];
   case '/explorar':
     return ['Explorar', false];
   case '/perfil':
@@ -17,7 +17,7 @@ function headerBarByPathname(pathname) {
   case '/explorar/bebidas/ingredientes':
     return ['Explorar Ingredientes', false];
   case '/explorar/comidas/area':
-    return ['Explorar Origem', true];
+    return ['Explorar Origem', false];
   case '/receitas-feitas':
     return ['Receitas Feitas', false];
   case '/receitas-favoritas':
