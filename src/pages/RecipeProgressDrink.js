@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import { searchDrinkById } from '../services/RequestDrinks';
 import '../styles/drink.css';
 
@@ -10,19 +9,13 @@ function RecipeProgressDrink(props) {
   const [changeInput, setChangeInput] = useState(true);
   const [changeInputDrinkChecked, setchangeInputDrinkChecked] = useState('');
 
-  async function getDetailsById() {
-    const itemsDrink = await searchDrinkById(id);
-    setInitialItemApi(itemsDrink);
-  }
-
   useEffect(() => {
     async function getDetailsById() {
-      const itemsDrink = await searchId(id);
+      const itemsDrink = await searchDrinkById(id);
       setInitialItemApi(itemsDrink);
     }
-
     getDetailsById();
-  }, [id]);
+  }, []);
 
   function isChecked(numero) {
     setChangeInput(() => !changeInput);
