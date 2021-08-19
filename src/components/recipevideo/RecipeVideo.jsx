@@ -15,6 +15,7 @@ export default function RecipeVideo({ strMeal, strYoutube }) {
            allow="accelerometer; autoplay; clipboard-write;
                       encrypted-media; gyroscope; picture-in-picture"
            allowFullScreen
+           data-testid="video"
          />
       }
     </div>

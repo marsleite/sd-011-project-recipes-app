@@ -69,6 +69,7 @@ export default function MealsRecipes() {
                 index={ index }
                 recipeTitle={ recipe.strDrink }
                 imagePath={ recipe.strDrinkThumb }
+                path={ `/bebidas/${recipe.idDrink}` }
               />
             )))
         }
