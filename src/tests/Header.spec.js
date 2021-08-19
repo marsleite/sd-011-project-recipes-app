@@ -1,8 +1,10 @@
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
+import MutationObserver from '@sheerun/mutationobserver-shim';
 import { renderWithRouterAndBothContext } from './helpers/renders';
 import clearAndSetLsTests from './helpers/clearAndSetLSTests';
 import servicesMocked from './mocks/servicesMocked';
 
+window.MutationObserver = MutationObserver;
 const PROFILE_TOP_BTN = 'profile-top-btn';
 const SEARCH_TOP_BTN = 'search-top-btn';
 const SEARCH_INPUT = 'search-input';
@@ -24,16 +26,17 @@ describe('Testando Componente Header', () => {
     expect(pathname()).toBe('/perfil');
   });
 
-  it('1 - Testando botão para search bar', () => {
+  it('2 - Testando botão para search bar', async () => {
     const {
       getByTestId,
-      pathname,
+      pathname
     } = renderWithRouterAndBothContext('/comidas');
-    const searchButton = getByTestId(SEARCH_TOP_BTN);
+    await waitFor(() => {
+      const searchButton = getByTestId(SEARCH_TOP_BTN);
+      expect(searchButton).toBeInTheDocument();
+      fireEvent.click(searchButton);
+    });
     const searchInput = getByTestId(SEARCH_INPUT);
-    expect(searchButton).toBeInTheDocument();
-    expect(searchInput).not.toBeInTheDocument();
-    fireEvent.click(searchButton);
     expect(searchInput).toBeInTheDocument();
   });
 });
