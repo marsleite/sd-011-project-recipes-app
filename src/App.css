@@ -310,6 +310,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 9vh;
+  max-width: 100vw;
 }
 
 .meals-recipes-card-box {
@@ -577,7 +578,7 @@
   height: 25vh;
   margin: 0;
   object-fit: cover;
-  transform: scale(1.1);
+  vertical-align: middle;
   width: 100vw;
 }
 
@@ -611,6 +612,10 @@
 }
 
 .detail-ingredients {
+  margin: 3vh;
+}
+
+.detail-description {
   margin: 3vh;
 }
 
@@ -812,4 +817,201 @@
 .div-null {
   height: 30px;
   width: 30px;
+}
+
+@media only screen and ( min-width : 768px ) {
+
+  .login-page {
+    background-size: cover;
+  }
+
+  .login-logo {
+    width: 30%;
+  }
+
+  .form-login {
+    margin-top: 10%;
+  }
+
+  .footer {
+    height: 6vh;
+    padding: 1% 10%;
+  }
+
+  .footer img {
+    height: 4vh;
+  }
+
+  .header-div {
+    padding: 1% 10%;
+  }
+
+  .search-bar {
+    padding: 0 10%;
+  }
+
+  .search-input input {
+    width: 50vw;
+  }
+
+  .search-radios {
+    width: 60%;
+  }
+
+  .meal-div-category {
+    align-items: center;
+    display: flex;
+    margin: 10px 0;
+    padding: 0 10%;
+    width: 100vw;
+  }
+
+  .drink-div-category {
+    align-items: center;
+    display: flex;
+    margin: 10px 0;
+    padding: 0 10%;
+    width: 100vw;
+  }
+
+  .meal-btn-category {
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  .drink-btn-category {
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  .meals-recipes-card-box {
+    margin: 1.5%;
+    width: 20%;
+  }
+
+  .drinks-recipes-card-box {
+    margin: 1.5%;
+    width: 20%;
+  }
+
+  .main-recipes-box-name {
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .ingredient-recipes-card-box {
+    margin: 1.5%;
+    width: 20%;
+  }
+
+  .explore-select-input {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+  }
+
+  .explore-btn {
+    padding: 1em;
+    width: 20%;
+  }
+
+  .profile-done-btn {
+    padding: 1em;
+    width: 20%;
+  }
+
+  .profile-favorite-btn {
+    padding: 1em;
+    width: 20%;
+  }
+
+  .profile-logout-btn {
+    padding: 1em;
+    width: 20%;
+  }
+
+  .doneFilters {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+  }
+
+  .filter-by-all-btn {
+    font-size: 14px;
+  }
+
+  .filter-by-food-btn {
+    font-size: 14px;
+  }
+
+  .filter-by-drink-btn {
+    font-size: 14px;
+  }
+
+  .recipes-card-box {
+    margin-left: auto;
+    margin-right: auto;
+    min-height: auto;
+    width: 80vw;
+  }
+
+  .done-share {
+    align-self: center;
+  }
+
+  .detail-page {
+    margin-bottom: 90px;
+  }
+
+  .food-detail {
+    padding: 1% 10%;
+  }
+
+
+  .drink-detail {
+    padding: 1% 10%;
+  }
+
+  .detail-infos {
+    margin: 5% 0;
+    padding: 1% 10%;
+  }
+
+  .start-btn {
+    font-size: 18px;
+    margin: 15px;
+    padding: 1em;
+  }
+
+  .continue-btn {
+    font-size: 18px;
+    margin: 15px;
+    padding: 1em;
+  }
+
+  .progress-page {
+    margin-bottom: 90px;
+  }
+
+  .finish-food-btn {
+    font-size: 18px;
+    margin: 15px;
+    padding: 1em;
+  }
+
+  .finish-drink-btn {
+    font-size: 18px;
+    margin: 15px;
+    padding: 1em;
+  }
+
+  .div-buttons {
+    width: auto;
+  }
+
+  .favorite-recipe-card {
+    width: 80%;
+  }
+
 }
