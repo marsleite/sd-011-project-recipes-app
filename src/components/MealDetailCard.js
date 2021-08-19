@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Card } from 'react-bootstrap';
 import ButtonToProgress from './ButtonToProgress';
 import ButtonShare from './ButtonShare';
 import Recommended from './Recommended';
@@ -61,49 +62,44 @@ function MealDetailCard() {
   }).filter((i) => i !== undefined);
 
   return (
-    <div>
-      <h3 data-testid="recipe-title">{strMeal}</h3>
-      <img data-testid="recipe-photo" width="150px" src={ strMealThumb } alt="tumb" />
-      <h4>{strArea}</h4>
-      <p data-testid="recipe-category">{strCategory}</p>
-      <div style={ { display: 'flex', justifyContent: 'space-around' } }>
-        <ButtonFavorite objData={ mealDetail } />
-        <ButtonShare path={ window.location.href } testid="share-btn" />
-      </div>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              { objIngred.map((e, i) => {
-                if (e !== null) {
-                  return (
-                    <div
-                      data-testid={ `${i}-ingredient-name-and-measure` }
-                      key={ i }
-                    >
-                      {objMeasure[i] !== (undefined || '')
-                        ? `${e} - ${objMeasure[i]}` : `${e}`}
-                    </div>
-                  );
-                }
-                return undefined;
-              }) }
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h6 data-testid="instructions">{strInstructions}</h6>
-      { strYoutube
-        && <RenderVideo
-          src={ strYoutube }
-          title={ `Recipe ${strMeal}` }
-          id="video"
-        /> }
-      <div style={ { margin: '40px', paddingBottom: '60px' } }>
+    <Card style={ { width: '90%', margin: '15px auto' } }>
+      <Card.Body>
+        <Card.Img
+          data-testid="recipe-photo"
+          width="150px"
+          src={ strMealThumb }
+          alt="tumb"
+        />
+        <Card.Text data-testid="recipe-title">{strMeal}</Card.Text>
+        <Card.Text>{strArea}</Card.Text>
+        <Card.Text data-testid="recipe-category">{strCategory}</Card.Text>
+        <Card.Text style={ { display: 'flex', justifyContent: 'space-around' } }>
+          <ButtonFavorite objData={ mealDetail } />
+          <ButtonShare path={ window.location.href } testid="share-btn" />
+        </Card.Text>
+        <Card.Text>
+          { objIngred.map((e, i) => (
+            <Card.Text
+              data-testid={ `${i}-ingredient-name-and-measure` }
+              key={ i }
+            >
+              { objMeasure[i] ? `${e} - ${objMeasure[i]}` : `${e}`}
+            </Card.Text>
+          ))}
+        </Card.Text>
+        <h6 data-testid="instructions">{strInstructions}</h6>
+        { strYoutube
+          && <RenderVideo
+            src={ strYoutube }
+            title={ `Recipe ${strMeal}` }
+            id="video"
+          /> }
+      </Card.Body>
+      <Card.Text style={ { margin: '40px', paddingBottom: '60px' } }>
         <Recommended value={ rec } type="meal" min={ min } />
-      </div>
+      </Card.Text>
       <ButtonToProgress data={ mealDetail } />
-    </div>
+    </Card>
   );
 }
 
