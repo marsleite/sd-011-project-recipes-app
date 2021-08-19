@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
 import FoodOrDrinkFilter from './Components/FoodOrDrinkFilter';
 import SecondShareButton from './Components/Secondary/SecondShareButton';
+import '../styles/doneRecipes.css'
+import FooterBar from './Components/FooterBar';
 
 function RecipesMade() {
   const [filter, setFilter] = React.useState('all');
@@ -25,15 +26,9 @@ function RecipesMade() {
   // const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   return (
-    <div>
-      <section>
+    <div className="pb-5">
+      <section className="container pt-3 px-3 ">
         <h1 data-testid="page-title">Receitas Feitas</h1>
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Botão que direciona para a tela de perfil"
-        />
-      </section>
       <FoodOrDrinkFilter setFilter={ setFilter } />
       {filtereds && filtereds.map(({
         id,
@@ -46,7 +41,8 @@ function RecipesMade() {
         type,
         tags },
       index) => (
-        <div key={ `${name}-${id}` }>
+        <div className='d-flex done-cards' key={ `${name}-${id}` }>
+          <div className='d-flex flex-column justify-content-between'>
           <Link to={ `/${type}s/${id}` }>
             <img
               src={ image }
@@ -55,31 +51,39 @@ function RecipesMade() {
               alt="Imagem de comida"
             />
           </Link>
-          <div>
-            <p data-testid={ `${index}-horizontal-top-text` }>
+          <SecondShareButton
+              itemId={ id }
+              type={ type }
+              testID={ `${index}-horizontal-share-btn` }
+            /> 
+            </div>
+          <div className="d-flex flex-wrap done-description">
+            <p
+            style={{fontWeight: 'bold'}} data-testid={ `${index}-horizontal-top-text` }>
               {area !== '' ? `${area} - ${category}` : alcoholicOrNot }
             </p>
             <Link to={ `/${type}s/${id}` }>
-              <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+              <p className="a-p" data-testid={ `${index}-horizontal-name` }>{name}</p>
             </Link>
             <p data-testid={ `${index}-horizontal-done-date` }>
               {doneDate}
             </p>
+            <div style={{height: '70px'}}>
             { tags.map((data) => (
               <p
+              style={{fontWeight: 'bold'}}
                 key={ index }
                 data-testid={ `${index}-${data}-horizontal-tag` }
               >
                 {data}
-              </p>))}
-            <SecondShareButton
-              itemId={ id }
-              type={ type }
-              testID={ `${index}-horizontal-share-btn` }
-            />
+              </p>))}    
+              </ div>
+              
           </div>
         </div>
       ))}
+      </section>
+<FooterBar />
     </div>
   );
 }

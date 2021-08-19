@@ -1,0 +1,16 @@
+.done-cards{
+    border:1px solid whitesmoke;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    margin: 10px;
+    padding: 5px 10px;
+ 
+}
+
+.done-cards img{
+    border-radius: 5px;
+}
+
+.done-description{
+padding-left: 10px;
+}

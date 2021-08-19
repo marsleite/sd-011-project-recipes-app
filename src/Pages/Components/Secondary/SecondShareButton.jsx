@@ -12,16 +12,19 @@ function SecondShareButton({ itemId, type, testID }) {
     setShowCopy(true);
   }
   return (
-    <>
-      <button type="button" onClick={ () => copyToClipBoard() }>
-        <img
+    <div role="button" onClick={ () => copyToClipBoard() } >
+       { /* <button type="button" onClick={ () => copyToClipBoard() }>*/}
+       {!showCopy ? (
+       <img
           data-testid={ testID }
-          src={ shareIcon }
+          src={ shareIcon}
           alt="Botão compartilhar"
-        />
-      </button>
-      { showCopy && <p>Link copiado!</p> }
-    </>
+        />) : (<p>Link copiado!</p>)
+      }
+      
+      {/*</button>*/}
+
+    </div>
   );
 }
 
