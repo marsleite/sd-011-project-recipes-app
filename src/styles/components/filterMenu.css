@@ -1,0 +1,27 @@
+.nav-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
+}
+
+/* Como esconder o texto que vaza da label: */
+
+/* https://stackoverflow.com/questions/30945109/stop-text-from-leaking-out-of-div */
+.nav-filters button {
+  background-color: #c4c4c4;
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  margin: 5px;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 105px;
+}
+
+.nav-filters .filter-selected {
+  background-color: #818080;
+}

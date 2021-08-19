@@ -1,0 +1,28 @@
+.profile-email {
+  font-size: 25px;
+  text-align: center;
+}
+
+.profile-nav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-nav a {
+  background-color: #c4c4c4;
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+  font-size: 25px;
+  height: 53px;
+  line-height: 53px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.profile-nav a:hover {
+  background-color: #818080;
+}

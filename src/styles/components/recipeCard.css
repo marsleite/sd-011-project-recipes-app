@@ -1,0 +1,20 @@
+.card-menu {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 172px;
+  width: 162px;
+}
+
+.card-menu img {
+  height: 109px;
+  margin: 0;
+  width: 160px;
+}
+
+.card-menu h3 {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  flex-grow: 1;
+}

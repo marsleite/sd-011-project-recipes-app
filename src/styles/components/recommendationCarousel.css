@@ -1,0 +1,5 @@
+.recommendation-carousel {
+  display: flex;
+  height: 170px;
+  overflow: auto;
+}

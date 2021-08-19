@@ -1,0 +1,21 @@
+.recipe-done {
+  background-color: #6ce34f;
+  border: 0;
+  bottom: 0;
+  color: black;
+  padding: 10px 15px;
+  position: fixed;
+  text-align: center;
+  width: 340px;
+}
+
+.recipe-in-progress {
+  background-color: #da291c;
+  border: 0;
+  bottom: 0;
+  color: black;
+  padding: 10px 15px;
+  position: fixed;
+  text-align: center;
+  width: 340px;
+}
