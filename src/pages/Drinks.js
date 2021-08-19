@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchDrinkCategory, fetchDrinkList,
   fetchDrinkIngredientList, renderDrinkIngredient } from '../redux/actions/drinkActions';
-import { DrinkCards, DrinkCategories, Header, Footer } from '../components';
+import { DrinkCategories, Header, Footer, DrinkCard } from '../components';
 
 class Drinks extends Component {
   componentDidMount() {
@@ -20,11 +20,15 @@ class Drinks extends Component {
   }
 
   render() {
+    const { drinkCardsList } = this.props;
     return (
       <div>
         <Header title="Bebidas" search />
         <DrinkCategories />
-        <DrinkCards test="-recipe-card" />
+        <div className="card-list-container">
+          { drinkCardsList.map((item, index) => (
+            <DrinkCard key={ item.idDrink } drink={ item } index={ index } />)) }
+        </div>
         <Footer />
       </div>
     );

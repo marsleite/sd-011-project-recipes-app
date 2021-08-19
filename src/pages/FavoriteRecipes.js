@@ -67,17 +67,63 @@ class FavoriteRecipes extends Component {
             Drink
           </Button>
         </div>
-        {favoriteRecipes && favoriteRecipes.filter((item) => item.type.includes(filter))
-          .map((item, index) => {
-            if (item.type === 'comida') {
+        <div className="card-list-container">
+          {favoriteRecipes && favoriteRecipes.filter((item) => item.type.includes(filter))
+            .map((item, index) => {
+              if (item.type === 'comida') {
+                return (
+                  <Card
+                    key={ index }
+                    style={ { width: '16rem' } }
+                    className="done-recipes-card"
+                  >
+                    <li key={ item.id }>
+                      <Link to={ `/comidas/${item.id}` }>
+                        <Card.Img
+                          variant="top"
+                          height="200px"
+                          width="300px"
+                          data-testid={ `${index}-horizontal-image` }
+                          src={ item.image }
+                          alt="foto da receita"
+                        />
+                      </Link>
+                      <Card.Body>
+                        <Card.Title
+                          className="done-recipe-title"
+                          data-testid={ `${index}-horizontal-top-text` }
+                        >
+                          { `${item.area} - ${item.category}` }
+                        </Card.Title>
+                        <Card.Title
+                          className="done-recipe-title"
+                          data-testid={ `${index}-horizontal-name` }
+                        >
+                          <Link to={ `/comidas/${item.id}` }>
+                            { item.name }
+                          </Link>
+                        </Card.Title>
+                        <ShareButton
+                          test={ `${index}-horizontal-share-btn` }
+                          id={ item.id }
+                        />
+                        <FavoriteButton
+                          test={ `${index}-horizontal-favorite-btn` }
+                          id={ item.id }
+                        />
+                      </Card.Body>
+                    </li>
+                  </Card>
+                );
+              }
               return (
                 <Card
-                  key={ index }
                   style={ { width: '16rem' } }
                   className="done-recipes-card"
+                  key={ item.id }
                 >
-                  <li key={ item.id }>
-                    <Link to={ `/comidas/${item.id}` }>
+                  <li>
+                    <Link to={ `/bebidas/${item.id}` }>
                       <Card.Img
                         variant="top"
                         height="200px"
@@ -88,25 +134,25 @@ class FavoriteRecipes extends Component {
                       />
                     </Link>
                     <Card.Body>
+
                       <Card.Title
                         className="done-recipe-title"
                         data-testid={ `${index}-horizontal-top-text` }
                       >
-                        { `${item.area} - ${item.category}` }
+                        { item.alcoholicOrNot }
                       </Card.Title>
                       <Card.Title
-                        className="done-recipe-title"
                         data-testid={ `${index}-horizontal-name` }
                       >
-                        <Link to={ `/comidas/${item.id}` }>
+                        <Link to={ `/bebidas/${item.id}` }>
                           { item.name }
                         </Link>
                       </Card.Title>
-                      <ShareButton
+                      <DrinkShareButton
                         test={ `${index}-horizontal-share-btn` }
                         id={ item.id }
                       />
-                      <FavoriteButton
+                      <DrinkFavoriteButton
                         test={ `${index}-horizontal-favorite-btn` }
                         id={ item.id }
                       />
@@ -114,52 +160,8 @@ class FavoriteRecipes extends Component {
                   </li>
                 </Card>
               );
-            }
-            return (
-              <Card
-                style={ { width: '16rem' } }
-                className="done-recipes-card"
-                key={ item.id }
-              >
-                <li>
-                  <Link to={ `/bebidas/${item.id}` }>
-                    <Card.Img
-                      variant="top"
-                      height="200px"
-                      width="300px"
-                      data-testid={ `${index}-horizontal-image` }
-                      src={ item.image }
-                      alt="foto da receita"
-                    />
-                  </Link>
-                  <Card.Body>
-
-                    <Card.Title
-                      className="done-recipe-title"
-                      data-testid={ `${index}-horizontal-top-text` }
-                    >
-                      { item.alcoholicOrNot }
-                    </Card.Title>
-                    <Card.Title
-                      data-testid={ `${index}-horizontal-name` }
-                    >
-                      <Link to={ `/bebidas/${item.id}` }>
-                        { item.name }
-                      </Link>
-                    </Card.Title>
-                    <DrinkShareButton
-                      test={ `${index}-horizontal-share-btn` }
-                      id={ item.id }
-                    />
-                    <DrinkFavoriteButton
-                      test={ `${index}-horizontal-favorite-btn` }
-                      id={ item.id }
-                    />
-                  </Card.Body>
-                </li>
-              </Card>
-            );
-          })}
+            })}
+        </div>
       </div>
     );
   }

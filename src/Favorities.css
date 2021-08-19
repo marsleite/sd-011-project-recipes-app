@@ -9,7 +9,6 @@ body {
   border: none;
   height: 14rem;
   margin-bottom: 79px;
-  margin-left: 40px;
 }
 
 .img-card {
@@ -81,12 +80,4 @@ body {
 .done-recipe-title {
   font-size: 23pt;
   font-weight: 400;
-}
-
-.favorities-title {
-  color: rgb(55, 6, 23);
-  font-family: Pacifico , cursive;
-  font-size: 22pt;
-  letter-spacing: 3px;
-  text-align: center;
 }

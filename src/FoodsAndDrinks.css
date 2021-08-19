@@ -9,7 +9,6 @@ body {
   border: none;
   height: 14rem;
   margin-bottom: 79px;
-  margin-left: 40px;
 }
 
 .title {
@@ -24,6 +23,12 @@ body {
   border: solid 1px rgb(55, 6, 23);
   border-radius: 5px;
   box-shadow: 4px 4px 4px 3px rgba(55, 6, 23, 0.2);
+}
+
+.card-list-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap') ;

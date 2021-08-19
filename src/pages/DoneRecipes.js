@@ -67,17 +67,73 @@ export default class DoneRecipes extends Component {
             Drinks
           </Button>
         </div>
-        {doneRecipes && doneRecipes.filter((item) => item.type.includes(filter))
-          .map((item, index) => {
-            if (item.type === 'comida') {
+        <div className="card-list-container">
+          {doneRecipes && doneRecipes.filter((item) => item.type.includes(filter))
+            .map((item, index) => {
+              if (item.type === 'comida') {
+                return (
+                  <Card
+                    key={ index }
+                    style={ { width: '16rem' } }
+                    className="done-recipes-card"
+                  >
+                    <li>
+                      <Link to={ `/comidas/${item.id}` }>
+                        <Card.Img
+                          variant="top"
+                          height="200px"
+                          width="300px"
+                          data-testid={ `${index}-horizontal-image` }
+                          src={ item.image }
+                          alt="card-img"
+                        />
+                      </Link>
+                      <Card.Body>
+                        <Card.Title
+                          className="done-recipe-title"
+                          data-testid={ `${index}-horizontal-top-text` }
+                        >
+                          {`${item.area} - ${item.category}`}
+                        </Card.Title>
+                        <Card.Title
+                          data-testid={ `${index}-horizontal-name` }
+                        >
+                          <Link to={ `/comidas/${item.id}` }>
+                            {item.name}
+                          </Link>
+                        </Card.Title>
+                        <Card.Title
+                          data-testid={ `${index}-horizontal-done-date` }
+                        >
+                          {`Feita em: ${item.doneDate}`}
+                        </Card.Title>
+                        <Card.Title
+                          data-testid={ `${index}-${item.tags[0]}-horizontal-tag` }
+                        >
+                          {item.tags[0]}
+                        </Card.Title>
+                        <Card.Title
+                          data-testid={ `${index}-${item.tags[1]}-horizontal-tag` }
+                        >
+                          {item.tags[1]}
+                        </Card.Title>
+                        <ShareButton
+                          test={ `${index}-horizontal-share-btn` }
+                          id={ item.id }
+                        />
+                      </Card.Body>
+                    </li>
+                  </Card>
+                );
+              }
               return (
                 <Card
-                  key={ index }
                   style={ { width: '16rem' } }
                   className="done-recipes-card"
+                  key={ index }
                 >
                   <li>
-                    <Link to={ `/comidas/${item.id}` }>
+                    <Link to={ `/bebidas/${item.id}` }>
                       <Card.Img
                         variant="top"
                         height="200px"
@@ -92,12 +148,12 @@ export default class DoneRecipes extends Component {
                         className="done-recipe-title"
                         data-testid={ `${index}-horizontal-top-text` }
                       >
-                        {`${item.area} - ${item.category}`}
+                        {item.alcoholicOrNot}
                       </Card.Title>
                       <Card.Title
                         data-testid={ `${index}-horizontal-name` }
                       >
-                        <Link to={ `/comidas/${item.id}` }>
+                        <Link to={ `/bebidas/${item.id}` }>
                           {item.name}
                         </Link>
                       </Card.Title>
@@ -105,16 +161,6 @@ export default class DoneRecipes extends Component {
                         data-testid={ `${index}-horizontal-done-date` }
                       >
                         {`Feita em: ${item.doneDate}`}
-                      </Card.Title>
-                      <Card.Title
-                        data-testid={ `${index}-${item.tags[0]}-horizontal-tag` }
-                      >
-                        {item.tags[0]}
-                      </Card.Title>
-                      <Card.Title
-                        data-testid={ `${index}-${item.tags[1]}-horizontal-tag` }
-                      >
-                        {item.tags[1]}
                       </Card.Title>
                       <ShareButton
                         test={ `${index}-horizontal-share-btn` }
@@ -124,52 +170,8 @@ export default class DoneRecipes extends Component {
                   </li>
                 </Card>
               );
-            }
-            return (
-              <Card
-                style={ { width: '16rem' } }
-                className="done-recipes-card"
-                key={ index }
-              >
-                <li>
-                  <Link to={ `/bebidas/${item.id}` }>
-                    <Card.Img
-                      variant="top"
-                      height="200px"
-                      width="300px"
-                      data-testid={ `${index}-horizontal-image` }
-                      src={ item.image }
-                      alt="card-img"
-                    />
-                  </Link>
-                  <Card.Body>
-                    <Card.Title
-                      className="done-recipe-title"
-                      data-testid={ `${index}-horizontal-top-text` }
-                    >
-                      {item.alcoholicOrNot}
-                    </Card.Title>
-                    <Card.Title
-                      data-testid={ `${index}-horizontal-name` }
-                    >
-                      <Link to={ `/bebidas/${item.id}` }>
-                        {item.name}
-                      </Link>
-                    </Card.Title>
-                    <Card.Title
-                      data-testid={ `${index}-horizontal-done-date` }
-                    >
-                      {`Feita em: ${item.doneDate}`}
-                    </Card.Title>
-                    <ShareButton
-                      test={ `${index}-horizontal-share-btn` }
-                      id={ item.id }
-                    />
-                  </Card.Body>
-                </li>
-              </Card>
-            );
-          })}
+            })}
+        </div>
       </div>
     );
   }

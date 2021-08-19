@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   font-family: Pacifico , cursive;
   justify-content: space-evenly;
+  padding-top: 5px;
 }
 
 .button {
@@ -16,9 +17,14 @@
 }
 
 .title-header {
-  font-size: 24pt;
+  font-size: 1.5em;
   font-weight: 500;
   letter-spacing: 3px;
   padding-top: 10px;
 }
 
+.button-1 {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}

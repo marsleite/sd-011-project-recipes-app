@@ -6,6 +6,7 @@ import { fetchFoodAreaSuccess, fetchFoodList,
   fetchSearchFoodArea } from '../redux/actions/foodActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../ExploreIngredients.css';
 
 class ExploreFoodByArea extends Component {
   constructor() {
@@ -38,6 +39,7 @@ class ExploreFoodByArea extends Component {
       <div>
         <Header title="Explorar Origem" search />
         <select
+          className="dropdown"
           data-testid="explore-by-area-dropdown"
           onChange={ this.handleFoodByArea }
         >
@@ -57,10 +59,10 @@ class ExploreFoodByArea extends Component {
             </option>
           )) }
         </select>
-        <ul>
+        <div className="card-list-container">
           { foodCardsList && foodCardsList.map((item, index) => (
             <FoodCard key={ item.idMeal } food={ item } index={ index } />)) }
-        </ul>
+        </div>
         <Footer />
       </div>
     );

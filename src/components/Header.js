@@ -45,11 +45,12 @@ class Header extends Component {
         </Link>
         <h1
           data-testid="page-title"
-          className="title-header favorities-title"
+          className="title-header"
         >
           { title }
         </h1>
-        { search ? this.renderSearchButton() : '' }
+        { search ? this.renderSearchButton()
+          : <button type="button" className="button-1">X</button> }
         { showInput ? <SearchBar /> : '' }
       </header>
     );
