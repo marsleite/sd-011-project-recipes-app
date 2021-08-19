@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getCategoriesDrink, searchByCategoryDrink } from '../services/RequestDrinks';
-import { getCategoriesFood, searchByCategoryFood } from '../services/RequestFood';
+import { searchByCategoryDrink } from '../services/RequestDrinks';
+import { searchByCategoryFood } from '../services/RequestFood';
 import { RequestHook } from '../Context/RequestHook';
 
 function NavCategories({ origin }) {
@@ -27,12 +27,12 @@ function NavCategories({ origin }) {
     let items;
     if (origin === 'Food') {
       if (text === 'All') {
-        items = await getCategoriesFood();
+        return;
       }
       items = await searchByCategoryFood(text);
     } else if (origin === 'Drink') {
       if (text === 'All') {
-        items = await getCategoriesDrink();
+        return;
       }
       items = await searchByCategoryDrink(text);
     }
@@ -40,11 +40,14 @@ function NavCategories({ origin }) {
   }
 
   function handleClick({ value }) {
-    if (clickedButton === '') {
+    if (value === 'All') {
+      setClickedButton('');
+    }
+    if (clickedButton === '' && value !== 'All') {
       setClickedButton(value);
       setByCategory((state) => !state);
       searchByCategory(value);
-    } else if (clickedButton !== value) {
+    } else if (clickedButton !== value && value !== 'All') {
       setClickedButton(value);
       searchByCategory(value);
     } else {
