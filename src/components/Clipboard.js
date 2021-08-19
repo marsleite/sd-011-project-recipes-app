@@ -3,7 +3,6 @@ import Shareicon from '../images/shareIcon.svg';
 
 function Clipboard() {
   const [copied, setCopied] = useState(false);
-
   return (
     <div>
       <button

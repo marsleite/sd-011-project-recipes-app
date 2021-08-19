@@ -117,13 +117,15 @@ function DetailsFood(props) {
                 .map((foodRecomend, indexRec) => renderCard(foodRecomend, indexRec))
             }
           </div>
-          <button
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-            type="button"
-          >
-            Iniciar Receita
-          </button>
+          <Link to={ `/comidas/${meal.idMeal}/in-progress` }>
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+            >
+              Iniciar Receita
+            </button>
+          </Link>
         </div>
       ))
   );

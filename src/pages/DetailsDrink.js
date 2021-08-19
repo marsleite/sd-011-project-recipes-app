@@ -107,13 +107,15 @@ function DetailsDrink(props) {
                 .map((drinkRecomend, indexRec) => renderCard(drinkRecomend, indexRec))
             }
           </div>
-          <button
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-            type="button"
-          >
-            Iniciar Receita
-          </button>
+          <Link to={ `/bebidas/${drink.idDrink}/in-progress` }>
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+            >
+              Iniciar Receita
+            </button>
+          </Link>
         </div>
       ))
   );
