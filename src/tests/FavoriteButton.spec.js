@@ -62,15 +62,35 @@ describe('4 - Testando Favorite Button na página de receitas favoritas', () => 
     servicesMocked();
     localStorage.setItem(
       'favoriteRecipes',
-      JSON.stringify([{
-        alcoholicOrNot: '',
-        area: 'British',
-        category: 'Seafood',
-        id: '52802',
-        image: 'https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg',
-        name: 'Fish pie',
-        type: 'comida',
-      }]),
+      JSON.stringify([
+        {
+          alcoholicOrNot: '',
+          area: 'British',
+          category: 'Seafood',
+          id: '52802',
+          image: 'https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg',
+          name: 'Fish pie',
+          type: 'comida',
+        },
+        {
+          alcoholicOrNot: '',
+          area: undefined,
+          category: 'Seafood',
+          id: '52802',
+          image: 'https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg',
+          name: 'Fish pie',
+          type: 'comida',
+        },
+        {
+          alcoholicOrNot: 'Optional alcohol',
+          area: '',
+          category: 'Ordinary Drink',
+          id: '15997',
+          image: 'https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg',
+          name: 'GG',
+          type: 'bebida',
+        },
+      ]),
     );
   });
 
