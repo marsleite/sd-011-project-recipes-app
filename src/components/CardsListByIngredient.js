@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import fetchByFilter from '../services/data';
 import { SearchBarContext } from '../context/SearchBar';
-
-/* Criei CardsList para renderizar apenas uma vez. Deixei apenas o SearchBarProvider encapsulando o Header e CardsList, já que buscam as mesmas informações */
 
 export default function CardsListByIngredient() {
   const [ingredName, setIngredName] = useState([]);
@@ -70,33 +69,35 @@ export default function CardsListByIngredient() {
   return (
     <div style={ { position: 'relative', top: '75px' } }>
       { imge.map((e, i) => (
-        <button
-          style={ {
-            borderRadius: '5px',
-            margin: '10px 10px 0 10px',
-            width: '100%',
-            background: 'orange',
-            opacity: 'none',
-            border: '1px solid black',
-          } }
+        <Card
+          style={ { margin: '10px auto', width: '304px', boxShadow: '0 0 5px' } }
+          role="button"
+          data-testid={ `${i}-ingredient-card` }
           type="button"
           key={ i }
+          onClick={ () => handleClick(e.name) }
+          onKeyPress={ () => handleClick(e.name) }
+          tabIndex="0"
         >
-          <div
-            role="button"
-            data-testid={ `${i}-ingredient-card` }
-            onClick={ () => handleClick(e.name) }
-            onKeyPress={ () => handleClick(e.name) }
-            tabIndex="0"
+          <Card.Body
+            style={
+              { display: 'flex', alignItems: 'center', justifyContent: 'space-around' }
+            }
           >
             <img
+              style={ { width: '100px' } }
               src={ e.fig }
               alt={ `figure ${e.name}` }
               data-testid={ `${i}-card-img` }
             />
-            <p data-testid={ `${i}-card-name` }>{e.name}</p>
-          </div>
-        </button>
+            <p
+              style={ { fontSize: '20px', fontWeight: 'bold', textAlign: 'right' } }
+              data-testid={ `${i}-card-name` }
+            >
+              { e.name }
+            </p>
+          </Card.Body>
+        </Card>
       )) }
       { redirectTo && <Redirect to={ `/${path}` } /> }
     </div>

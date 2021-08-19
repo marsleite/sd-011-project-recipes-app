@@ -92,7 +92,7 @@ function DrinkDetailCard() {
           style={ { width: '50%' } }
         /> }
       </Card.Body>
-      <Card.Text>
+      <Card.Text style={ { margin: '40px', paddingBottom: '60px' } }>
         <Recommended value={ rec } type="drink" min={ min } />
       </Card.Text>
       <ButtonToProgress data={ drinkDetail } />

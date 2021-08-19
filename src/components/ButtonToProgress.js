@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 function ButtonToProgress(props) {
   const { mealDetail, drinkDetail } = props;
@@ -43,15 +44,29 @@ function ButtonToProgress(props) {
 
   const startButton = () => {
     const btn = (
-      <div>
-        <button
+      <div
+        style={ {
+          position: 'fixed',
+          bottom: 0,
+          height: '60px',
+          background: '#f76c05',
+          zIndex: '1',
+          alignItems: 'center',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'space-around',
+        } }
+      >
+        <Button
+          className="button-style"
+          variant="dark"
           style={ { position: 'fixed', bottom: 0 } }
           data-testid="start-recipe-btn"
           type="button"
           onClick={ handleClick }
         >
           { progress ? 'Continuar Receita' : 'Iniciar Receita' }
-        </button>
+        </Button>
         {
           toRedirect
             && <Redirect

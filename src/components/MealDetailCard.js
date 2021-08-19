@@ -95,7 +95,7 @@ function MealDetailCard() {
             id="video"
           /> }
       </Card.Body>
-      <Card.Text>
+      <Card.Text style={ { margin: '40px', paddingBottom: '60px' } }>
         <Recommended value={ rec } type="meal" min={ min } />
       </Card.Text>
       <ButtonToProgress data={ mealDetail } />
