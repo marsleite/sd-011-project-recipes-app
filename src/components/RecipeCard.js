@@ -27,7 +27,6 @@ function RecipeCard({ recipe, index, test }) {
   const history = useHistory();
 
   function handleClick() {
-    console.log(strIngredient1);
     if (strIngredient) {
       setLoading(true);
       searchBarFetchMeal(title, 'ingredient')
