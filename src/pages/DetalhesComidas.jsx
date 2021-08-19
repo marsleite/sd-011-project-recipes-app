@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -199,13 +200,15 @@ class DetalhesComidas extends Component {
               {`${value} - ${onlyMeasures[index]}`}
             </p>)) }
           <p className="text-instructions" data-testid="instructions">{ strInstructions }</p>
-          <iframe
-            src={ strYoutube }
-            height="200"
-            width="300"
-            title={ strMeal }
-            data-testid="video"
-          />
+          <div style={ { display: 'flex', justifyContent: 'center', margin: '15px', border: '2px solid lightgray', width: '85vw', marginLeft: 'auto' } }>
+            <ReactPlayer
+              height="200px"
+              width="85vw"
+              url={ strYoutube }
+              title={ strMeal }
+              data-testid="video"
+            />
+          </div>
         </div>
         <div className="div-scroll">
           {
