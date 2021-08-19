@@ -22,7 +22,7 @@ function RecipeProgressDrink(props) {
     let verifyRecipeId;
     const storageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (storageFavorite !== null) {
-      verifyRecipeId = object.values(storageFavorite).find(({ id: x }) => x === id);
+      verifyRecipeId = Object.values(storageFavorite).find(({ id: x }) => x === id);
     }
     return verifyRecipeId;
   }
@@ -46,7 +46,7 @@ function RecipeProgressDrink(props) {
   function renderIngrediente(drink) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1; numero <= limitItens; numero += 1) {
+    for (let numero = 1;numero <= limitItens;numero += 1) {
       if (drink[`strIngredient${numero}`] !== null
         && drink[`strIngredient${numero}`] !== '') {
         array.push(
