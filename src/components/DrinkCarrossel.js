@@ -15,7 +15,6 @@ function DrinkCarrossel({ recomendation }) {
   }, [recomendation]);
   function imgClickHandler(id) {
     history.push(`/comidas/${id}`);
-    window.location.reload();
   }
 
   function nextImg() {

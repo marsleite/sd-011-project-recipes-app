@@ -6,10 +6,9 @@ import DoRecipesBtn from './DoRecipesBtn';
 export default function RenderRecipes({ id, trigger, title, index, srcImage, target }) {
   // const { typeRecipes, nameRecipes } = props;
   return (
-    <div>
+    <div className="card-body">
       <Link to={ `/${trigger}/${id}` }>
         <div
-          className="card-body"
           key={ index }
           data-testid={ `${index}-recipe-card` }
         >
