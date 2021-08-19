@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Shareicon from '../images/shareIcon.svg';
 
 function Clipboard2() {
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const seconds = 2000;
+    const timeout = setTimeout(() => {
+      setCopied(false);
+    }, seconds);
+    return () => clearTimeout(timeout);
+  }, [copied]);
 
   return (
     <div>
@@ -16,7 +24,7 @@ function Clipboard2() {
       >
         <img src={ Shareicon } alt="Share icon" width="15px" />
       </button>
-      { copied ? (<p>Link copiado!</p>) : '' }
+      { copied && 'Link copiado!' }
     </div>
   );
 }
