@@ -8,9 +8,7 @@ import '../styles/drink.css';
 function RecipeProgressFood(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
-  // const [changeInput, setChangeInput] = useState(false);
-  // const [clicked, setClicked] = useState(0);
-  const [progressRecipe, setProgressRecipe] = useState([]);
+  const [progressRecipe] = useState([]);
 
   useEffect(() => {
     async function getDetailsById() {
@@ -20,25 +18,6 @@ function RecipeProgressFood(props) {
 
     getDetailsById();
   }, [id]);
-
-  // function handleClick({ value }) {
-  //   if (!changeInput) {
-  //     setClicked(value);
-  //     localStorage.setItem('inProgressRecipes', JSON.stringify(value));
-  //   } else {
-  //     setClicked(0);
-  //     localStorage.removeItem('inProgressRecipes');
-  //   }
-  //   setChangeInput((state) => !state);
-  // }
-
-  // function isCheckedFood (e) {
-  //   if (e.currentTarget.className !== 'checked') {
-  //     e.currentTarget.className = 'checked';
-  //   } else if (e.currentTarget.className === 'checked') {
-  //     e.currentTarget.className = '';
-  //   }
-  // }
 
   function storageCheck() {
     let verifyRecipeId;
@@ -80,7 +59,7 @@ function RecipeProgressFood(props) {
     const array = [];
     const limitItens = 15;
 
-    for (let numero = 1;numero <= limitItens;numero += 1) {
+    for (let numero = 1; numero <= limitItens; numero += 1) {
       if (food[`strIngredient${numero}`] !== null
         && food[`strIngredient${numero}`] !== '') {
         array.push(

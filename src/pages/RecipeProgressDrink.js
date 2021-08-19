@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes, { object } from 'prop-types';
-import Clipboard from '../components/Clipboard';
 import { searchDrinkById } from '../services/RequestDrinks';
+import Clipboard from '../components/Clipboard';
 import '../styles/drink.css';
 
 function RecipeProgressDrink(props) {
   const { match: { params: { id } } } = props;
   const [initialItemApi, setInitialItemApi] = useState([]);
   const [changeInput, setChangeInput] = useState(false);
-  // const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
     async function getDetailsById() {
-      const itemsDrink = await searchId(id);
+      const itemsDrink = await searchDrinkById(id);
       setInitialItemApi(itemsDrink);
     }
     getDetailsById();
   }, [id]);
-
-  // function handleClick({ value }) {
-  //   if (!changeInput) {
-  //     setClicked(value);
-  //     localStorage.setItem('inProgressRecipes', JSON.stringify(value));
-  //   } else {
-  //     setClicked(0);
-  //     localStorage.removeItem('inProgressRecipes');
-  //   }
-  //   setChangeInput((state) => !state);
-  // }
 
   function storageCheck() {
     let verifyRecipeId;
@@ -58,7 +46,7 @@ function RecipeProgressDrink(props) {
   function renderIngrediente(drink) {
     const array = [];
     const limitItens = 15;
-    for (let numero = 1;numero <= limitItens;numero += 1) {
+    for (let numero = 1; numero <= limitItens; numero += 1) {
       if (drink[`strIngredient${numero}`] !== null
         && drink[`strIngredient${numero}`] !== '') {
         array.push(
@@ -130,7 +118,7 @@ function RecipeProgressDrink(props) {
         </h4>
         <div>
           <h3>Ingredientes</h3>
-          { renderIngredient(drink) }
+          { renderIngrediente(drink) }
         </div>
         <h3>Instruções</h3>
         <p data-testid="instructions">{ drink.strInstructions }</p>
