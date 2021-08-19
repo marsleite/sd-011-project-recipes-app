@@ -1,0 +1,28 @@
+.HEADER {
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 21px 16px 21px;
+}
+
+.HEADER button {
+  background-color: transparent;
+  border: none;
+}
+
+.HEADER .title {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.HEADER .icon {
+  width: 30px;
+  height: 30px;
+}
+
+.FOOTER {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

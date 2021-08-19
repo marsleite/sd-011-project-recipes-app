@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../../hooks';
 import SearchForm from '../../Home/SearchForm';
 import ProfileIcon from '../../../images/profileIcon.svg';
 import SearchIcon from '../../../images/searchIcon.svg';
 
 function Header({ search, title }) {
-  const { colors } = useTheme();
-
   const [showInput, setShowInput] = useState(false);
 
-  const styles = {
-    header: {
-      backgroundColor: colors.background,
-      color: colors.primaryColor,
-    },
-  };
   const handleShowSeachInput = () => (
     showInput ? setShowInput(false) : setShowInput(true)
   );
@@ -24,15 +15,16 @@ function Header({ search, title }) {
   const handleTypeRequisition = () => (title === 'Comidas' ? 'meals' : 'drinks');
 
   return (
-    <header style={ styles.header }>
+    <header className="HEADER">
       <Link to="/perfil">
         <img
+          className="icon"
           data-testid="profile-top-btn"
           alt="Ver meu perfil"
           src={ ProfileIcon }
         />
       </Link>
-      <h3 data-testid="page-title">{ title }</h3>
+      <h1 className="title" data-testid="page-title">{ title }</h1>
       { search
             && (
               <button
@@ -40,6 +32,7 @@ function Header({ search, title }) {
                 onClick={ () => handleShowSeachInput() }
               >
                 <img
+                  className="icon"
                   data-testid="search-top-btn"
                   alt="Buscar receitas"
                   src={ SearchIcon }

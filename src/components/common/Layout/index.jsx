@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCocktails, fetchRecipes, useIngredients } from '../../../hooks';
+import '../../../styles/components/common/Layout.css';
 import Footer from './Footer';
 import Header from './Header';
 
