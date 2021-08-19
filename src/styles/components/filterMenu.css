@@ -13,12 +13,9 @@
   border: none;
   cursor: pointer;
   height: 32px;
-  line-height: 32px;
   margin: 5px;
   outline: none;
-  overflow: scroll;
-  white-space: nowrap;
-  width: 105px;
+  width: 160px;
 }
 
 .nav-filters .filter-selected {
