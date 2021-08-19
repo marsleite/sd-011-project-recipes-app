@@ -1,24 +1,21 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import copy from 'clipboard-copy';
+import { useAlert } from 'react-alert';
 import shareIcon from '../images/shareIcon.svg';
-
-const timeout = 1000;
+import { TransparentButton } from '../styles';
 
 export default function ShareButton({ id, type, dataTestid }) {
-  const [showMessage, setShowMessage] = useState(false);
-
+  const alert = useAlert();
   function handleClick() {
     copy(`http://localhost:3000/${type}s/${id}`);
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), timeout);
+    alert.success('Link copiado!');
   }
   return (
     <div className="d-flex">
-      { showMessage && <span className="align-self-center"> Link copiado! </span> }
-      <button className="neutral-button" type="button" onClick={ () => handleClick() }>
+      <TransparentButton onClick={ () => handleClick() }>
         <img src={ shareIcon } alt="Share Icon" data-testid={ dataTestid } />
-      </button>
+      </TransparentButton>
     </div>
   );
 }
@@ -28,5 +25,3 @@ ShareButton.propTypes = {
   type: PropTypes.string.isRequired,
   dataTestid: PropTypes.string.isRequired,
 };
-
-//  data-testid="share-btn"

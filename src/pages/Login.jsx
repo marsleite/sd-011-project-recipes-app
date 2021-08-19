@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
-import { Button, Underline, Container, Title } from '../styles';
+import { Button, Underline, Container } from '../styles';
 import Receitas from '../images/Receitas.png';
 
 export default function Login() {
@@ -14,10 +14,7 @@ export default function Login() {
   function verifyLogin() {
     const validEmail = /\S+@\S+\.\S+/;
     const pwLength = 6;
-    if ((password.length > pwLength) && (validEmail.test(email))) {
-      return false;
-    }
-    return true;
+    return !((password.length > pwLength) && (validEmail.test(email)));
   }
 
   function submitButton() {
@@ -37,7 +34,7 @@ export default function Login() {
       <Form
         className="d-flex flex-column align-items-center bg-white rounded p-5 shadow-lg"
       >
-        <Title>Login</Title>
+        <h1>Login</h1>
         <Form.Control
           className="my-2"
           size="lg"
