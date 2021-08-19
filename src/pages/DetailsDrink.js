@@ -12,20 +12,18 @@ function DetailsDrink(props) {
   const [initialItemApi, setInitialItemApi] = useState([]);
   const limitItensRecomend = 6;
 
-  async function getDetailsById() {
-    const itemsDrink = await searchDrinkById(id);
-    setInitialItemApi(itemsDrink);
-  }
-
-  async function getAllCategories() {
-    const items = await searchFoodsAll();
-    setInitialItens(items);
-  }
-
   useEffect(() => {
+    async function getDetailsById() {
+      const itemsDrink = await searchDrinkById(id);
+      setInitialItemApi(itemsDrink);
+    }
+    async function getAllCategories() {
+      const items = await searchFoodsAll();
+      setInitialItens(items);
+    }
     getDetailsById();
     getAllCategories();
-  }, []);
+  }, [id]);
 
   function renderCard(object, number) {
     return (

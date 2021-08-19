@@ -29,7 +29,7 @@ function HeaderDrink({ title, search }) {
     case (nameSearch):
       request = await searchDrinkByName(inputTextSearch);
       if (request === null || request.length < 1) {
-        alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
         break;
       }
       setFiltered(request);
@@ -37,7 +37,7 @@ function HeaderDrink({ title, search }) {
       break;
     case (firstLetter):
       if (inputTextSearch.length > 1) {
-        alert('Sua busca deve conter somente 1 (um) caracter');
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
         break;
       }
       request = await searchDrinkByFirstLetter(inputTextSearch);
@@ -50,7 +50,7 @@ function HeaderDrink({ title, search }) {
       setByFilter(true);
       break;
     default:
-      alert('Escolha uma opção de filtro!');
+      global.alert('Escolha uma opção de filtro!');
     }
   }
 
