@@ -26,7 +26,7 @@ function RecipesCardsContainer({ test }) {
   );
 
   return (
-    <section>
+    <section className="main-recipes-box">
       { showCards ? data.map((recipe, index) => renderCards(recipe, index)) : null }
     </section>
   );

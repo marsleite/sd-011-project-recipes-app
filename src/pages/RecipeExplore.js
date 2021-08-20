@@ -23,39 +23,43 @@ const RecipeExplore = () => {
   return (
     <>
       <Header title={ title } />
-      <Link to={ `${pathname}/ingredientes` }>
-        <button
-          type="button"
-          data-testid="explore-by-ingredient"
+      <div className="explore-div">
+        <Link to={ `${pathname}/ingredientes` }>
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            className="explore-btn"
+          >
+            Por Ingredientes
+          </button>
+        </Link>
+        { (pathname === explorarComidas)
+          ? (
+            <Link to="/explorar/comidas/area">
+              <button
+                type="button"
+                data-testid="explore-by-area"
+                className="explore-btn"
+              >
+                Por Local de Origem
+              </button>
+            </Link>)
+          : null}
+        <Link
+          to={
+            pathname === explorarComidas
+              ? `/comidas/${randomSurprise}` : `/bebidas/${randomSurprise}`
+          }
         >
-          Por Ingredientes
-        </button>
-      </Link>
-      { (pathname === explorarComidas)
-        ? (
-          <Link to="/explorar/comidas/area">
-            <button
-              type="button"
-              data-testid="explore-by-area"
-            >
-              Por Local de Origem
-            </button>
-          </Link>)
-        : null}
-      <Link
-        to={
-          pathname === explorarComidas
-            ? `/comidas/${randomSurprise}` : `/bebidas/${randomSurprise}`
-        }
-      >
-        <button
-          data-testid="explore-surprise"
-          onClick={ () => {} }
-          type="button"
-        >
-          Me Surpreenda!
-        </button>
-      </Link>
+          <button
+            data-testid="explore-surprise"
+            type="button"
+            className="explore-btn"
+          >
+            Me Surpreenda!
+          </button>
+        </Link>
+      </div>
       <FooterMenu />
     </>
   );

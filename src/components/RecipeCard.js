@@ -27,7 +27,6 @@ function RecipeCard({ recipe, index, test }) {
   const history = useHistory();
 
   function handleClick() {
-    console.log(strIngredient1);
     if (strIngredient) {
       setLoading(true);
       searchBarFetchMeal(title, 'ingredient')
@@ -49,22 +48,39 @@ function RecipeCard({ recipe, index, test }) {
     }
   }
 
+  function backgroundColorBox() {
+    if (history.location.pathname.includes('explorar')) {
+      return 'ingredient-recipes-card-box';
+    }
+    if (path.includes('comidas')) {
+      return 'meals-recipes-card-box';
+    } return 'drinks-recipes-card-box';
+  }
+
   return (
     <div
       aria-hidden="true"
       data-testid={ `${index}-${test}-card` }
       onClick={ handleClick }
+      className={
+        backgroundColorBox()
+      }
     >
       <img
         src={ thumb || ingredientThumb }
         alt={ title }
         data-testid={ `${index}-card-img` }
+        className="main-recipes-box-image"
       />
-      <h4
-        data-testid={ `${index}-card-name` }
-      >
-        { title }
-      </h4>
+      <div className="main-recipes-box-div-name">
+        <h4
+          data-testid={ `${index}-card-name` }
+          className="main-recipes-box-name"
+        >
+          { title }
+        </h4>
+      </div>
+
     </div>
   );
 }
