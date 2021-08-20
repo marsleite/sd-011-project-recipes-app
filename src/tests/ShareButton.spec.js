@@ -32,7 +32,7 @@ beforeEach(() => {
   );
 });
 
-describe('5 - Testando Share Button', () => {
+describe('Testando Share Button', () => {
   it('Copiando link', async () => {
     const { getByTestId } = renderWithRouterAndBothContext('/receitas-favoritas');
     await waitFor(() => {

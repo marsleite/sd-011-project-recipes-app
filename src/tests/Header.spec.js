@@ -10,7 +10,7 @@ const SEARCH_TOP_BTN = 'search-top-btn';
 const SEARCH_INPUT = 'search-input';
 const PAGE_TITLE = 'page-title';
 
-describe('1 - Testando Links do Header', () => {
+describe('Testando Links do Header', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -41,7 +41,7 @@ describe('1 - Testando Links do Header', () => {
   });
 });
 
-describe('2 - Testando títulos do Header', () => {
+describe('Testando títulos do Header', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();

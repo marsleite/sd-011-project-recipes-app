@@ -2,13 +2,13 @@ import { renderWithRouterAndBothContext } from './helpers/renders';
 import clearAndSetLsTests from './helpers/clearAndSetLSTests';
 import servicesMocked from './mocks/servicesMocked';
 
-describe('Testando DrinkRecipesInProgress', () => {
+describe('Testando pagina NotFound', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
   });
 
-  it('Finaliza receita', async () => {
+  it('Procura por not found', async () => {
     const {
       getByText,
     } = renderWithRouterAndBothContext('/not-found');

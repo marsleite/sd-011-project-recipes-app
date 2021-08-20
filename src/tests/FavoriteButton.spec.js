@@ -11,7 +11,7 @@ const FAVORITE_BTN_HORIZONTAL = '0-horizontal-favorite-btn';
 const favoriteHeart = 'http://localhost/whiteHeartIcon.svg';
 const noFavoriteHeart = 'http://localhost/blackHeartIcon.svg';
 
-describe('3 - Testando Favorite Button nas páginas principais', () => {
+describe('Testando Favorite Button nas páginas principais', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -56,7 +56,7 @@ describe('3 - Testando Favorite Button nas páginas principais', () => {
   });
 });
 
-describe('4 - Testando Favorite Button na página de receitas favoritas', () => {
+describe('Testando Favorite Button na página de receitas favoritas', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();

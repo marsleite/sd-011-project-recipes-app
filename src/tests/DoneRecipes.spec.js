@@ -34,7 +34,7 @@ function setDoneRecipes() {
   );
 }
 
-describe('14 - Testando DoneRecipes filtros', () => {
+describe('Testando DoneRecipes filtros', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -58,7 +58,7 @@ describe('14 - Testando DoneRecipes filtros', () => {
   });
 });
 
-describe('15 - Testando DoneRecipes botões', () => {
+describe('Testando DoneRecipes botões', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();

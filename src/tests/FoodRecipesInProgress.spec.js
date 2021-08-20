@@ -10,7 +10,7 @@ const FIRST_INGREDIENT = '0-ingredient-step';
 const SECOND_INGREDIENT = '1-ingredient-step';
 const THIRD_INGREDIENT = '2-ingredient-step';
 
-describe('Testando DrinkRecipesInProgress', () => {
+describe('Testando FoodRecipesInProgress', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();

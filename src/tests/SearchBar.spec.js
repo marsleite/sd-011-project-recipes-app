@@ -13,7 +13,7 @@ const LETTER_SEARCH = 'first-letter-search-radio';
 const EXEC_SEARCH = 'exec-search-btn';
 const FIRST_RECIPE_NAME = '0-card-name';
 
-describe('6 - Testando SearchBar em bebidas - ingrediente', () => {
+describe('Testando SearchBar em bebidas - ingrediente', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -44,7 +44,7 @@ describe('6 - Testando SearchBar em bebidas - ingrediente', () => {
   });
 });
 
-describe('7 - Testando SearchBar em bebidas - nome', () => {
+describe('Testando SearchBar em bebidas - nome', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -75,7 +75,7 @@ describe('7 - Testando SearchBar em bebidas - nome', () => {
   });
 });
 
-describe('8 - Testando SearchBar em bebidas - letra', () => {
+describe('Testando SearchBar em bebidas - letra', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -106,7 +106,7 @@ describe('8 - Testando SearchBar em bebidas - letra', () => {
   });
 });
 
-describe('9 - Testando SearchBar em bebidas alert', () => {
+describe('Testando SearchBar em bebidas alert', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -137,7 +137,7 @@ describe('9 - Testando SearchBar em bebidas alert', () => {
   });
 });
 
-describe('10 - Testando SearchBar em comidas alert', () => {
+describe('Testando SearchBar em comidas alert', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     jest.spyOn(window, 'alert');
@@ -168,7 +168,7 @@ describe('10 - Testando SearchBar em comidas alert', () => {
   });
 });
 
-describe('10 - Testando SearchBar com um resultado', () => {
+describe('Testando SearchBar com um resultado', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
@@ -197,7 +197,7 @@ describe('10 - Testando SearchBar com um resultado', () => {
   });
 });
 
-describe('11 - Testando SearchBar em comidas - ingrediente', () => {
+describe('Testando SearchBar em comidas - ingrediente', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();

@@ -10,7 +10,7 @@ const SEARCH_INPUT = 'search-input';
 const NAME_SEARCH = 'name-search-radio';
 const EXEC_SEARCH = 'exec-search-btn';
 
-describe('12 - Testando SearchBar em bebidas alert sem resultado', () => {
+describe('Testando SearchBar em bebidas alert sem resultado', () => {
   beforeEach(() => {
     jest.spyOn(window, 'alert');
     clearAndSetLsTests();
@@ -41,7 +41,7 @@ describe('12 - Testando SearchBar em bebidas alert sem resultado', () => {
   });
 });
 
-describe('13 - Testando SearchBar em comidas alert sem resultado', () => {
+describe('Testando SearchBar em comidas alert sem resultado', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
