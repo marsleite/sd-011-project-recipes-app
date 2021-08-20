@@ -42,7 +42,9 @@ export default function MealDetail() {
   ));
 
   const {
+    idMeal,
     strMeal,
+    strArea,
     strMealThumb,
     strYoutube,
     strInstructions,
@@ -54,7 +56,15 @@ export default function MealDetail() {
       <img src={ strMealThumb } alt={ strMeal } data-testid="recipe-photo" />
       <h2 data-testid="recipe-title">{strMeal}</h2>
       <ShareButton />
-      <FavoriteButton />
+      <FavoriteButton
+        id={ idMeal }
+        type="meal"
+        area={ strArea }
+        category={ strCategory }
+        alcoholicOrNot=""
+        name={ strMeal }
+        image={ strMealThumb }
+      />
       <p data-testid="recipe-category">{strCategory}</p>
       {
         newIngredientsArray
