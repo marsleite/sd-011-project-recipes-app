@@ -20,16 +20,9 @@ function mealsAPIMocked() {
   jest
     .spyOn(mealAPI, 'searchBarFetchMeal')
     .mockImplementation((search, type) => {
-      switch (type) {
-      case 'ingredient':
-        return Promise.resolve(mealsByIngredient);
-      case 'name':
-        return undefined;
-      case 'firstLetter':
-        return 'erro';
-      default:
-        break;
-      }
+      if (type === 'ingredient') return Promise.resolve(mealsByIngredient);
+      if (type === 'name') return Promise.resolve(undefined);
+      if (type === 'firstLetter') return Promise.resolve('erro');
     });
   jest
     .spyOn(mealAPI, 'getMealDetail')
@@ -64,19 +57,16 @@ function cocktailsAPIMocked() {
   jest
     .spyOn(cocktailAPI, 'searchBarFetchCockTail')
     .mockImplementation((search, type) => {
-      switch (type) {
-      case 'ingredient':
-        return Promise.resolve(drinksByIngredient);
-      case 'name':
-        if (search === 'test one drink') return Promise.resolve(oneDrink);
-        if (search === 'test no result') return Promise.resolve(undefined);
-        return Promise.resolve(cocoaDrinks);
-      case 'firstLetter':
-        if (search.length > 1) return 'erro';
-        return drinks;
-      default:
-        break;
+      if (type === 'ingredient') return Promise.resolve(drinksByIngredient);
+      if (type === 'name' && search === 'test one drink') {
+        return Promise.resolve(oneDrink);
       }
+      if (type === 'name' && search === 'test no result') {
+        return Promise.resolve(undefined);
+      }
+      if (type === 'name') return Promise.resolve(cocoaDrinks);
+      if (type === 'firstLetter' && search.length > 1) return Promise.resolve('erro');
+      if (type === 'firstLetter') return Promise.resolve(drinks);
     });
   jest
     .spyOn(cocktailAPI, 'getDrinkDetail')
