@@ -10,51 +10,31 @@ export default function CardsListByIngredient() {
   const [imge, setImge] = useState([]);
   const [redirectTo, setRedirectTo] = useState(false);
   const path = window.location.pathname.split('/')[2];
-
   const { setIngred } = useContext(SearchBarContext);
+  const url = path === 'bebidas' ? 'thecocktaildb' : 'themealdb';
 
   useEffect(() => {
-    const urlDrink = 'thecocktaildb';
-    const urlMeal = 'themealdb';
-    let url = urlMeal;
-    if (path === 'bebidas') {
-      url = urlDrink;
-    }
     const getRecipes = async () => {
       const urlToFetch = `https://www.${url}.com/api/json/v1/1/list.php?i=list`;
       const recipesFromApi = await fetchByFilter(urlToFetch);
       const recipesList = Object.values(recipesFromApi)[0];
-      if (path === 'bebidas') {
-        const array = recipesList.map((e) => (e.strIngredient1));
-        return setIngredName(array);
-      }
-      const array = recipesList.map((e) => (e.strIngredient));
+      const array = path === 'bebidas'
+        ? recipesList.map((e) => (e.strIngredient1))
+        : recipesList.map((e) => (e.strIngredient));
       return setIngredName(array);
-      // setDataValues(recipesList);
-      // setDataList(recipesList);
-      // setShouldCallCards(true);
     };
 
     getRecipes();
   }, [path]);
 
   useEffect(() => {
-    const urlDrink = 'thecocktaildb';
-    const urlMeal = 'themealdb';
-    let url = urlMeal;
-    if (path === 'bebidas') {
-      url = urlDrink;
-    }
     const getCategories = async () => {
       const img = ingredName.map((e) => ({
         fig: `https://www.${url}.com/images/ingredients/${e}-Small.png`,
         name: `${e}`,
       }));
       const magicN = 12;
-      const imgTwelve = img.slice(0, magicN);
-      setImge(imgTwelve);
-      // const categoriesFromApi = await fetchByFilter(urlToFetch);
-      // const categoriesList = Object.values(categoriesFromApi)[0];
+      setImge(img.slice(0, magicN));
     };
 
     getCategories();
@@ -62,7 +42,6 @@ export default function CardsListByIngredient() {
 
   const handleClick = (value) => {
     setIngred(value);
-    console.log('cardingred', value);
     setRedirectTo(true);
   };
 
