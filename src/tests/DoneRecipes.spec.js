@@ -34,14 +34,14 @@ function setDoneRecipes() {
   );
 }
 
-describe('14 - Testando DoneRecipes', () => {
+describe('14 - Testando DoneRecipes filtros', () => {
   beforeEach(() => {
     clearAndSetLsTests();
     servicesMocked();
     setDoneRecipes();
   });
 
-  it('Filtra por comida, bebida e por all', async () => {
+  it('Filtra por comida, bebida e por all', () => {
     const {
       getByTestId,
     } = renderWithRouterAndBothContext('/receitas-feitas');
@@ -55,5 +55,25 @@ describe('14 - Testando DoneRecipes', () => {
     expect(firstRecipe).toHaveTextContent('Mince Pies');
     fireEvent.click(allButton);
     expect(firstRecipe).toHaveTextContent('GG');
+  });
+});
+
+describe('15 - Testando DoneRecipes botões', () => {
+  beforeEach(() => {
+    clearAndSetLsTests();
+    servicesMocked();
+  });
+
+  it('Testa botões', () => {
+    const {
+      getByTestId,
+    } = renderWithRouterAndBothContext('/receitas-feitas');
+    const filterDrink = getByTestId(FILTER_DRINK_BTN);
+    const filterFood = getByTestId(FILTER_FOOD_BTN);
+    const allButton = getByTestId(ALL_BTN);
+    fireEvent.click(filterDrink);
+    expect(filterDrink).toBeInTheDocument();
+    expect(filterFood).toBeInTheDocument();
+    expect(allButton).toBeInTheDocument();
   });
 });
