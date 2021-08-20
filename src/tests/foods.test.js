@@ -6,6 +6,14 @@ import Foods from '../pages/foods/Foods';
 import meals from '../../cypress/mocks/meals';
 import mealsCategories from '../../cypress/mocks/mealCategories';
 
+const PROFILE_TOP_BTN = 'profile-top-btn';
+const SEARCH_INPUT = 'search-input';
+const FOOD_BOTTOM_BTN = 'food-bottom-btn';
+const DRINKS_BOTTOM_BTN = 'drinks-bottom-btn';
+const EXPLORE_BOTTOM_BTN = 'explore-bottom-btn';
+const INGREDIENT_SEARCH_RADIO = 'ingredient-search-radio';
+// const EXPLORE_BOTTOM_BTN = 'explore-bottom-btn';
+
 const mockFetchMeals = () => {
   jest.spyOn(global, 'fetch')
     .mockImplementation(() => Promise.resolve({
@@ -30,15 +38,14 @@ describe('Testa a tela <Foods.js />', () => {
   it('A tela de comida possui header', () => {
     const screenFoods = render(<Foods />, { wrapper: SearchBarProvider }); // pra ilustrar outra forma de renderizar o Foods
     screenFoods.getByText(/Explorar Comidas/);
-    screenFoods.getByTestId('profile-top-btn');
-    // screenFoods.getByTestId('search-top-btn');
+    screenFoods.getByTestId(PROFILE_TOP_BTN);
   });
 
   it('A tela de comida possui footer', () => {
     const screenFoods = render(<Foods />, { wrapper: SearchBarProvider });
-    screenFoods.getByTestId('food-bottom-btn');
-    screenFoods.getByTestId('drinks-bottom-btn');
-    screenFoods.getByTestId('explore-bottom-btn');
+    screenFoods.getByTestId(FOOD_BOTTOM_BTN);
+    screenFoods.getByTestId(DRINKS_BOTTOM_BTN);
+    screenFoods.getByTestId(EXPLORE_BOTTOM_BTN);
   });
 
   it('Possui os cards', async () => {
@@ -50,14 +57,14 @@ describe('Testa a tela <Foods.js />', () => {
     expect(await screen.getByText('Corba')).toBeInTheDocument();
     const buttonSearch = await screen.getByTestId('search-top-btn');
     fireEvent.click(buttonSearch);
-    // expect(await screen.getByTestId('search-input')).toBeInTheDocument();
-    // expect(await screen.getByTestId('ingredient-search-radio')).toBeInTheDocument();
+    expect(await screen.getByTestId(SEARCH_INPUT)).toBeInTheDocument();
+    expect(await screen.getByTestId(INGREDIENT_SEARCH_RADIO)).toBeInTheDocument();
     expect(await screen.getByTestId('name-search-radio')).toBeInTheDocument();
     expect(await screen.getByTestId('first-letter-search-radio')).toBeInTheDocument();
-    // const inputSearch = await screen.getByTestId('search-input');
-    // fireEvent.change(inputSearch, { target: { value: 'rice' } });
-    // expect(inputSearch.value).toBe('rice');
-    // fireEvent.click(screen.getByTestId('ingredient-search-radio'));
+    const inputSearch = await screen.getByTestId('search-input');
+    fireEvent.change(inputSearch, { target: { value: 'rice' } });
+    expect(inputSearch.value).toBe('rice');
+    fireEvent.click(screen.getByTestId(INGREDIENT_SEARCH_RADIO));
     fireEvent.click(screen.getByTestId('exec-search-btn'));
   });
   it('Possui os botão search', async () => {
@@ -66,14 +73,14 @@ describe('Testa a tela <Foods.js />', () => {
     });
     const buttonSearch = await screen.getByTestId('search-top-btn');
     fireEvent.click(buttonSearch);
-    expect(await screen.getByTestId('search-input')).toBeInTheDocument();
-    expect(await screen.getByTestId('ingredient-search-radio')).toBeInTheDocument();
+    expect(await screen.getByTestId(SEARCH_INPUT)).toBeInTheDocument();
+    expect(await screen.getByTestId(INGREDIENT_SEARCH_RADIO)).toBeInTheDocument();
     expect(await screen.getByTestId('name-search-radio')).toBeInTheDocument();
     expect(await screen.getByTestId('first-letter-search-radio')).toBeInTheDocument();
-    const inputSearch = await screen.getByTestId('search-input');
+    const inputSearch = await screen.getByTestId(SEARCH_INPUT);
     fireEvent.change(inputSearch, { target: { value: 'rice' } });
     expect(inputSearch.value).toBe('rice');
-    fireEvent.click(screen.getByTestId('ingredient-search-radio'));
+    fireEvent.click(screen.getByTestId(INGREDIENT_SEARCH_RADIO));
     fireEvent.click(screen.getByTestId('exec-search-btn'));
   });
 });

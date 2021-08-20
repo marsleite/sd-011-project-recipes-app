@@ -59,44 +59,46 @@ function DrinkDetailCard() {
   }).filter((i) => i !== undefined);
 
   return (
-    <Card style={ { width: '90%', margin: '15px auto' } }>
-      <Card.Body>
-        <Card.Img
-          data-testid="recipe-photo"
-          width="150px"
-          src={ strDrinkThumb }
-          alt="tumb"
-        />
-        <Card.Text data-testid="recipe-title">{strDrink}</Card.Text>
-        <Card.Text data-testid="recipe-category">{strAlcoholic}</Card.Text>
-        <Card.Text style={ { display: 'flex', justifyContent: 'space-around' } }>
-          <ButtonFavorite objData={ drinkDetail } />
-          <ButtonShare path={ window.location.href } testid="share-btn" />
+    <>
+      <Card style={ { width: '90%', margin: '15px auto' } }>
+        <Card.Body>
+          <Card.Img
+            data-testid="recipe-photo"
+            width="150px"
+            src={ strDrinkThumb }
+            alt="tumb"
+          />
+          <Card.Text data-testid="recipe-title">{strDrink}</Card.Text>
+          <Card.Text data-testid="recipe-category">{strAlcoholic}</Card.Text>
+          <Card.Text style={ { display: 'flex', justifyContent: 'space-around' } }>
+            <ButtonFavorite objData={ drinkDetail } />
+            <ButtonShare path={ window.location.href } testid="share-btn" />
+          </Card.Text>
+          <Card.Text>
+            { objIngred.map((e, i) => (
+              <Card.Text
+                data-testid={ `${i}-ingredient-name-and-measure` }
+                key={ i }
+              >
+                { objMeasure[i] ? `${e} - ${objMeasure[i]}` : `${e}`}
+              </Card.Text>
+            ))}
+          </Card.Text>
+          <Card.Text data-testid="instructions">{strInstructions}</Card.Text>
+          { strYoutube
+          && <RenderVideo
+            src={ strYoutube }
+            title={ `Recipe ${strDrink}` }
+            id="video"
+            style={ { width: '50%' } }
+          /> }
+        </Card.Body>
+        <Card.Text style={ { margin: '40px', paddingBottom: '60px' } }>
+          <Recommended value={ rec } type="drink" min={ min } />
         </Card.Text>
-        <Card.Text>
-          { objIngred.map((e, i) => (
-            <Card.Text
-              data-testid={ `${i}-ingredient-name-and-measure` }
-              key={ i }
-            >
-              { objMeasure[i] ? `${e} - ${objMeasure[i]}` : `${e}`}
-            </Card.Text>
-          ))}
-        </Card.Text>
-        <Card.Text data-testid="instructions">{strInstructions}</Card.Text>
-        { strYoutube
-        && <RenderVideo
-          src={ strYoutube }
-          title={ `Recipe ${strDrink}` }
-          id="video"
-          style={ { width: '50%' } }
-        /> }
-      </Card.Body>
-      <Card.Text style={ { margin: '40px', paddingBottom: '60px' } }>
-        <Recommended value={ rec } type="drink" min={ min } />
-      </Card.Text>
+      </Card>
       <ButtonToProgress data={ drinkDetail } />
-    </Card>
+    </>
   );
 }
 

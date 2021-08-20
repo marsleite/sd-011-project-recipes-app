@@ -36,11 +36,11 @@ describe('Testa a tela <FoodExplorer.js />', () => {
   });
 
   it('Possui o botão Me Surpreenda!', () => {
-    const { getByTestId } = renderWithRouter(<FoodExplorer />);
+    const { getByTestId, history } = renderWithRouter(<FoodExplorer />);
     const exploreSurprise = getByTestId('explore-surprise');
     expect(exploreSurprise).toBeInTheDocument();
     expect(exploreSurprise.innerHTML).toBe('Me Surpreenda!');
-    // fireEvent.click(exploreFoodByArea);
-    // expect(history.location.pathname).toBe('/explorar/comidas/area');
+    fireEvent.click(exploreSurprise);
+    expect(history.location.pathname).toBe('/comidas/');
   });
 });
