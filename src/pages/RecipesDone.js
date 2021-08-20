@@ -80,7 +80,6 @@ function RecipesDone() {
         </button>
       </div>
 
-      <br />
       <span>{click ? <p>Link copiado!</p> : <div />}</span>
 
       <div className="favorite-recipes-container">
@@ -90,46 +89,53 @@ function RecipesDone() {
               type="image"
               data-testid={ `${index}-horizontal-image` }
               src={ recipes.image }
-              width="100px"
-              height="100px"
+              width="100%"
+              height="150px"
               alt={ recipes.name }
               onClick={ () => history.push(`/${recipes.type}s/${recipes.id}`) }
             />
 
-            <p data-testid={ `${index}-horizontal-top-text` }>
-              {`${recipes.area} - ${recipes.category} ${recipes.alcoholicOrNot}`}
-            </p>
+            <div className="recipes-card-content">
+              <p
+                className="profile-area-name"
+                data-testid={ `${index}-horizontal-top-text` }
+              >
+                {`${recipes.area} - ${recipes.category} ${recipes.alcoholicOrNot}`}
+              </p>
 
-            <a
-              href={ `/${recipes.type}s/${recipes.id}` }
-              data-testid={ `${index}-horizontal-name` }
-              className="profile-recipe-name"
-            >
-              { recipes.name }
-            </a>
+              <a
+                href={ `/${recipes.type}s/${recipes.id}` }
+                data-testid={ `${index}-horizontal-name` }
+                className="profile-recipe-name"
+              >
+                { recipes.name }
+              </a>
 
-            <p data-testid={ `${index}-horizontal-done-date` }>{ recipes.doneDate }</p>
+              <p data-testid={ `${index}-horizontal-done-date` }>{ recipes.doneDate }</p>
 
-            <div className="profile-icons">
-              <div>
-                {recipes.tags && recipes.tags.map((tag, indexTag) => (
-                  <p
-                    key={ indexTag }
-                    data-testid={ `${index}-${tag}-horizontal-tag` }
-                  >
-                    {tag}
-                  </p>
-                ))}
+              <div className="profile-icons">
+                <div>
+                  {recipes.tags && recipes.tags.map((tag, indexTag) => (
+                    <p
+                      key={ indexTag }
+                      data-testid={ `${index}-${tag}-horizontal-tag` }
+                    >
+                      {tag}
+                    </p>
+                  ))}
+                </div>
+
+                <input
+                  type="image"
+                  data-testid={ `${index}-horizontal-share-btn` }
+                  src={ shareIcon }
+                  alt="card da receita"
+                  onClick={ () => copyLink(recipes.type, recipes.id) }
+                />
               </div>
 
-              <input
-                type="image"
-                data-testid={ `${index}-horizontal-share-btn` }
-                src={ shareIcon }
-                alt="card da receita"
-                onClick={ () => copyLink(recipes.type, recipes.id) }
-              />
             </div>
+
           </div>
         ))}
       </div>

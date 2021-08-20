@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../css/RecipeInProgress.css';
+import '../css/RecipeDetails.css';
 import { useHistory } from 'react-router';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -109,7 +110,7 @@ function RenderDrinkProgress({ strDrinkThumb, strDrink, strCategory,
       </li>
     ));
     return (
-      <ul>{ finalList }</ul>
+      <ul className="recipe-details-ingredients-list">{ finalList }</ul>
     );
   }
 
@@ -144,37 +145,48 @@ function RenderDrinkProgress({ strDrinkThumb, strDrink, strCategory,
         height="300px"
         data-testid="recipe-photo"
       />
-      <h3 data-testid="recipe-title">{ strDrink }</h3>
-      {' '}
       <span>
-        {' '}
         { click ? <p>Link copiado!</p> : null }
-        {' '}
       </span>
-      <br />
-      <input
-        type="image"
-        data-testid="share-btn"
-        src={ shareIcon }
-        alt="compartilhar"
-        onClick={ () => copyLink(id) }
-      />
-      {' '}
-      <br />
-      <input
-        type="image"
-        data-testid="favorite-btn"
-        src={ favoriteIcon }
-        alt="botão favoritar"
-        onClick={ () => changeStatusIcon() }
-      />
-      {' '}
-      <br />
-      <p data-testid="recipe-category">{ strCategory }</p>
-      <span>
-        { createIngredArray() }
-      </span>
-      <p data-testid="instructions">{ strInstructions }</p>
+      <div className="recipe-details-legend">
+        <h3 data-testid="recipe-title">{ strDrink }</h3>
+        <input
+          type="image"
+          data-testid="share-btn"
+          src={ shareIcon }
+          alt="compartilhar"
+          onClick={ () => copyLink(id) }
+        />
+        <input
+          type="image"
+          data-testid="favorite-btn"
+          src={ favoriteIcon }
+          alt="botão favoritar"
+          onClick={ () => changeStatusIcon() }
+        />
+      </div>
+      <p
+        data-testid="recipe-category"
+        className="recipe-details-category"
+      >
+        { strCategory }
+      </p>
+      <div>
+        <p className="recipe-details-title">Ingredients</p>
+        <span>
+          { createIngredArray() }
+        </span>
+      </div>
+      <div>
+        <p className="recipe-details-title">Instructions</p>
+        <p
+          data-testid="instructions"
+          className="recipe-details-instruction-test"
+        >
+          { strInstructions }
+        </p>
+      </div>
+
       <button
         type="button"
         data-testid="finish-recipe-btn"
