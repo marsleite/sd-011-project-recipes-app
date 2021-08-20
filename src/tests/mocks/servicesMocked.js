@@ -6,7 +6,6 @@ import drinksByIngredient from './drinksByIngredient';
 import cocoaDrinks from './cocoaDrinks';
 import drinks from './drinks';
 import areas from './areas';
-import beefMeals from './beefMeals';
 import italianMeals from './italianMeals';
 import japaneseMeals from './japaneseMeals';
 import mealCategories from './mealCategories';
@@ -25,11 +24,9 @@ function mealsAPIMocked() {
       case 'ingredient':
         return Promise.resolve(mealsByIngredient);
       case 'name':
-        if (search === 'test no result') return undefined;
-        return Promise.resolve(beefMeals);
+        return undefined;
       case 'firstLetter':
-        if (search.length > 1) return 'erro';
-        return Promise.resolve(meals);
+        return 'erro';
       default:
         break;
       }
@@ -69,11 +66,11 @@ function cocktailsAPIMocked() {
     .mockImplementation((search, type) => {
       switch (type) {
       case 'ingredient':
-        return drinksByIngredient;
+        return Promise.resolve(drinksByIngredient);
       case 'name':
-        if (search === 'test one drink') return oneDrink;
-        if (search === 'test no result') return undefined;
-        return cocoaDrinks;
+        if (search === 'test one drink') return Promise.resolve(oneDrink);
+        if (search === 'test no result') return Promise.resolve(undefined);
+        return Promise.resolve(cocoaDrinks);
       case 'firstLetter':
         if (search.length > 1) return 'erro';
         return drinks;

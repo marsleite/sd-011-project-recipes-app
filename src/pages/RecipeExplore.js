@@ -53,7 +53,6 @@ const RecipeExplore = () => {
         >
           <button
             data-testid="explore-surprise"
-            onClick={ () => {} }
             type="button"
             className="explore-btn"
           >
