@@ -1,10 +1,8 @@
-import { fireEvent, waitFor } from '@testing-library/react';
-import MutationObserver from '@sheerun/mutationobserver-shim';
+import { fireEvent } from '@testing-library/react';
 import { renderWithRouterAndBothContext } from './helpers/renders';
 import clearAndSetLsTests from './helpers/clearAndSetLSTests';
 import servicesMocked from './mocks/servicesMocked';
 
-window.MutationObserver = MutationObserver;
 const FILTER_DRINK_BTN = 'filter-by-drink-btn';
 const FILTER_FOOD_BTN = 'filter-by-food-btn';
 const FILTER_ALL_BTN = 'filter-by-all-btn';
