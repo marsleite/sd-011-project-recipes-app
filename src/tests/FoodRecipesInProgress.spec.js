@@ -1,6 +1,6 @@
 import { fireEvent, waitFor } from '@testing-library/react';
 import MutationObserver from '@sheerun/mutationobserver-shim';
-import { renderWithRouterAndBothContext } from './helpers/renders';
+import renderWithRouterAndBothContext from './helpers/renders';
 import clearAndSetLsTests from './helpers/clearAndSetLSTests';
 import servicesMocked from './mocks/servicesMocked';
 

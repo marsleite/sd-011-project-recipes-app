@@ -5,26 +5,7 @@ import LSProvider from '../../context/LSProvider';
 import MainProvider from '../../context/MainProvider';
 import Routes from '../../routes/Routes';
 
-export function renderWithRouter(component, { route = '/' } = {}) {
-  window.history.pushState({}, 'Test page', route);
-  return render(component, { wrapper: BrowserRouter });
-}
-
-export function renderWithLSContext(component, { ...renderOptions }) {
-  return render(
-    <LSProvider>{ component }</LSProvider>,
-    renderOptions,
-  );
-}
-
-export function renderWithMainContext(component, { ...renderOptions }) {
-  return render(
-    <MainProvider>{ component }</MainProvider>,
-    renderOptions,
-  );
-}
-
-export function renderWithRouterAndBothContext(route = '/') {
+export default function renderWithRouterAndBothContext(route = '/') {
   let testLocation;
   return {
     ...render(

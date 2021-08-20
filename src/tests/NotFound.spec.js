@@ -1,4 +1,4 @@
-import { renderWithRouterAndBothContext } from './helpers/renders';
+import renderWithRouterAndBothContext from './helpers/renders';
 import clearAndSetLsTests from './helpers/clearAndSetLSTests';
 import servicesMocked from './mocks/servicesMocked';
 
