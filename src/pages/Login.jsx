@@ -34,6 +34,11 @@ function Login() {
     }
   }
 
+  function handleClickLogin() {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+  }
+
   return (
     <div>
       <input
@@ -52,6 +57,7 @@ function Login() {
         type="button"
         data-testid="login-submit-btn"
         disabled={ isDisabled }
+        onClick={ handleClickLogin }
       >
         Entrar
       </button>
