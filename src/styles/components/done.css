@@ -1,0 +1,39 @@
+.done-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.done-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.done-card-wrapper {
+  display: flex;
+}
+
+.done-info-container {
+  background-color: rgb(240, 240, 240);
+  border-radius: 25px;
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.done-info-img {
+  border-radius: 25px;
+  overflow: hidden;
+  width: 35%;
+}
+
+.done-info-img img {
+  height: 100%;
+  width: 90%;
+}
+
+.done-info-button {
+  border: none;
+  margin-left: 50px;
+}

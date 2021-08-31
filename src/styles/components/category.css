@@ -1,0 +1,22 @@
+.category-container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.category-container button {
+  background-color: transparent;
+  border: 0;
+  font-size: 12px;
+  width: 100px;
+}
+
+.category-container button:focus {
+  border: 0;
+  font-size: 12px;
+  font-weight: 500;
+  width: 100px;
+}
